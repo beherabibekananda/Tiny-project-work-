@@ -315,6 +315,25 @@ const Index = () => {
               </div>
             </a>
           </div>
+
+          {/* Facebook Feed Embed */}
+          <div className="mt-16 flex flex-col items-center">
+            <h3 className="mb-8 font-display text-2xl font-bold text-foreground">Latest Updates from Facebook</h3>
+            <div className="w-full max-w-[500px] overflow-hidden rounded-3xl bg-white shadow-xl shadow-primary/5">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FTiny-Triumph-child-development-centre-61566975311848%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                width="500"
+                height="500"
+                style={{ border: "none", overflow: "hidden" }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                title="Tiny Triumph Facebook Feed"
+                className="w-full"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </section>
 
