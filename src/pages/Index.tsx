@@ -259,86 +259,126 @@ const Index = () => {
       </section>
 
       {/* Social Footprints Section */}
-      <section className="bg-secondary/30 py-16 md:py-24">
+      <section className="bg-secondary/30 py-16 md:py-24 overflow-hidden">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-12">
             <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
               Our Social Footprints
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Connect with us online for daily updates, success stories, and real-time support.
+              Join our growing community and stay updated with our latest activities and success stories.
             </p>
           </div>
+        </div>
 
-          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
-            {/* Left Column: Facebook Feed */}
-            <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl shadow-primary/5">
-              <div className="p-4 border-b border-border/50 bg-primary/5">
-                <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-primary">
-                  <Facebook className="h-5 w-5" />
-                  Live Facebook Feed
-                </h3>
+        <div className="relative group">
+          <div className="flex animate-marquee whitespace-nowrap py-12 group-hover:[animation-play-state:paused]">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-8 px-4">
+                {[
+                  {
+                    id: 1,
+                    content: "Our young champion making great progress in physical therapy today! Every step counts.",
+                    type: "Achievement",
+                    date: "2 days ago",
+                    image: "https://images.unsplash.com/photo-1576091160550-217359f4ecf8?w=400&h=300&fit=crop"
+                  },
+                  {
+                    id: 2,
+                    content: "New sensory play tools have arrived! Helping children explore and learn through touch and feel.",
+                    type: "Update",
+                    date: "1 week ago",
+                    image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&h=300&fit=crop"
+                  },
+                  {
+                    id: 3,
+                    content: "Speech therapy success stories! We're celebrating our little hero's first words this month.",
+                    type: "Success Story",
+                    date: "3 days ago",
+                    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop"
+                  },
+                  {
+                    id: 4,
+                    content: "Join us for our next parent-teacher workshop on understanding child behavioral patterns.",
+                    type: "Event",
+                    date: "Today",
+                    image: "https://images.unsplash.com/photo-1573497620053-ea5310f94a17?w=400&h=300&fit=crop"
+                  },
+                  {
+                    id: 5,
+                    content: "A beautiful morning at Tiny Triumph! Creating a nurturing environment for every child.",
+                    type: "Clinic Life",
+                    date: "4 days ago",
+                    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop"
+                  }
+                ].map((post) => (
+                  <div
+                    key={post.id}
+                    className="inline-block w-[350px] overflow-hidden rounded-3xl bg-card border border-border/50 shadow-lg shadow-primary/5 transition-all hover:-translate-y-2 hover:border-primary/30 hover:shadow-xl"
+                  >
+                    <div className="h-48 w-full">
+                      <img
+                        src={post.image}
+                        alt="Post representation"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="p-6 whitespace-normal">
+                      <div className="mb-3 flex items-center justify-between">
+                        <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                          {post.type}
+                        </span>
+                        <span className="text-xs text-muted-foreground">{post.date}</span>
+                      </div>
+                      <p className="text-sm text-foreground line-clamp-3">
+                        {post.content}
+                      </p>
+                      <div className="mt-4 flex items-center justify-between border-t border-border/50 pt-4">
+                        <div className="flex items-center gap-2">
+                          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white">
+                            <Facebook className="h-3 w-3" />
+                          </div>
+                          <span className="text-xs font-medium text-muted-foreground">Tiny Triumph</span>
+                        </div>
+                        <a
+                          href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-semibold text-primary hover:underline"
+                        >
+                          View Post
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FTiny-Triumph-child-development-centre-61566975311848%2F&tabs=timeline&width=600&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-                width="600"
-                height="500"
-                style={{ border: "none", overflow: "hidden" }}
-                scrolling="no"
-                frameBorder="0"
-                allowFullScreen={true}
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                title="Tiny Triumph Live Facebook Feed"
-                className="w-full min-h-[500px]"
-              ></iframe>
-            </div>
+            ))}
+          </div>
 
-            {/* Right Column: Social Engagement Cards */}
-            <div className="flex flex-col gap-6">
-              {/* Facebook Direct Link Card */}
+          {/* Gradient overlays for the fade effect */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-secondary/30 to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-secondary/30 to-transparent z-10" />
+        </div>
+
+        <div className="container mt-12">
+          <div className="flex justify-center gap-4">
+            <Button asChild variant="outline" className="rounded-full">
               <a
                 href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-3xl bg-blue-600 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
               >
-                <div className="absolute -right-8 -top-8 h-32 w-32 opacity-10">
-                  <Facebook className="h-full w-full" />
-                </div>
-                <div className="relative z-10">
-                  <h3 className="mb-2 font-display text-2xl font-bold">Follow Our Page</h3>
-                  <p className="mb-6 opacity-90">Join our growing community of parents and caregivers on Facebook for tips and updates.</p>
-                  <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-blue-600 transition-colors group-hover:bg-blue-50">
-                    Visit Profile <ChevronRight className="ml-2 h-4 w-4" />
-                  </span>
-                </div>
+                <Facebook className="mr-2 h-4 w-4" />
+                Follow on Facebook
               </a>
-
-              {/* WhatsApp Quick Chat Card */}
-              <a
-                href="https://wa.me/919114222044"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden rounded-3xl bg-green-500 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
-              >
-                <div className="absolute -right-8 -top-8 h-32 w-32 opacity-10">
-                  <Smartphone className="h-full w-full" />
-                </div>
-                <div className="relative z-10">
-                  <h3 className="mb-2 font-display text-2xl font-bold">24/7 WhatsApp Support</h3>
-                  <p className="mb-6 opacity-90">Have urgent questions or need to book quickly? Message us directly anytime.</p>
-                  <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-green-600 transition-colors group-hover:bg-green-50">
-                    Chat Now <ChevronRight className="ml-2 h-4 w-4" />
-                  </span>
-                </div>
+            </Button>
+            <Button asChild variant="outline" className="rounded-full">
+              <a href="https://wa.me/919114222044" target="_blank" rel="noopener noreferrer">
+                <Smartphone className="mr-2 h-4 w-4" />
+                Connect on WhatsApp
               </a>
-
-              {/* Community Trust Badge */}
-              <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 text-center">
-                <p className="font-display text-xl font-bold text-primary">Trusted by 500+ Families</p>
-                <p className="mt-1 text-sm text-muted-foreground">in Balasore and surrounding regions.</p>
-              </div>
-            </div>
+            </Button>
           </div>
         </div>
       </section>
