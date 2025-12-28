@@ -266,44 +266,79 @@ const Index = () => {
               Our Social Footprints
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Stay updated with our latest activities and success stories, synced directly from our Facebook page.
+              Connect with us online for daily updates, success stories, and real-time support.
             </p>
           </div>
 
-          <div className="flex flex-col items-center">
-            <div className="w-full max-w-[600px] overflow-hidden rounded-3xl bg-white shadow-2xl shadow-primary/5">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start">
+            {/* Left Column: Facebook Feed */}
+            <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl shadow-primary/5">
+              <div className="p-4 border-b border-border/50 bg-primary/5">
+                <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-primary">
+                  <Facebook className="h-5 w-5" />
+                  Live Facebook Feed
+                </h3>
+              </div>
               <iframe
-                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FTiny-Triumph-child-development-centre-61566975311848%2F&tabs=timeline&width=600&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FTiny-Triumph-child-development-centre-61566975311848%2F&tabs=timeline&width=600&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
                 width="600"
-                height="700"
+                height="500"
                 style={{ border: "none", overflow: "hidden" }}
                 scrolling="no"
                 frameBorder="0"
                 allowFullScreen={true}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 title="Tiny Triumph Live Facebook Feed"
-                className="w-full min-h-[700px]"
+                className="w-full min-h-[500px]"
               ></iframe>
             </div>
-          </div>
 
-          <div className="mt-12 flex justify-center gap-4">
-            <Button asChild variant="outline" className="rounded-full">
+            {/* Right Column: Social Engagement Cards */}
+            <div className="flex flex-col gap-6">
+              {/* Facebook Direct Link Card */}
               <a
                 href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-3xl bg-blue-600 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
               >
-                <Facebook className="mr-2 h-4 w-4" />
-                Follow on Facebook
+                <div className="absolute -right-8 -top-8 h-32 w-32 opacity-10">
+                  <Facebook className="h-full w-full" />
+                </div>
+                <div className="relative z-10">
+                  <h3 className="mb-2 font-display text-2xl font-bold">Follow Our Page</h3>
+                  <p className="mb-6 opacity-90">Join our growing community of parents and caregivers on Facebook for tips and updates.</p>
+                  <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-blue-600 transition-colors group-hover:bg-blue-50">
+                    Visit Profile <ChevronRight className="ml-2 h-4 w-4" />
+                  </span>
+                </div>
               </a>
-            </Button>
-            <Button asChild variant="outline" className="rounded-full">
-              <a href="https://wa.me/919114222044" target="_blank" rel="noopener noreferrer">
-                <Smartphone className="mr-2 h-4 w-4" />
-                Connect on WhatsApp
+
+              {/* WhatsApp Quick Chat Card */}
+              <a
+                href="https://wa.me/919114222044"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-3xl bg-green-500 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
+              >
+                <div className="absolute -right-8 -top-8 h-32 w-32 opacity-10">
+                  <Smartphone className="h-full w-full" />
+                </div>
+                <div className="relative z-10">
+                  <h3 className="mb-2 font-display text-2xl font-bold">24/7 WhatsApp Support</h3>
+                  <p className="mb-6 opacity-90">Have urgent questions or need to book quickly? Message us directly anytime.</p>
+                  <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-green-600 transition-colors group-hover:bg-green-50">
+                    Chat Now <ChevronRight className="ml-2 h-4 w-4" />
+                  </span>
+                </div>
               </a>
-            </Button>
+
+              {/* Community Trust Badge */}
+              <div className="rounded-3xl border border-primary/20 bg-primary/5 p-6 text-center">
+                <p className="font-display text-xl font-bold text-primary">Trusted by 500+ Families</p>
+                <p className="mt-1 text-sm text-muted-foreground">in Balasore and surrounding regions.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
