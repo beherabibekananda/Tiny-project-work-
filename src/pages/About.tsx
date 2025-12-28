@@ -74,11 +74,10 @@ const About = () => {
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="animate-fade-up font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              About CareWell Clinic
+              About Tiny Triumph
             </h1>
             <p className="mt-6 animate-fade-up text-lg text-muted-foreground md:text-xl" style={{ animationDelay: "0.1s" }}>
-              For over 18 years, we've been dedicated to providing exceptional healthcare 
-              with compassion and expertise.
+              Dedicated to providing specialized child development support and therapeutic interventions.
             </p>
           </div>
         </div>
@@ -105,18 +104,16 @@ const About = () => {
               </h2>
               <div className="mt-6 space-y-4 text-muted-foreground">
                 <p>
-                  CareWell Clinic was founded in 2005 by Dr. Sarah Johnson with a simple mission: 
-                  to provide high-quality, patient-centered healthcare in a warm and welcoming environment.
+                  Tiny Triumph Child Development Centre is a dedicated facility in Balasore finding new ways to help children grow.
+                  Our mission is to deliver tailored programs and therapeutic interventions based on each child’s needs.
                 </p>
                 <p>
-                  What started as a small family practice has grown into a comprehensive medical clinic, 
-                  but our commitment to personalized care remains unchanged. We believe that every patient 
-                  deserves to be heard, understood, and treated with dignity.
+                  We focus on early developmental milestones and functional abilities. Our compassionate professionals —
+                  including occupational therapists, speech therapists, and special educators — design programs unique to every child.
                 </p>
                 <p>
-                  Today, our team of dedicated healthcare professionals continues to uphold the values 
-                  that have made CareWell a trusted name in our community. We combine modern medical 
-                  technology with old-fashioned compassion to deliver the best possible care.
+                  With a strong reputation in the community and a commitment to excellence, we strive to be a partner
+                  in your child's journey towards confidence and independence.
                 </p>
               </div>
             </div>
@@ -135,8 +132,8 @@ const About = () => {
                 </div>
                 <h3 className="font-display text-2xl font-bold text-foreground">Our Mission</h3>
                 <p className="mt-4 text-muted-foreground">
-                  To provide accessible, high-quality healthcare that addresses the physical, 
-                  emotional, and social needs of our patients. We are committed to building 
+                  To provide accessible, high-quality healthcare that addresses the physical,
+                  emotional, and social needs of our patients. We are committed to building
                   lasting relationships based on trust, respect, and excellent medical care.
                 </p>
               </CardContent>
@@ -149,8 +146,8 @@ const About = () => {
                 </div>
                 <h3 className="font-display text-2xl font-bold text-foreground">Our Vision</h3>
                 <p className="mt-4 text-muted-foreground">
-                  To be the healthcare provider of choice in our community, recognized for 
-                  our clinical excellence, compassionate care, and commitment to improving 
+                  To be the healthcare provider of choice in our community, recognized for
+                  our clinical excellence, compassionate care, and commitment to improving
                   the health and well-being of every patient we serve.
                 </p>
               </CardContent>
@@ -173,8 +170,8 @@ const About = () => {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, index) => (
-              <Card 
-                key={value.title} 
+              <Card
+                key={value.title}
                 className="border-border/50 bg-card text-center"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -209,8 +206,8 @@ const About = () => {
 
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((member, index) => (
-              <Card 
-                key={member.name} 
+              <Card
+                key={member.name}
                 className="group overflow-hidden border-border/50 bg-card"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >

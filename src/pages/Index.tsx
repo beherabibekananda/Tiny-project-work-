@@ -2,38 +2,43 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Layout from "@/components/layout/Layout";
-import { 
-  Heart, 
-  Stethoscope, 
-  Shield, 
-  Users, 
-  Clock, 
+import {
+  Heart,
+  Stethoscope,
+  Shield,
+  Users,
+  Clock,
   Award,
   ChevronRight,
-  Star
+  Star,
+  Brain,
+  Activity,
+  Facebook,
+  Smartphone,
+  MessageCircle
 } from "lucide-react";
 
 const Index = () => {
   const services = [
     {
-      icon: Stethoscope,
-      title: "General Check-ups",
-      description: "Comprehensive health assessments to keep you in optimal health.",
-    },
-    {
-      icon: Heart,
-      title: "Preventive Care",
-      description: "Proactive screenings and vaccinations to prevent illness.",
-    },
-    {
-      icon: Shield,
-      title: "Chronic Disease Management",
-      description: "Personalized care plans for ongoing health conditions.",
-    },
-    {
       icon: Users,
-      title: "Pediatric Care",
-      description: "Gentle, compassionate healthcare for your little ones.",
+      title: "Occupational Therapy",
+      description: "Helps children build daily living and motor skills for independence.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Speech Therapy",
+      description: "Improves communication and speech abilities for better expression.",
+    },
+    {
+      icon: Brain,
+      title: "ABA Therapy",
+      description: "Structured skill learning for behavioral development.",
+    },
+    {
+      icon: Activity,
+      title: "Physical Therapy",
+      description: "Support for movement, posture, strength, and coordination.",
     },
   ];
 
@@ -83,12 +88,12 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="animate-fade-up font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              Your Health, Our
-              <span className="text-primary"> Priority</span>
+              Welcome to
+              <span className="text-primary"> Tiny Triumph</span>
             </h1>
             <p className="mt-6 animate-fade-up text-lg text-muted-foreground md:text-xl" style={{ animationDelay: "0.1s" }}>
-              Experience compassionate, personalized healthcare in a warm and welcoming environment. 
-              We're here to support you and your family's wellness journey.
+              A trusted centre in Balasore dedicated to nurturing your child’s growth, development, and confidence.
+              Through tailored programs and expert therapies, we help children thrive at every stage.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row" style={{ animationDelay: "0.2s" }}>
               <Button asChild size="lg" className="animate-fade-up rounded-full px-8 text-lg">
@@ -103,7 +108,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Decorative elements */}
         <div className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute -bottom-24 left-0 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
@@ -114,19 +119,19 @@ const Index = () => {
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-              Comprehensive Healthcare Services
+              Specialized Child Development Services
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              From routine check-ups to specialized care, we offer a full range of medical services.
+              We offer a full range of therapeutic interventions tailored to your child's unique needs.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service, index) => (
-              <Card 
-                key={service.title} 
+              <Card
+                key={service.title}
                 className="group border-border/50 bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.1} s` }}
               >
                 <CardContent className="p-6">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
@@ -160,10 +165,10 @@ const Index = () => {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-                Why Choose CareWell Clinic?
+                Why Choose Tiny Triumph?
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                We believe that quality healthcare should be accessible, personalized, and delivered with compassion.
+                We provide a personalized approach for every child with a professional and caring therapy team.
               </p>
 
               <div className="mt-10 space-y-6">
@@ -199,8 +204,8 @@ const Index = () => {
                     <Award className="h-7 w-7" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-foreground">18+</p>
-                    <p className="text-sm text-muted-foreground">Years of Excellence</p>
+                    <p className="text-2xl font-bold text-foreground">4.9 ★</p>
+                    <p className="text-sm text-muted-foreground">Top Rated</p>
                   </div>
                 </div>
               </div>
@@ -223,10 +228,10 @@ const Index = () => {
 
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <Card 
-                key={testimonial.name} 
+              <Card
+                key={testimonial.name}
                 className="border-border/50 bg-card"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${index * 0.1} s` }}
               >
                 <CardContent className="p-6">
                   <div className="mb-4 flex gap-1">
@@ -253,20 +258,80 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Social Footprints Section */}
+      <section className="bg-secondary/30 py-16 md:py-24">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+              Our Social Footprints
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Join our growing community and stay updated with our latest activities and success stories.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+            {/* Facebook Card */}
+            <a
+              href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-3xl bg-blue-600 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
+            >
+              <div className="absolute -right-12 -top-12 h-40 w-40 opacity-10">
+                <Facebook className="h-full w-full" />
+              </div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="mb-4 rounded-full bg-white/20 p-4 backdrop-blur-sm">
+                  <Facebook className="h-8 w-8" />
+                </div>
+                <h3 className="mb-2 font-display text-2xl font-bold">Follow us on Facebook</h3>
+                <p className="mb-6 opacity-90">Stay connected with our latest updates, events, and community stories.</p>
+                <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-blue-600 transition-colors group-hover:bg-blue-50">
+                  Visit Page <ChevronRight className="ml-2 h-4 w-4" />
+                </span>
+              </div>
+            </a>
+
+            {/* WhatsApp Card */}
+            <a
+              href="https://wa.me/919114222044"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-3xl bg-green-500 p-8 text-white shadow-xl transition-all hover:scale-[1.02] hover:shadow-2xl"
+            >
+              <div className="absolute -right-12 -top-12 h-40 w-40 opacity-10">
+                <Smartphone className="h-full w-full" />
+              </div>
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="mb-4 rounded-full bg-white/20 p-4 backdrop-blur-sm">
+                  <Smartphone className="h-8 w-8" />
+                </div>
+                <h3 className="mb-2 font-display text-2xl font-bold">Chat on WhatsApp</h3>
+                <p className="mb-6 opacity-90">Have questions? Chat directly with us for quick support and appointments.</p>
+                <span className="inline-flex items-center rounded-full bg-white px-6 py-2 text-sm font-semibold text-green-600 transition-colors group-hover:bg-green-50">
+                  Message Us <ChevronRight className="ml-2 h-4 w-4" />
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-primary py-16 md:py-20">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-display text-3xl font-bold text-primary-foreground md:text-4xl">
-              Ready to Take the First Step?
+              Ready to Help Your Child Thrive?
             </h2>
             <p className="mt-4 text-lg text-primary-foreground/80">
-              Schedule your appointment today and experience the CareWell difference.
+              Schedule your appointment today and experience the Tiny Triumph difference.
             </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary" 
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
               className="mt-8 rounded-full px-8 text-lg"
             >
               <Link to="/booking">

@@ -21,30 +21,27 @@ const Navbar = () => {
       <div className="container flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-            <Heart className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
+            <img src="/logo.png" alt="Tiny Triumph Logo" className="h-full w-full object-cover" />
           </div>
           <span className="font-display text-xl font-semibold text-foreground md:text-2xl">
-            CareWell Clinic
+            Tiny Triumph
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-8 md:flex">
+        <div className="hidden md:flex md:items-center md:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive(link.path)
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {link.name}
             </Link>
           ))}
-        </nav>
+        </div>
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
@@ -76,11 +73,10 @@ const Navbar = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`text-lg font-medium transition-colors hover:text-primary ${
-                  isActive(link.path)
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                }`}
+                className={`text-lg font-medium transition-colors hover:text-primary ${isActive(link.path)
+                  ? "text-primary"
+                  : "text-muted-foreground"
+                  }`}
               >
                 {link.name}
               </Link>

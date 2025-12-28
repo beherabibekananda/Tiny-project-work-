@@ -21,76 +21,40 @@ import {
 const Services = () => {
   const services = [
     {
-      icon: Stethoscope,
-      title: "General Check-ups",
-      description: "Comprehensive annual physical exams and routine health assessments to monitor your overall well-being and catch potential issues early.",
-      features: ["Complete physical examination", "Blood pressure monitoring", "Health risk assessment", "Personalized health advice"],
-    },
-    {
-      icon: Heart,
-      title: "Preventive Care",
-      description: "Proactive health screenings, immunizations, and lifestyle counseling to help you stay healthy and prevent disease.",
-      features: ["Cancer screenings", "Cardiovascular health checks", "Immunizations", "Lifestyle counseling"],
-    },
-    {
-      icon: Shield,
-      title: "Chronic Disease Management",
-      description: "Ongoing care and support for managing chronic conditions like diabetes, hypertension, and heart disease.",
-      features: ["Diabetes care", "Hypertension management", "Heart disease monitoring", "Personalized care plans"],
-    },
-    {
-      icon: Baby,
-      title: "Pediatric Care",
-      description: "Gentle, compassionate healthcare for children from newborns to adolescents, including well-child visits and sick care.",
-      features: ["Well-child visits", "Growth monitoring", "Vaccinations", "Developmental assessments"],
-    },
-    {
       icon: Users,
-      title: "Women's Health",
-      description: "Comprehensive women's healthcare services including annual exams, prenatal care, and menopause management.",
-      features: ["Annual wellness exams", "Prenatal care", "Menopause support", "Reproductive health"],
+      title: "Occupational Therapy",
+      description: "Helping children achieve independence in their daily lives through improved motor skills, sensory processing, and coordination.",
+      features: ["Fine motor skills", "Sensory integration", "Daily living skills", "Hand-eye coordination"],
     },
     {
       icon: Activity,
-      title: "Sports Medicine",
-      description: "Specialized care for athletes and active individuals, including injury treatment and performance optimization.",
-      features: ["Sports physicals", "Injury treatment", "Rehabilitation", "Performance guidance"],
+      title: "Speech Therapy",
+      description: "Focused on improving communication skills, including articulation, language development, and social communication.",
+      features: ["Articulation correction", "Language development", "Social skills", "Fluency & voice"],
     },
     {
       icon: Brain,
-      title: "Mental Health",
-      description: "Supportive mental health services including counseling, anxiety management, and depression treatment.",
-      features: ["Depression screening", "Anxiety management", "Stress counseling", "Referral services"],
+      title: "ABA Therapy",
+      description: "Applied Behavior Analysis therapy to encourage positive behaviors and improve social, communication, and learning skills.",
+      features: ["Behavior modification", "Social skills training", "Skill acquisition", "Parent training"],
     },
     {
-      icon: Pill,
-      title: "Medication Management",
-      description: "Expert guidance on your medications, including reviews, adjustments, and education about your prescriptions.",
-      features: ["Medication reviews", "Dosage adjustments", "Drug interaction checks", "Patient education"],
-    },
-    {
-      icon: Syringe,
-      title: "Vaccinations",
-      description: "Full range of immunizations for all ages, from childhood vaccines to travel immunizations.",
-      features: ["Childhood vaccines", "Flu shots", "Travel immunizations", "Adult boosters"],
-    },
-    {
-      icon: Microscope,
-      title: "Lab Services",
-      description: "On-site laboratory testing for quick and convenient diagnostic services.",
-      features: ["Blood tests", "Urinalysis", "Glucose testing", "Cholesterol screening"],
-    },
-    {
-      icon: Thermometer,
-      title: "Urgent Care",
-      description: "Same-day appointments for non-emergency urgent health concerns that can't wait.",
-      features: ["Same-day appointments", "Minor injuries", "Acute illnesses", "Quick diagnosis"],
+      icon: Activity,
+      title: "Physical Therapy",
+      description: "Enhancing physical abilities including strength, balance, coordination, and mobility for better functional independence.",
+      features: ["Strength building", "Balance & coordination", "Gait training", "Motor planning"],
     },
     {
       icon: Clipboard,
-      title: "Health Screenings",
-      description: "Comprehensive screening programs to detect health issues early when they're most treatable.",
-      features: ["Cancer screenings", "Diabetes screening", "Heart health checks", "Vision/hearing tests"],
+      title: "Special Education",
+      description: "Tailored educational support to help children with learning differences achieve their academic potential.",
+      features: ["Individualized learning", "Academic support", "Cognitive skills", "Learning strategies"],
+    },
+    {
+      icon: Stethoscope,
+      title: "Early Intervention",
+      description: "Support for infants and toddlers with developmental delays to help them reach critical milestones.",
+      features: ["Developmental support", "Milestone tracking", "Family guidance", "Play-based therapy"],
     },
   ];
 
@@ -104,8 +68,7 @@ const Services = () => {
               Our Services
             </h1>
             <p className="mt-6 animate-fade-up text-lg text-muted-foreground md:text-xl" style={{ animationDelay: "0.1s" }}>
-              Comprehensive healthcare services designed to meet all your medical needs 
-              under one roof.
+              Comprehensive development services designed to help your child grow and thrive.
             </p>
           </div>
         </div>
@@ -117,13 +80,14 @@ const Services = () => {
         <div className="container">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <Card
+              <div
                 key={service.title}
-                className="group border-border/50 bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+                className="group relative h-full overflow-hidden rounded-xl border border-border/50 bg-card shadow-sm transition-all duration-500 hover:shadow-lg"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <CardContent className="p-6">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                {/* Default State */}
+                <div className="relative z-10 flex h-full flex-col p-6 transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <service.icon className="h-7 w-7" />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-foreground">
@@ -140,8 +104,29 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+
+                {/* Hover Reveal State */}
+                <div className="absolute inset-0 z-20 flex flex-col justify-center bg-primary p-6 text-primary-foreground opacity-0 transition-all duration-500 translate-y-full group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white/20 text-white">
+                    <service.icon className="h-7 w-7" />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-primary-foreground/90">
+                    {service.description}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-primary-foreground/80">
+                        <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -155,7 +140,7 @@ const Services = () => {
               Insurance & Payment
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              We accept most major insurance plans and offer flexible payment options. 
+              We accept most major insurance plans and offer flexible payment options.
               Contact our office to verify your coverage or discuss payment plans.
             </p>
             <Button asChild variant="outline" className="mt-8 rounded-full">

@@ -9,18 +9,18 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary">
-                <Heart className="h-5 w-5 text-primary-foreground" />
+              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
+                <img src="/logo.png" alt="Tiny Triumph Logo" className="h-full w-full object-cover" />
               </div>
               <span className="font-display text-xl font-semibold text-foreground">
-                CareWell Clinic
+                Tiny Triumph
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Providing compassionate, high-quality healthcare for you and your family since 2005.
+              Dedicated to nurturing your child’s growth, development, and confidence through tailored programs and expert therapies.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -60,11 +60,11 @@ const Footer = () => {
             <h4 className="font-display text-lg font-semibold text-foreground">Our Services</h4>
             <ul className="space-y-2">
               {[
-                "General Check-ups",
-                "Preventive Care",
-                "Chronic Disease Management",
-                "Pediatric Care",
-                "Women's Health",
+                "Occupational Therapy",
+                "Speech Therapy",
+                "Applied Behavior Analysis (ABA)",
+                "Physical Therapy",
+                "Special Education",
               ].map((service) => (
                 <li key={service}>
                   <Link
@@ -85,27 +85,27 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">
-                  123 Healthcare Avenue<br />
-                  Medical District, MD 12345
+                  UPHC Hospital, Near Sunhat,<br />
+                  Chandan Bagicha, Mallikashpur,<br />
+                  Balasore, Odisha 756002
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0" />
-                <a href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  (555) 123-4567
+                <a href="tel:+919114222044" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  +91 9114222044
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0" />
-                <a href="mailto:care@carewell.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  care@carewell.com
+                <a href="mailto:contact@tinytriumph.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  contact@tinytriumph.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">
-                  Mon - Fri: 8:00 AM - 6:00 PM<br />
-                  Sat: 9:00 AM - 2:00 PM
+                  Mon - Sun: 08:00 AM - 09:00 PM
                 </span>
               </li>
             </ul>
@@ -115,7 +115,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} CareWell Clinic. All rights reserved.
+            © {new Date().getFullYear()} Tiny Triumph Child Development Centre. All rights reserved.
           </p>
         </div>
       </div>

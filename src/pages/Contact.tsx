@@ -70,25 +70,25 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Address",
-      content: "123 Healthcare Avenue\nMedical District, MD 12345",
-      link: "https://maps.google.com",
+      content: "UPHC Hospital, Near Sunhat,\nChandan Bagicha, Mallikashpur,\nBalasore, Odisha 756002",
+      link: "https://maps.google.com/?q=Tiny+Triumph+Child+Development+Centre+Balasore",
     },
     {
       icon: Phone,
       title: "Phone",
-      content: "(555) 123-4567",
-      link: "tel:+15551234567",
+      content: "+91 9114222044",
+      link: "tel:+919114222044",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "care@carewell.com",
-      link: "mailto:care@carewell.com",
+      content: "contact@tinytriumph.com",
+      link: "mailto:contact@tinytriumph.com",
     },
     {
       icon: Clock,
       title: "Hours",
-      content: "Mon - Fri: 8:00 AM - 6:00 PM\nSat: 9:00 AM - 2:00 PM\nSun: Closed",
+      content: "Mon - Sun: 08:00 AM - 09:00 PM",
     },
   ];
 
@@ -119,7 +119,7 @@ const Contact = () => {
                 Get in Touch
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Whether you have a question about our services, need to schedule an appointment, 
+                Whether you have a question about our services, need to schedule an appointment,
                 or just want to say hello, we'd love to hear from you.
               </p>
 
