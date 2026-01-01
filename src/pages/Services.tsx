@@ -58,7 +58,7 @@ const Services = () => {
       </section>
 
       {/* 2. Boutique Services Showcase */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-24 md:py-32 bg-background dark:bg-background">
         <div className="container">
           <div className="grid gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -112,7 +112,7 @@ const Services = () => {
                     <h3 className="font-display text-2xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground text-lg leading-relaxed mb-6 font-light line-clamp-2">
+                    <p className="text-gray-900 dark:text-gray-100 text-lg leading-relaxed mb-6 font-medium line-clamp-2">
                       {service.headline}
                     </p>
 
@@ -129,7 +129,7 @@ const Services = () => {
       </section>
 
       {/* 3. Narrative "Our Philosophy" Section */}
-      <section className="py-24 md:py-40 bg-secondary/5 relative overflow-hidden">
+      <section className="py-24 md:py-40 bg-secondary/5 dark:bg-background/40 relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -137,11 +137,11 @@ const Services = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground leading-tight mb-10">
+              <h2 className="font-display text-5xl md:text-7xl font-bold text-light-gradient dark:text-dark-gradient leading-tight mb-10">
                 Clinical Mastery. <br />
                 <span className="text-primary italic">Compassionate</span> Results.
               </h2>
-              <div className="space-y-8 text-2xl text-muted-foreground leading-relaxed font-light">
+              <div className="space-y-8 text-2xl text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
                 <p>
                   At Tiny Triumph, we don't believe in one-size-fits-all. Every child's developmental path is a unique tapestry of strengths and opportunities.
                 </p>
@@ -157,9 +157,9 @@ const Services = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square rounded-[4rem] bg-white shadow-2xl p-12 flex flex-col justify-center text-center">
+              <div className="aspect-square rounded-[4rem] bg-card shadow-2xl p-12 flex flex-col justify-center text-center">
                 <Quote className="h-20 w-20 text-primary/20 mx-auto mb-10" />
-                <h3 className="font-display text-4xl italic font-medium text-foreground mb-10">
+                <h3 className="font-display text-4xl italic font-medium text-light-gradient dark:text-dark-gradient mb-10">
                   "Our mission is to bridge the gap between clinical excellence and the joyful play of childhood."
                 </h3>
                 <div className="flex items-center justify-center gap-4">
@@ -184,7 +184,7 @@ const Services = () => {
             <h2 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-8">
               Ready to Experience the Difference?
             </h2>
-            <p className="mx-auto max-w-2xl text-2xl text-primary-foreground/80 mb-12 font-light">
+            <p className="mx-auto max-w-2xl text-2xl text-white/90 dark:text-gray-100 mb-12 font-medium">
               Book a premium assessment today and start your child's journey toward clinical success.
             </p>
             <Button

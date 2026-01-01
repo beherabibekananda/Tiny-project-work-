@@ -71,7 +71,7 @@ const About = () => {
   return (
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-20">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-20">
         <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -87,7 +87,7 @@ const About = () => {
               Crafting Brighter <br />
               <span className="text-hero-gradient italic">Futures Today.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl">
+            <p className="text-xl md:text-2xl text-white/70 dark:text-gray-300 leading-relaxed font-light max-w-2xl">
               Tiny Triumph is more than a clinic; it's a sanctuary where clinical precision meets heart-centered care, nurturing every child's unique path to success.
             </p>
             <div className="flex flex-wrap gap-6 pt-4">
@@ -121,7 +121,7 @@ const About = () => {
       </section>
 
       {/* 2. Our Story - High Contrast Section */}
-      <section className="relative py-24 md:py-36 bg-white overflow-hidden">
+      <section className="relative py-24 md:py-36 bg-background overflow-hidden">
         <div className="container relative z-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <motion.div
@@ -154,11 +154,11 @@ const About = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-secondary text-primary text-xs font-bold uppercase tracking-widest">
                 <span>Our Heritage</span>
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-[#0a2a24] leading-tight">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-light-gradient dark:text-dark-gradient leading-tight">
                 A Legacy of <br />
                 <span className="text-primary italic">Nurturing Growth.</span>
               </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-lg text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
                 <p>
                   Tiny Triumph Child Development Centre was born from a simple yet profound vision: to create a sanctuary where every child's potential is recognized, respected, and rigorously nurtured.
                 </p>
@@ -169,14 +169,14 @@ const About = () => {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-bold text-[#0a2a24]">Empowerment</h4>
+                      <h4 className="font-bold text-foreground">Empowerment</h4>
                       <p className="text-sm">Giving families the tools to support their child's daily triumphs.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-6 w-6 text-primary shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-bold text-[#0a2a24]">Excellence</h4>
+                      <h4 className="font-bold text-foreground">Excellence</h4>
                       <p className="text-sm">Driven by evidence-based practices and clinical precision.</p>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ const About = () => {
       </section>
 
       {/* 3. Mission & Vision - Sleek Floating Cards */}
-      <section className="py-24 md:py-32 bg-[#0a2a24] text-white overflow-hidden">
+      <section className="py-24 md:py-32 bg-[#0a2a24] dark:bg-background/60 text-white overflow-hidden">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-2">
             <motion.div
@@ -203,8 +203,8 @@ const About = () => {
               <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/20 text-primary border border-primary/30">
                 <Target className="h-8 w-8" />
               </div>
-              <h3 className="font-display text-3xl font-bold mb-6">Our Mission</h3>
-              <p className="text-xl text-white/70 leading-relaxed font-light">
+              <h3 className="font-display text-3xl font-bold mb-6 text-white dark:text-dark-gradient">Our Mission</h3>
+              <p className="text-xl text-white/90 dark:text-gray-100 leading-relaxed font-medium">
                 To provide accessible, world-class developmental support that transforms the lives of children and their families through clinical excellence and radical compassion.
               </p>
               <div className="mt-8 h-1 w-24 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
@@ -223,8 +223,8 @@ const About = () => {
               <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/20 text-accent border border-accent/30">
                 <Eye className="h-8 w-8" />
               </div>
-              <h3 className="font-display text-3xl font-bold mb-6">Our Vision</h3>
-              <p className="text-xl text-white/70 leading-relaxed font-light">
+              <h3 className="font-display text-3xl font-bold mb-6 text-white dark:text-dark-gradient">Our Vision</h3>
+              <p className="text-xl text-white/90 dark:text-gray-100 leading-relaxed font-medium">
                 To be the definitive choice for pediatric development, recognized globally for nurturing the spark of potential and fostering independence in every child.
               </p>
               <div className="mt-8 h-1 w-24 bg-accent rounded-full group-hover:w-full transition-all duration-500" />
@@ -237,10 +237,10 @@ const About = () => {
       <section className="py-20 md:py-28">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
               Our Core Values
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-gray-900 dark:text-gray-100 font-medium">
               The principles that guide everything we do.
             </p>
           </div>
@@ -259,7 +259,7 @@ const About = () => {
                   <h3 className="font-display text-lg font-semibold text-foreground">
                     {value.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
+                  <p className="mt-2 text-sm text-gray-900 dark:text-gray-300 font-medium">
                     {value.description}
                   </p>
                 </CardContent>
@@ -270,13 +270,13 @@ const About = () => {
       </section>
 
       {/* Meet Our Team */}
-      <section className="bg-secondary/30 py-20 md:py-28">
+      <section className="bg-secondary/30 dark:bg-background/40 py-20 md:py-28">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
               Meet Our Team
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-gray-900 dark:text-gray-100 font-medium">
               Dedicated professionals committed to your health and well-being.
             </p>
           </div>
@@ -300,7 +300,7 @@ const About = () => {
                     {member.name}
                   </h3>
                   <p className="text-sm font-medium text-primary">{member.role}</p>
-                  <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
+                  <p className="mt-3 text-sm text-gray-900 dark:text-gray-300 font-medium">{member.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -315,7 +315,7 @@ const About = () => {
             <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
               Ready to Experience the Difference?
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-gray-700 dark:text-gray-300">
               Schedule your first appointment and see why our patients trust us with their care.
             </p>
             <Button asChild size="lg" className="mt-8 rounded-full px-8 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">

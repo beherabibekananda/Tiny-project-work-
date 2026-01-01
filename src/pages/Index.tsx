@@ -127,13 +127,13 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
               Specialized Child Development Services
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-lg text-gray-900 dark:text-gray-100">
               We offer a full range of therapeutic interventions tailored to your child's unique needs.
             </p>
           </div>
@@ -181,7 +181,7 @@ const Index = () => {
                     <h3 className="font-display text-2xl font-bold transition-colors duration-300 group-hover:text-primary mb-4">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
                       {service.description}
                     </p>
 
@@ -207,7 +207,7 @@ const Index = () => {
 
 
       {/* Why Choose Us Section */}
-      <section className="bg-secondary/20 py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-secondary/20 dark:bg-background/40 py-24 md:py-32 relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <motion.div
@@ -216,11 +216,11 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl leading-tight">
+              <h2 className="font-display text-4xl font-bold text-light-gradient dark:text-dark-gradient md:text-5xl leading-tight">
                 Why Parents Trust <br />
                 <span className="text-primary">Tiny Triumph</span>
               </h2>
-              <p className="mt-6 text-xl text-muted-foreground leading-relaxed">
+              <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 leading-relaxed">
                 We provide a personalized sanctuary for development, combining clinical excellence with a nurturing heart.
               </p>
 
@@ -234,14 +234,14 @@ const Index = () => {
                     transition={{ delay: idx * 0.1 }}
                     className="flex gap-6 group"
                   >
-                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-white shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-card shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                       <feature.icon className="h-7 w-7" />
                     </div>
                     <div>
-                      <h3 className="font-display text-xl font-bold text-foreground">
+                      <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white">
                         {feature.title}
                       </h3>
-                      <p className="mt-2 text-muted-foreground text-lg leading-relaxed">
+                      <p className="mt-2 text-gray-900 dark:text-gray-100 text-lg leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -291,7 +291,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 md:py-32 bg-white relative">
+      <section className="py-24 md:py-32 bg-background relative">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <motion.h2
@@ -302,7 +302,7 @@ const Index = () => {
             >
               Voices of Trust
             </motion.h2>
-            <p className="mt-6 text-xl text-muted-foreground">
+            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium">
               Real stories from families who have experienced the magic of Tiny Triumph.
             </p>
           </div>
@@ -323,7 +323,7 @@ const Index = () => {
                         <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                       ))}
                     </div>
-                    <p className="text-foreground/80 italic text-lg leading-relaxed mb-10 flex-grow">
+                    <p className="text-gray-900 dark:text-gray-100 italic text-lg leading-relaxed mb-10 flex-grow font-medium">
                       "{testimonial.content}"
                     </p>
                     <div className="mt-auto flex items-center gap-4">
@@ -331,7 +331,7 @@ const Index = () => {
                         {testimonial.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-bold text-foreground text-lg">{testimonial.name}</p>
+                        <p className="font-bold text-gray-900 dark:text-white text-lg">{testimonial.name}</p>
                         <p className="text-sm font-medium text-primary uppercase tracking-widest">{testimonial.role}</p>
                       </div>
                     </div>
@@ -344,18 +344,18 @@ const Index = () => {
       </section>
 
       {/* Social Footprints Section */}
-      <section className="bg-secondary/20 py-24 md:py-32 overflow-hidden relative">
+      <section className="bg-secondary/20 dark:bg-background/40 py-24 md:py-32 overflow-hidden relative">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-4xl font-bold text-foreground md:text-5xl"
+              className="font-display text-4xl font-bold text-foreground dark:text-white md:text-5xl"
             >
               Our Social Footprints
             </motion.h2>
-            <p className="mt-6 text-xl text-muted-foreground">
+            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium">
               Join our vibrant community and witness the daily triumphs of our little champions.
             </p>
           </div>
@@ -424,7 +424,7 @@ const Index = () => {
                     </span>
                     <span className="text-xs font-medium text-muted-foreground">{post.date}</span>
                   </div>
-                  <p className="text-foreground leading-relaxed line-clamp-3 text-lg font-medium">
+                  <p className="text-foreground dark:text-white leading-relaxed line-clamp-3 text-lg font-medium">
                     {post.content}
                   </p>
                   <div className="mt-8 flex items-center justify-between border-t border-border/50 pt-6">
@@ -432,7 +432,7 @@ const Index = () => {
                       <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg">
                         <Facebook className="h-4 w-4" />
                       </div>
-                      <span className="text-sm font-bold text-foreground">Tiny Triumph</span>
+                      <span className="text-sm font-bold text-foreground dark:text-white">Tiny Triumph</span>
                     </div>
                     <a
                       href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
