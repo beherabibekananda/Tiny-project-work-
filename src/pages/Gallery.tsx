@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
+import { Sparkles, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const Gallery = () => {
     const galleryItems = [
@@ -12,19 +14,46 @@ const Gallery = () => {
 
     return (
         <Layout>
-            {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gradient-to-b from-teal-light/30 to-background py-16 md:py-20">
-                <div className="container relative z-10">
-                    <div className="mx-auto max-w-3xl text-center">
-                        <h1 className="animate-fade-up font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-                            Our Gallery
+            {/* 1. Splendid Split-Screen Hero */}
+            <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-20">
+                <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-white space-y-8"
+                    >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-teal-100 text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
+                            <Sparkles className="h-4 w-4" />
+                            <span>A World of Discovery</span>
+                        </div>
+                        <h1 className="font-display text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
+                            Our <br />
+                            <span className="text-hero-gradient italic">Inspiring Spaces.</span>
                         </h1>
-                        <p className="mt-4 animate-fade-up text-lg text-muted-foreground" style={{ animationDelay: "0.1s" }}>
-                            A glimpse into our specialized facilities designed for your child's success.
+                        <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl">
+                            Step inside our specialized facilities, where every corner is designed to inspire joy, foster creativity, and support your child's developmental journey.
                         </p>
-                    </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, x: 50 }}
+                        animate={{ opacity: 1, scale: 1, x: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="relative lg:h-[80vh] flex items-end justify-center"
+                    >
+                        <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
+                            <img
+                                src="/gallery-hero.png"
+                                alt="Tiny Triumph Multi-Sensory Play Area"
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24] via-transparent to-transparent opacity-60" />
+                        </div>
+                        {/* Background Decorations */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/20 rounded-full blur-[120px] -z-10" />
+                    </motion.div>
                 </div>
-                <div className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
             </section>
 
             {/* Gallery Grid */}

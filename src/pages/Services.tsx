@@ -27,7 +27,7 @@ const Services = () => {
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1600&h=900&fit=crop')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
         </motion.div>
 
         <div className="container relative z-10">
@@ -37,13 +37,13 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-display text-xl font-bold tracking-[0.4em] text-white/90 uppercase mb-8">
+              <h2 className="font-display text-xl font-bold tracking-[0.4em] text-white/90 uppercase mb-8 drop-shadow-lg">
                 Clinical Excellence
               </h2>
-              <h1 className="font-display text-6xl md:text-9xl font-bold tracking-tight text-white leading-[1] mb-10">
-                Crafting <span className="italic text-primary-foreground">Brighter</span> Futures.
+              <h1 className="font-display text-6xl md:text-9xl font-bold tracking-tight text-white leading-[1] mb-10 drop-shadow-2xl">
+                Crafting <span className="italic text-hero-gradient">Brighter</span> Futures.
               </h1>
-              <p className="mx-auto max-w-3xl text-2xl text-white/90 leading-relaxed font-light">
+              <p className="mx-auto max-w-3xl text-2xl text-white leading-relaxed font-light drop-shadow-md">
                 Tailored therapy programs designed to unlock the unique potential within every child. Experience world-class care in a boutique clinical setting.
               </p>
             </motion.div>

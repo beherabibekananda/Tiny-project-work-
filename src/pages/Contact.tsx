@@ -21,11 +21,12 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Send,
   ChevronRight,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100),
@@ -55,24 +56,10 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
-
-    // Construct WhatsApp message
-    const message = `*New Inquiry from Website*
-*Name:* ${data.name}
-*Email:* ${data.email}
-*Phone:* ${data.phone}
-*Subject:* ${data.subject}
-*Message:* ${data.message}`;
-
+    const message = `*New Inquiry from Website*\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone}\n*Subject:* ${data.subject}\n*Message:* ${data.message}`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=919114222044&text=${encodeURIComponent(message)}`;
-
-    // Simulate a brief delay for UX
     await new Promise((resolve) => setTimeout(resolve, 800));
-
-    // Redirect to WhatsApp
     window.open(whatsappUrl, "_blank");
-
-    console.log("Contact form redirected to WhatsApp:", data);
     setIsSuccess(true);
     toast({
       title: "Opening WhatsApp...",
@@ -84,175 +71,231 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Address",
-      content: "UPHC Hospital, Near Sunhat,\nChandan Bagicha, Mallikashpur,\nBalasore, Odisha 756002",
+      title: "Visit Us",
+      content: "UPHC Hospital, Near Sunhat, Balasore",
+      detail: "Chandan Bagicha, Mallikashpur, Odisha 756002",
       link: "https://maps.google.com/?q=Tiny+Triumph+Child+Development+Centre+Balasore",
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: "Call Us",
       content: "+91 9114222044",
+      detail: "Mon-Sun, 8am - 9pm",
       link: "tel:+919114222044",
     },
     {
       icon: Mail,
-      title: "Email",
-      content: "support@tinytriumph.in\nadmin@tinytriumph.in",
+      title: "Email Us",
+      content: "support@tinytriumph.in",
+      detail: "Quick response guaranteed",
       link: "mailto:support@tinytriumph.in",
-    },
-    {
-      icon: Clock,
-      title: "Hours",
-      content: "Mon - Sun: 08:00 AM - 09:00 PM",
     },
   ];
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-teal-light/30 to-background py-16 md:py-20">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="animate-fade-up font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-              Contact Us
+      {/* 1. Split-Screen Theatrical Hero */}
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-20">
+        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-white space-y-8"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary-foreground text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
+              <Sparkles className="h-4 w-4" />
+              <span>Get in Touch</span>
+            </div>
+            <h1 className="font-display text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
+              Let's Start Your <br />
+              <span className="text-hero-gradient italic">Child's Journey.</span>
             </h1>
-            <p className="mt-4 animate-fade-up text-lg text-muted-foreground" style={{ animationDelay: "0.1s" }}>
-              Have questions? We're here to help. Reach out to us anytime.
+            <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl">
+              Have questions about our specialized programs? Our clinical experts are ready to listen, guide, and support your family at every step.
             </p>
-          </div>
+            <div className="flex flex-wrap gap-6 pt-4">
+              <div className="flex items-center gap-3">
+                <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
+                  <CheckCircle2 className="h-6 w-6 text-primary" />
+                </div>
+                <span className="text-white/90 font-medium">Expert Consultation</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <CheckCircle2 className="h-6 w-6 text-primary" />
+                </div>
+                <span className="text-white/90 font-medium">Boutique Setting</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative lg:h-[80vh] flex items-end justify-center"
+          >
+            <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-2xl border border-white/10">
+              <img
+                src="/pediatric-specialist.png"
+                alt="Our Pediatric Specialist"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a1f] via-transparent to-transparent opacity-40" />
+            </div>
+            {/* Background Decorations */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/20 rounded-full blur-[120px] -z-10" />
+          </motion.div>
         </div>
-        <div className="absolute -top-24 right-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
       </section>
 
-      {/* Contact Content */}
-      <section className="py-12 md:py-20">
-        <div className="container">
-          <div className="grid gap-12 lg:grid-cols-2">
-            {/* Contact Information */}
-            <div>
-              <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">
-                Get in Touch
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Whether you have a question about our services, need to schedule an appointment,
-                or just want to say hello, we'd love to hear from you.
-              </p>
+      {/* 2. Stats Section */}
+      <section className="py-12 bg-white border-b border-border/50 shadow-sm relative z-20 -mt-10 mx-auto max-w-6xl rounded-[2.5rem] px-8 md:px-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { label: "Happy Families", value: "1200+" },
+            { label: "Specialized Programs", value: "50+" },
+            { label: "Expert Clinicians", value: "15+" },
+            { label: "Success Rate", value: "99%" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center space-y-1">
+              <p className="text-3xl md:text-4xl font-bold text-primary font-display">{stat.value}</p>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-              <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                {contactInfo.map((info) => (
-                  <Card key={info.title} className="border-border/50">
-                    <CardContent className="flex gap-4 p-6">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                        <info.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground">{info.title}</h3>
-                        {info.link ? (
-                          <a
-                            href={info.link}
-                            className="mt-1 text-sm text-muted-foreground hover:text-primary transition-colors whitespace-pre-line"
-                          >
-                            {info.content}
-                          </a>
-                        ) : (
-                          <p className="mt-1 text-sm text-muted-foreground whitespace-pre-line">
-                            {info.content}
-                          </p>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+      {/* 3. Contact Methods & Form */}
+      <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10 grayscale-[0.5]"
+          style={{ backgroundImage: "url('/contact-form-bg.png')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-0" />
+
+        <div className="container relative z-10">
+          <div className="grid gap-20 lg:grid-cols-12">
+            {/* Left side: Info Cards */}
+            <div className="lg:col-span-5 space-y-10">
+              <div className="space-y-6">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+                  Connect With <span className="text-primary italic">Excellence.</span>
+                </h2>
+                <p className="text-xl text-muted-foreground leading-relaxed font-light">
+                  We're committed to building lasting relationships based on trust, respect, and excellent therapeutic care.
+                </p>
               </div>
 
-              {/* Map */}
-              <div className="mt-8 overflow-hidden rounded-2xl border border-border/50">
-                <iframe
-                  title="CareWell Clinic Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1623456789012!5m2!1sen!2sus"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+              <div className="grid gap-6">
+                {contactInfo.map((info, idx) => (
+                  <motion.a
+                    key={info.title}
+                    href={info.link}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="group relative flex gap-6 p-8 rounded-[2rem] bg-white border border-border/50 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
+                  >
+                    <div className="h-16 w-16 flex-shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <info.icon className="h-8 w-8" />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-foreground mb-1">{info.title}</h3>
+                      <p className="text-foreground/90 font-medium mb-1">{info.content}</p>
+                      <p className="text-sm text-muted-foreground">{info.detail}</p>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div>
-              <Card className="border-border/50">
-                <CardContent className="p-6 md:p-8">
+            {/* Right side: Modern Form */}
+            <div className="lg:col-span-7">
+              <Card className="rounded-[3rem] border-none shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden bg-white">
+                <CardContent className="p-10 md:p-16">
                   {isSuccess ? (
-                    <div className="text-center py-8">
-                      <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                        <CheckCircle2 className="h-8 w-8" />
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center py-12"
+                    >
+                      <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 text-primary">
+                        <CheckCircle2 className="h-12 w-12" />
                       </div>
-                      <h3 className="font-display text-xl font-bold text-foreground">
-                        Message Sent!
-                      </h3>
-                      <p className="mt-2 text-muted-foreground">
-                        Thank you for reaching out. We'll get back to you within 24 hours.
+                      <h3 className="font-display text-3xl font-bold text-foreground mb-4">Message Sent!</h3>
+                      <p className="text-xl text-muted-foreground max-w-sm mx-auto mb-10">
+                        Thank you for reaching out. We've received your inquiry and will connect with you shortly.
                       </p>
                       <Button
-                        onClick={() => {
-                          setIsSuccess(false);
-                          form.reset();
-                        }}
-                        className="mt-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                        onClick={() => { setIsSuccess(false); form.reset(); }}
+                        className="rounded-full px-12 py-7 text-lg hover-lift"
                       >
                         Send Another Message
                       </Button>
-                    </div>
+                    </motion.div>
                   ) : (
                     <>
-                      <h3 className="font-display text-xl font-bold text-foreground">
-                        Send us a Message
-                      </h3>
-                      <p className="mt-2 text-sm text-muted-foreground">
-                        Fill out the form below and we'll respond as soon as possible.
-                      </p>
+                      <div className="mb-12">
+                        <h3 className="font-display text-3xl font-bold text-foreground mb-2">Send a Message</h3>
+                        <p className="text-muted-foreground">Complete the form below and start the journey.</p>
+                      </div>
 
                       <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-4">
-                          <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Full Name</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Arjun Sharma" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <div className="grid gap-4 sm:grid-cols-2">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                          <div className="grid gap-6 md:grid-cols-2">
                             <FormField
                               control={form.control}
-                              name="email"
+                              name="name"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Email</FormLabel>
+                                  <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Name</FormLabel>
                                   <FormControl>
-                                    <Input type="email" placeholder="arjun@example.in" {...field} />
+                                    <Input placeholder="Your full name" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
                               )}
                             />
+                            <FormField
+                              control={form.control}
+                              name="email"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Email</FormLabel>
+                                  <FormControl>
+                                    <Input type="email" placeholder="email@address.com" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
 
+                          <div className="grid gap-6 md:grid-cols-2">
                             <FormField
                               control={form.control}
                               name="phone"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Phone Number</FormLabel>
+                                  <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Phone</FormLabel>
                                   <FormControl>
-                                    <Input type="tel" placeholder="+91" {...field} />
+                                    <Input type="tel" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="subject"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Subject</FormLabel>
+                                  <FormControl>
+                                    <Input placeholder="How can we help?" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -262,28 +305,14 @@ const Contact = () => {
 
                           <FormField
                             control={form.control}
-                            name="subject"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Subject</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Inquiry about Occupational Therapy" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
                             name="message"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Message</FormLabel>
+                                <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Message</FormLabel>
                                 <FormControl>
                                   <Textarea
-                                    placeholder="Tell us more about your child's requirements..."
-                                    className="min-h-[120px]"
+                                    placeholder="Tell us about your requirements..."
+                                    className="min-h-[160px] rounded-2xl border-border/50 bg-secondary/5 p-6"
                                     {...field}
                                   />
                                 </FormControl>
@@ -295,15 +324,13 @@ const Contact = () => {
                           <Button
                             type="submit"
                             size="lg"
-                            className="w-full rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                            className="w-full rounded-full h-16 text-xl shadow-2xl hover-lift bg-primary hover:bg-primary/90 mt-4"
                             disabled={isSubmitting}
                           >
-                            {isSubmitting ? (
-                              "Sending..."
-                            ) : (
+                            {isSubmitting ? "Sending..." : (
                               <>
-                                Send Message
-                                <Send className="ml-2 h-4 w-4" />
+                                Send via WhatsApp
+                                <Send className="ml-3 h-5 w-5" />
                               </>
                             )}
                           </Button>
@@ -318,22 +345,20 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-secondary/30 py-16 md:py-20">
+      {/* 4. Boutique Map Section */}
+      <section className="py-24 bg-secondary/10">
         <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
-              Need an Appointment?
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Skip the wait - book your appointment online now.
-            </p>
-            <Button asChild size="lg" className="mt-8 rounded-full px-8 text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
-              <a href="https://wa.me/919114222044" target="_blank" rel="noopener noreferrer">
-                Book an Appointment
-                <ChevronRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
+          <div className="rounded-[4rem] overflow-hidden border border-border/50 shadow-2xl h-[500px]">
+            <iframe
+              title="Tiny Triumph CDC Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118559.870003!2d86.852109!3d21.492109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1961e089c25a23%3A0x49f75d3281df052a!2sBalasore%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0, filter: "grayscale(0.2) contrast(1.1)" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

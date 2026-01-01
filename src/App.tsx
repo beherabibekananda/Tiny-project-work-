@@ -17,17 +17,34 @@ import ServiceDetail from "./pages/ServiceDetail";
 import { ModeToggle } from "@/components/mode-toggle";
 import { WhatsAppButton } from "./components/WhatsAppButton";
 import ScrollToTop from "./components/ScrollToTop";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import EntranceGate from "./components/ui/EntranceGate";
+import React, { useState, useEffect } from "react";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
+  const [showEntrance, setShowEntrance] = useState(false);
+
+  useEffect(() => {
+    // Check if entrance has been shown in this session
+    const hasShown = sessionStorage.getItem("entranceShown");
+    if (!hasShown) {
+      setShowEntrance(true);
+      sessionStorage.setItem("entranceShown", "true");
+    }
+  }, []);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <TooltipProvider>
+        <AnimatePresence>
+          {showEntrance && (
+            <EntranceGate onComplete={() => setShowEntrance(false)} />
+          )}
+        </AnimatePresence>
         <Toaster />
         <Sonner />
         <ScrollToTop />

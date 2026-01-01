@@ -75,7 +75,7 @@ const Index = () => {
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/images/hero-clinic.png')" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
         </motion.div>
 
         <div className="container relative z-10">
@@ -85,11 +85,10 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="font-display text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl">
-                Nurturing
-                <span className="text-primary block sm:inline"> Little Triumphs</span>
+              <h1 className="font-display text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl drop-shadow-2xl">
+                <span className="text-hero-gradient">Nurturing Little Triumphs</span>
               </h1>
-              <p className="mt-8 text-xl text-gray-200/90 md:text-2xl leading-relaxed max-w-3xl mx-auto font-light">
+              <p className="mt-8 text-xl text-white md:text-2xl leading-relaxed max-w-3xl mx-auto font-light drop-shadow-lg">
                 A premier child development centre in Balasore dedicated to unlocking your child's full potential through
                 <span className="text-white font-medium"> compassionate care</span> and <span className="text-white font-medium">expert therapy</span>.
               </p>
@@ -101,15 +100,18 @@ const Index = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
             >
-              <Button asChild size="lg" className="rounded-full px-10 py-7 text-xl shadow-2xl hover-lift bg-primary hover:bg-primary/90">
-                <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer">
+              <button className="rounded-full bg-primary px-10 py-7 text-xl font-medium text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 flex items-center group">
+                <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
                   Book Appointment
-                  <ChevronRight className="ml-2 h-6 w-6" />
+                  <ChevronRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
                 </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-7 text-xl border-white/30 text-white glass hover:bg-white/20 transition-all duration-300">
-                <Link to="/services">Our Specialities</Link>
-              </Button>
+              </button>
+              <Link
+                to="/services"
+                className="rounded-full border-2 border-white/50 bg-white/10 px-10 py-7 text-xl font-medium text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white drop-shadow-xl"
+              >
+                Our Specialities
+              </Link>
             </motion.div>
           </div>
         </div>

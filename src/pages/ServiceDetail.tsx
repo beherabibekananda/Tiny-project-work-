@@ -58,7 +58,7 @@ const ServiceDetail = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8 }}
                             >
-                                <Link to="/services" className="group inline-flex items-center text-primary-foreground font-bold mb-12 hover:translate-x-[-4px] transition-transform drop-shadow-md">
+                                <Link to="/services" className="group inline-flex items-center text-white font-bold mb-12 hover:translate-x-[-4px] transition-transform drop-shadow-md">
                                     <ArrowLeft className="mr-2 h-5 w-5 transition-transform group-hover:-translate-x-1" />
                                     Back to Clinical Excellence
                                 </Link>
