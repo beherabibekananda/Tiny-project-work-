@@ -29,12 +29,8 @@ const AppContent = () => {
   const [showEntrance, setShowEntrance] = useState(false);
 
   useEffect(() => {
-    // Check if entrance has been shown in this session
-    const hasShown = sessionStorage.getItem("entranceShown");
-    if (!hasShown) {
-      setShowEntrance(true);
-      sessionStorage.setItem("entranceShown", "true");
-    }
+    // Show entrance on every mount (refresh)
+    setShowEntrance(true);
   }, []);
 
   return (
