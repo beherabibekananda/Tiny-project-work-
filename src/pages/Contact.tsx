@@ -151,8 +151,8 @@ const Contact = () => {
       </section>
 
       {/* 2. Stats Section */}
-      <section className="py-12 bg-card dark:bg-card/50 border-b border-border/50 shadow-sm relative z-20 -mt-10 mx-auto max-w-6xl rounded-[2.5rem] px-8 md:px-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="py-8 md:py-12 bg-card dark:bg-card/50 border-b border-border/50 shadow-sm relative z-20 -mt-6 md:-mt-10 mx-auto max-w-6xl rounded-[1.5rem] md:rounded-[2.5rem] px-4 md:px-16 mx-4 md:mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {[
             { label: "Happy Families", value: "1200+" },
             { label: "Specialized Programs", value: "50+" },
@@ -160,8 +160,8 @@ const Contact = () => {
             { label: "Success Rate", value: "99%" },
           ].map((stat, i) => (
             <div key={i} className="text-center space-y-1">
-              <p className="text-3xl md:text-4xl font-bold text-primary font-display">{stat.value}</p>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground font-bold">{stat.label}</p>
+              <p className="text-2xl md:text-4xl font-bold text-primary font-display">{stat.value}</p>
+              <p className="text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground font-bold">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -177,7 +177,7 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-0" />
 
         <div className="container relative z-10">
-          <div className="grid gap-20 lg:grid-cols-12">
+          <div className="grid gap-12 lg:gap-20 lg:grid-cols-12">
             {/* Left side: Info Cards */}
             <div className="lg:col-span-5 space-y-10">
               <div className="space-y-6">
@@ -197,15 +197,15 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="group relative flex gap-6 p-8 rounded-[2rem] bg-card dark:bg-secondary/20 border border-border/50 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
+                    className="group relative flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-6 p-5 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-card dark:bg-secondary/20 border border-border/50 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all text-center md:text-left"
                   >
-                    <div className="h-16 w-16 flex-shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <info.icon className="h-8 w-8" />
+                    <div className="h-12 w-12 md:h-16 md:w-16 flex-shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <info.icon className="h-6 w-6 md:h-8 md:w-8" />
                     </div>
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-foreground mb-1">{info.title}</h3>
-                      <p className="text-foreground/90 font-medium mb-1">{info.content}</p>
-                      <p className="text-sm text-muted-foreground">{info.detail}</p>
+                    <div className="w-full">
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-1">{info.title}</h3>
+                      <p className="text-foreground/90 font-medium mb-1 break-all md:break-normal text-sm md:text-base">{info.content}</p>
+                      <p className="text-[11px] md:text-sm text-muted-foreground">{info.detail}</p>
                     </div>
                   </motion.a>
                 ))}
@@ -214,8 +214,8 @@ const Contact = () => {
 
             {/* Right side: Modern Form */}
             <div className="lg:col-span-7">
-              <Card className="rounded-[3rem] border-none shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden bg-card dark:bg-secondary/10">
-                <CardContent className="p-10 md:p-16">
+              <Card className="rounded-[2.5rem] md:rounded-[3rem] border-none shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden bg-card dark:bg-secondary/10">
+                <CardContent className="p-6 md:p-16">
                   {isSuccess ? (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}

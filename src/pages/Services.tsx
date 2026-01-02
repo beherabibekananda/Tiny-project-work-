@@ -191,11 +191,11 @@ const Services = () => {
               asChild
               size="lg"
               variant="secondary"
-              className="rounded-full px-16 py-10 text-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:scale-105 transition-all bg-white text-primary hover:bg-white/90"
+              className="rounded-full px-6 py-6 h-auto text-lg md:px-16 md:py-10 md:text-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:scale-105 transition-all bg-white text-primary hover:bg-white/90 whitespace-normal text-center min-h-[4rem]"
             >
-              <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20a%20clinical%20assessment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer">
+              <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20a%20clinical%20assessment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                 Begin Consultation
-                <ChevronRight className="ml-3 h-8 w-8" />
+                <ChevronRight className="ml-2 h-6 w-6 md:ml-3 md:h-8 md:w-8 flex-shrink-0" />
               </a>
             </Button>
           </motion.div>

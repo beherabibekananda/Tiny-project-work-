@@ -100,15 +100,15 @@ const Index = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
             >
-              <button className="rounded-full bg-primary px-10 py-7 text-xl font-medium text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 flex items-center group">
+              <button className="rounded-full bg-primary px-6 py-5 text-lg md:px-10 md:py-7 md:text-xl font-medium text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 flex items-center group">
                 <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
                   Book Appointment
-                  <ChevronRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                  <ChevronRight className="ml-2 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
                 </a>
               </button>
               <Link
                 to="/services"
-                className="rounded-full border-2 border-white/50 bg-white/10 px-10 py-7 text-xl font-medium text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white drop-shadow-xl"
+                className="rounded-full border-2 border-white/50 bg-white/10 px-6 py-5 text-lg md:px-10 md:py-7 md:text-xl font-medium text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white drop-shadow-xl text-center"
               >
                 Our Specialities
               </Link>
@@ -269,7 +269,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
-                className="absolute -bottom-8 -right-8 rounded-3xl glass p-8 shadow-2xl max-w-[240px]"
+                className="absolute -bottom-8 -right-8 rounded-3xl glass dark:bg-black/60 dark:border-white/10 p-8 shadow-2xl max-w-[240px]"
               >
                 <div className="flex items-center gap-5">
                   <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
@@ -512,11 +512,11 @@ const Index = () => {
                   asChild
                   size="lg"
                   variant="secondary"
-                  className="rounded-full px-12 py-8 text-2xl shadow-2xl hover:bg-white hover:text-primary transition-all duration-500"
+                  className="rounded-full px-6 py-6 h-auto text-lg md:px-12 md:py-8 md:text-2xl shadow-2xl hover:bg-white hover:text-primary transition-all duration-500 whitespace-normal text-center min-h-[4rem]"
                 >
-                  <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer">
+                  <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                     Book Your Appointment Now
-                    <ChevronRight className="ml-3 h-8 w-8" />
+                    <ChevronRight className="ml-2 h-6 w-6 md:ml-3 md:h-8 md:w-8 flex-shrink-0" />
                   </a>
                 </Button>
               </motion.div>

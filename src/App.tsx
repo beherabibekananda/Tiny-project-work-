@@ -27,18 +27,31 @@ const queryClient = new QueryClient();
 const AppContent = () => {
   const location = useLocation();
   const [showEntrance, setShowEntrance] = useState(false);
+  const [showTransition, setShowTransition] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    // Show entrance on every mount (refresh)
+    // Show entrance on every mount (refresh/initial load)
     setShowEntrance(true);
+    setIsInitialLoad(false);
   }, []);
+
+  useEffect(() => {
+    // Show transition pulse on every route change (except initial load)
+    if (!isInitialLoad) {
+      setShowTransition(true);
+    }
+  }, [location.pathname]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <TooltipProvider>
         <AnimatePresence>
           {showEntrance && (
-            <EntranceGate onComplete={() => setShowEntrance(false)} />
+            <EntranceGate mode="full" onComplete={() => setShowEntrance(false)} />
+          )}
+          {showTransition && (
+            <EntranceGate mode="minimal" onComplete={() => setShowTransition(false)} />
           )}
         </AnimatePresence>
         <Toaster />
