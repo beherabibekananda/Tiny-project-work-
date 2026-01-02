@@ -9,28 +9,113 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const particles = Array.from({ length: 6 });
+
   return (
-    <div className="flex min-h-screen flex-col relative overflow-hidden">
-      {/* Global Animated Background */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden bg-background">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#0eb29a]/5 rounded-full blur-[120px] animate-drift" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[45%] h-[45%] bg-[#0eb29a]/10 rounded-full blur-[100px] animate-drift-slow" />
-        <div className="absolute top-[30%] right-[10%] w-[35%] h-[35%] bg-accent/5 rounded-full blur-[150px] animate-drift-slower" />
-        {/* Subtle grid pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+    <div className="flex min-h-screen flex-col relative overflow-hidden bg-background">
+      {/* Fixed Animated Background Layer */}
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        {/* Floating Blobs */}
+        <motion.div
+          animate={{
+            x: [0, 80, -40, 0],
+            y: [0, 40, 80, 0],
+            scale: [1, 1.1, 0.9, 1],
+            rotate: [0, 90, 180, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-[140px]"
+        />
+
+        <motion.div
+          animate={{
+            x: [0, -60, 30, 0],
+            y: [0, 100, -50, 0],
+            scale: [1, 1.05, 1.15, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute bottom-[5%] right-[-10%] w-[50%] h-[50%] bg-accent/10 rounded-full blur-[120px]"
+        />
+
+        <motion.div
+          animate={{
+            x: [0, 100, -80, 0],
+            y: [0, -80, 40, 0],
+          }}
+          transition={{
+            duration: 35,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute top-[20%] right-[15%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[160px]"
+        />
+
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          {particles.map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{
+                x: `${Math.random() * 100}%`,
+                y: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.4 + 0.1
+              }}
+              animate={{
+                x: [
+                  `${Math.random() * 100}%`,
+                  `${Math.random() * 100}%`,
+                  `${Math.random() * 100}%`
+                ],
+                y: [
+                  `${Math.random() * 100}%`,
+                  `${Math.random() * 100}%`,
+                  `${Math.random() * 100}%`
+                ],
+              }}
+              transition={{
+                duration: 15 + Math.random() * 15,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="absolute w-2 h-2 md:w-3 md:h-3 bg-primary/30 rounded-full blur-[1px]"
+              style={{
+                filter: `blur(${Math.random() * 3 + 1}px)`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Grid Overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+          style={{
+            backgroundImage: 'radial-gradient(currentColor 1.5px, transparent 1.5px)',
+            backgroundSize: '100px 100px'
+          }}
+        />
       </div>
 
-      <Navbar />
-      <motion.main
-        className="flex-1 relative z-10"
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -15 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {children}
-      </motion.main>
-      <Footer />
+      {/* Content Layer */}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Navbar />
+        <motion.main
+          className="flex-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          {children}
+        </motion.main>
+        <Footer />
+      </div>
     </div>
   );
 };

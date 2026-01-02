@@ -151,7 +151,7 @@ const Contact = () => {
       </section>
 
       {/* 2. Stats Section */}
-      <section className="py-12 bg-white border-b border-border/50 shadow-sm relative z-20 -mt-10 mx-auto max-w-6xl rounded-[2.5rem] px-8 md:px-16">
+      <section className="py-12 bg-card dark:bg-card/50 border-b border-border/50 shadow-sm relative z-20 -mt-10 mx-auto max-w-6xl rounded-[2.5rem] px-8 md:px-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
             { label: "Happy Families", value: "1200+" },
@@ -197,7 +197,7 @@ const Contact = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="group relative flex gap-6 p-8 rounded-[2rem] bg-white border border-border/50 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
+                    className="group relative flex gap-6 p-8 rounded-[2rem] bg-card dark:bg-secondary/20 border border-border/50 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all"
                   >
                     <div className="h-16 w-16 flex-shrink-0 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                       <info.icon className="h-8 w-8" />
@@ -214,7 +214,7 @@ const Contact = () => {
 
             {/* Right side: Modern Form */}
             <div className="lg:col-span-7">
-              <Card className="rounded-[3rem] border-none shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden bg-white">
+              <Card className="rounded-[3rem] border-none shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden bg-card dark:bg-secondary/10">
                 <CardContent className="p-10 md:p-16">
                   {isSuccess ? (
                     <motion.div
@@ -253,7 +253,7 @@ const Contact = () => {
                                 <FormItem>
                                   <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Name</FormLabel>
                                   <FormControl>
-                                    <Input placeholder="Your full name" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                    <Input placeholder="Your full name" className="rounded-2xl border-border/50 bg-secondary/10 dark:bg-secondary/20 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -266,7 +266,7 @@ const Contact = () => {
                                 <FormItem>
                                   <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Email</FormLabel>
                                   <FormControl>
-                                    <Input type="email" placeholder="email@address.com" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                    <Input type="email" placeholder="email@address.com" className="rounded-2xl border-border/50 bg-secondary/10 dark:bg-secondary/20 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -282,7 +282,7 @@ const Contact = () => {
                                 <FormItem>
                                   <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Phone</FormLabel>
                                   <FormControl>
-                                    <Input type="tel" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                    <Input type="tel" className="rounded-2xl border-border/50 bg-secondary/10 dark:bg-secondary/20 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -295,7 +295,7 @@ const Contact = () => {
                                 <FormItem>
                                   <FormLabel className="text-xs uppercase font-bold tracking-widest text-primary">Subject</FormLabel>
                                   <FormControl>
-                                    <Input placeholder="How can we help?" className="rounded-2xl border-border/50 bg-secondary/5 h-14" {...field} />
+                                    <Input placeholder="How can we help?" className="rounded-2xl border-border/50 bg-secondary/10 dark:bg-secondary/20 h-14" {...field} />
                                   </FormControl>
                                   <FormMessage />
                                 </FormItem>
@@ -312,7 +312,7 @@ const Contact = () => {
                                 <FormControl>
                                   <Textarea
                                     placeholder="Tell us about your requirements..."
-                                    className="min-h-[160px] rounded-2xl border-border/50 bg-secondary/5 p-6"
+                                    className="min-h-[160px] rounded-2xl border-border/50 bg-secondary/10 dark:bg-secondary/20 p-6"
                                     {...field}
                                   />
                                 </FormControl>
