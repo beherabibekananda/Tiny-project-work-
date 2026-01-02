@@ -63,17 +63,23 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
         >
             {/* The Wrinkled Blanket Banner */}
             <motion.div
-                initial={{ clipPath: initialPath }}
-                animate={{
-                    clipPath: isRevealActive ? wrinkledPath : initialPath
-                }}
-                transition={{
-                    duration: 2.2,
-                    ease: [0.77, 0, 0.175, 1],
-                    type: "spring",
-                    damping: 18,
-                    stiffness: 60
-                }}
+                initial={mode === "full" ? { clipPath: initialPath } : { opacity: 1 }}
+                animate={
+                    mode === "full"
+                        ? { clipPath: isRevealActive ? wrinkledPath : initialPath }
+                        : { opacity: isRevealActive ? 0 : 1 }
+                }
+                transition={
+                    mode === "full"
+                        ? {
+                            duration: 2.2,
+                            ease: [0.77, 0, 0.175, 1],
+                            type: "spring",
+                            damping: 18,
+                            stiffness: 60
+                        }
+                        : { duration: 0.8, ease: "easeOut" }
+                }
                 className={`absolute inset-0 bg-[#0a2a24] z-[45] ${mode === "minimal" ? "bg-opacity-100 shadow-none border-none" : ""}`}
             >
                 {/* Panel Texture/Grid */}
