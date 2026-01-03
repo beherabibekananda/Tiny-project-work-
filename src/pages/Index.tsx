@@ -19,10 +19,20 @@ import {
   ClipboardList,
   Sparkles
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { services } from "@/data/services";
+import { useRef } from "react";
 
 const Index = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const features = [
     {
@@ -66,15 +76,16 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden py-24 md:py-32">
-        {/* Background Image with Overlay */}
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden py-24 md:py-32">
+        {/* Background Image with Parallax & Overlay */}
         <motion.div
+          style={{ y: y1, scale, opacity }}
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero-clinic.png')" }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
         >
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/hero/specialist-3.webp')" }} />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
         </motion.div>
 
@@ -142,15 +153,22 @@ const Index = () => {
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}
+                viewport={{ once: true, margin: "-100px" }}
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-80 overflow-hidden rounded-[2.5rem] border border-border/50 bg-card shadow-lg transition-all duration-300 hover:shadow-2xl"
+                  className="group relative block h-80 overflow-hidden rounded-[2.5rem] border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
                 >
+                  <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   {/* Black Shade Sweep Effect */}
                   <motion.div
                     className="absolute inset-0 z-0 pointer-events-none bg-[#1d2f38]/10"
@@ -211,10 +229,10 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
               <h2 className="font-display text-4xl font-bold text-light-gradient dark:text-dark-gradient md:text-5xl leading-tight">
                 Why Parents Trust <br />
@@ -234,9 +252,13 @@ const Index = () => {
                     transition={{ delay: idx * 0.1 }}
                     className="flex gap-6 group"
                   >
-                    <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-card shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <motion.div
+                      className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-card shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white"
+                      animate={{ y: [0, -5, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                    >
                       <feature.icon className="h-7 w-7" />
-                    </div>
+                    </motion.div>
                     <div>
                       <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white">
                         {feature.title}
@@ -251,15 +273,15 @@ const Index = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, scale: 0.8, x: 50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
               <div className="aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl">
                 <img
-                  src="/images/therapy-session.png"
+                  src="/assets/services/occupational-therapy.webp"
                   alt="Therapy session at Tiny Triumph"
                   className="h-full w-full object-cover"
                 />
@@ -295,16 +317,23 @@ const Index = () => {
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
               className="font-display text-4xl font-bold text-foreground md:text-5xl"
             >
               Voices of Trust
             </motion.h2>
-            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium"
+            >
               Real stories from families who have experienced the magic of Tiny Triumph.
-            </p>
+            </motion.p>
           </div>
 
           <div className="mt-12 grid gap-8 md:grid-cols-3">
@@ -375,40 +404,45 @@ const Index = () => {
                 content: "Our young champion making great progress in physical therapy today! Every step counts.",
                 type: "Achievement",
                 date: "2 days ago",
-                image: "https://images.unsplash.com/photo-1576091160550-217359f4ecf8?w=400&h=300&fit=crop"
+                image: "/assets/gallery/clinic-7.webp"
               },
               {
                 id: 2,
                 content: "New sensory play tools have arrived! Helping children explore and learn through touch and feel.",
                 type: "Update",
                 date: "1 week ago",
-                image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=400&h=300&fit=crop"
+                image: "/assets/services/sensory-integration.webp"
               },
               {
                 id: 3,
                 content: "Speech therapy success stories! We're celebrating our little hero's first words this month.",
                 type: "Success Story",
                 date: "3 days ago",
-                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop"
+                image: "/assets/services/speech-therapy.webp"
               },
               {
                 id: 4,
                 content: "Join us for our next parent-teacher workshop on understanding child behavioral patterns.",
                 type: "Event",
                 date: "Today",
-                image: "https://images.unsplash.com/photo-1573497620053-ea5310f94a17?w=400&h=300&fit=crop"
+                image: "/assets/gallery/clinic-8.webp"
               },
               {
                 id: 5,
                 content: "A beautiful morning at Tiny Triumph! Creating a nurturing environment for every child.",
                 type: "Clinic Life",
                 date: "4 days ago",
-                image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&h=300&fit=crop"
+                image: "/assets/gallery/clinic-9.webp"
               }
             ].map((post) => (
-              <div
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                viewport={{ once: true }}
+                transition={{ delay: post.id * 0.1 }}
                 key={post.id}
-                className="flex-shrink-0 w-[320px] sm:w-[400px] overflow-hidden rounded-[2.5rem] bg-card border border-border/50 shadow-xl transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:border-primary/30 snap-center group"
+                className="flex-shrink-0 w-[320px] sm:w-[400px] overflow-hidden rounded-[2.5rem] bg-card border border-border/50 shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-primary/30 snap-center group"
               >
                 <div className="h-56 w-full overflow-hidden">
                   <img
@@ -444,7 +478,7 @@ const Index = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
 
@@ -491,9 +525,10 @@ const Index = () => {
         <div className="container relative z-10">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <h2 className="font-display text-5xl font-bold text-primary-foreground md:text-7xl leading-tight">
                 Ready to Help Your <br />
@@ -504,7 +539,7 @@ const Index = () => {
                 <span className="font-bold text-white"> lasting success</span>.
               </p>
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-block mt-12"
               >

@@ -25,7 +25,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white transition-transform duration-500 group-hover:scale-110">
-            <img src="/logo.png" alt="Tiny Triumph Logo" className="h-full w-full object-cover" />
+            <img src="/logo.webp" alt="Tiny Triumph Logo" className="h-full w-full object-cover" />
           </div>
           <span className="font-display text-xl font-semibold text-foreground md:text-2xl">
             Tiny Triumph

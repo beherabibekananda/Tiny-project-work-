@@ -138,7 +138,7 @@ const Contact = () => {
           >
             <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-2xl border border-white/10">
               <img
-                src="/pediatric-specialist.png"
+                src="/pediatric-specialist.webp"
                 alt="Our Pediatric Specialist"
                 className="w-full h-full object-cover"
               />
@@ -172,7 +172,7 @@ const Contact = () => {
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10 grayscale-[0.5]"
-          style={{ backgroundImage: "url('/contact-form-bg.png')" }}
+          style={{ backgroundImage: "url('/contact-form-bg.webp')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-0" />
 

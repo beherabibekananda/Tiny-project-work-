@@ -63,7 +63,7 @@ export const services: Service[] = [
             "Enhanced handwriting and classroom endurance",
             "Improved emotional regulation and sensory comfort"
         ],
-        image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=1200&h=800&fit=crop"
+        image: "/assets/services/occupational-therapy.webp"
     },
     {
         id: "speech-therapy",
@@ -96,7 +96,7 @@ export const services: Service[] = [
             "Deepened social bonds and peer interaction",
             "Total communication success across settings"
         ],
-        image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&h=800&fit=crop"
+        image: "/assets/services/speech-therapy.webp"
     },
     {
         id: "behaviour-therapy",
@@ -129,7 +129,7 @@ export const services: Service[] = [
             "Acquisition of vital functional life skills",
             "Improved social grace and emotional resilience"
         ],
-        image: "https://images.unsplash.com/photo-1576091160550-217359f4ecf8?w=1200&h=800&fit=crop"
+        image: "/assets/services/behaviour-therapy.webp"
     },
     {
         id: "physiotherapy",
@@ -162,7 +162,7 @@ export const services: Service[] = [
             "Increased physical stamina for school and play",
             "Enhanced physical confidence and coordination"
         ],
-        image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=1200&h=800&fit=crop"
+        image: "/assets/services/physiotherapy.webp"
     },
     {
         id: "special-education",
@@ -195,7 +195,7 @@ export const services: Service[] = [
             "Mastery of personalized learning strategies",
             "Successful school transitions and integration"
         ],
-        image: "https://images.unsplash.com/photo-1573497620053-ea5310f94a17?w=1200&h=800&fit=crop"
+        image: "/assets/services/special-education.webp"
     },
     {
         id: "sensory-integration",
@@ -228,6 +228,6 @@ export const services: Service[] = [
             "Improved focus in loud or busy settings",
             "Greater comfort and joy in physical play"
         ],
-        image: "https://images.unsplash.com/photo-1544027993-37dbfe43532c?w=1200&h=800&fit=crop"
+        image: "/assets/services/sensory-integration.webp"
     }
 ];

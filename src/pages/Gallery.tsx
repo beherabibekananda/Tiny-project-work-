@@ -4,12 +4,12 @@ import { Sparkles, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const Gallery = () => {
     const galleryItems = [
-        { title: "Occupational Therapy", image: "/gallery-1.png" },
-        { title: "Speech Corner", image: "/gallery-2.png" },
-        { title: "Safe Play Area", image: "/gallery-3.png" },
-        { title: "Welcome Reception", image: "/gallery-4.png" },
-        { title: "Sensory Oasis", image: "/gallery-5.png" },
-        { title: "Learning Zone", image: "/gallery-6.png" },
+        { title: "Our Specialists", image: "/assets/hero/specialist-1.webp" },
+        { title: "Expert Consultations", image: "/assets/hero/specialist-2.webp" },
+        { title: "Therapy Sessions", image: "/assets/gallery/clinic-1.webp" },
+        { title: "Sensory Play Area", image: "/assets/gallery/clinic-2.webp" },
+        { title: "Learning Zone", image: "/assets/gallery/clinic-3.webp" },
+        { title: "Modern Facilities", image: "/assets/gallery/clinic-4.webp" },
     ];
 
     return (
@@ -44,7 +44,7 @@ const Gallery = () => {
                     >
                         <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
                             <img
-                                src="/gallery-hero.png"
+                                src="/gallery-hero.webp"
                                 alt="Tiny Triumph Multi-Sensory Play Area"
                                 className="w-full h-full object-cover"
                             />

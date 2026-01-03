@@ -147,7 +147,7 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                         className="absolute inset-0 bg-primary/40 blur-[80px] opacity-40 mix-blend-screen"
                                     />
                                     <div className="p-12 md:p-14 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl relative">
-                                        <img src="/logo.png" alt="Tiny Triumph" className="h-32 md:h-40 w-auto drop-shadow-[0_0_50px_rgba(255,255,255,0.4)]" />
+                                        <img src="/logo.webp" alt="Tiny Triumph" className="h-32 md:h-40 w-auto drop-shadow-[0_0_50px_rgba(255,255,255,0.4)]" />
                                     </div>
                                 </div>
 

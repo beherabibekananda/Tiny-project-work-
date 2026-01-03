@@ -33,7 +33,7 @@ const About = () => {
     {
       name: "Dr. Anjali Sharma",
       role: "Lead Pediatric Consultant",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop",
+      image: "/assets/hero/specialist-2.webp",
       bio: "With extensive experience in child development, Dr. Sharma guides our clinical approach with compassion.",
     },
     {
@@ -108,7 +108,7 @@ const About = () => {
           >
             <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
               <img
-                src="/about-hero-specialist.png"
+                src="/assets/hero/specialist-3.webp"
                 alt="Our Lead Pediatric Specialist"
                 className="w-full h-full object-cover"
               />
@@ -133,7 +133,7 @@ const About = () => {
             >
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-secondary/20">
                 <img
-                  src="/our-story-consultation.png"
+                  src="/assets/gallery/clinic-7.webp"
                   alt="Professional Pediatric Consultation"
                   className="w-full h-full object-cover"
                 />
