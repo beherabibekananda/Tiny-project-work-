@@ -97,7 +97,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* 2. Pull Quote Section */}
-                <section className="py-24 bg-white relative overflow-hidden">
+                <section className="py-24 bg-background relative overflow-hidden">
                     <div className="container relative z-10">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -142,7 +142,7 @@ const ServiceDetail = () => {
                                                 <motion.div
                                                     key={idx}
                                                     whileHover={{ scale: 1.02, x: 5 }}
-                                                    className="flex items-center gap-4 p-6 rounded-3xl bg-secondary/5 border border-border/40 hover:border-primary/30 transition-all group"
+                                                    className="flex items-center gap-4 p-6 rounded-3xl bg-muted/20 border border-border/40 hover:border-primary/30 transition-all group"
                                                 >
                                                     <div className={`h-3 w-3 rounded-full ${service.bgColor.replace('50/90', '500')} opacity-40 group-hover:opacity-100 transition-opacity`} />
                                                     <span className="text-lg font-medium text-foreground/80 group-hover:text-primary transition-colors">{feature}</span>
@@ -159,7 +159,7 @@ const ServiceDetail = () => {
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
-                                    className="group relative overflow-hidden rounded-[3.5rem] bg-card p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-border/50"
+                                    className="group relative overflow-hidden rounded-[3.5rem] bg-card p-8 md:p-12 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-border/50"
                                 >
                                     {/* Black Shade Sweep Effect */}
                                     <motion.div
@@ -192,14 +192,14 @@ const ServiceDetail = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    className="rounded-[3.5rem] bg-primary p-12 text-primary-foreground shadow-2xl relative overflow-hidden group"
+                                    className="rounded-[3.5rem] bg-primary p-8 md:p-12 text-primary-foreground shadow-2xl relative overflow-hidden group"
                                 >
                                     <div className="relative z-10">
-                                        <h3 className="font-display text-3xl font-bold mb-6">Begin the Journey</h3>
+                                        <h3 className="font-display text-2xl md:text-3xl font-bold mb-6">Begin the Journey</h3>
                                         <p className="text-xl text-primary-foreground/80 mb-10 leading-relaxed">
                                             Schedule a personalized assessment with our {service.title} specialists.
                                         </p>
-                                        <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto rounded-full px-12 py-8 text-xl shadow-xl hover-lift bg-white text-primary hover:bg-white/90">
+                                        <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto rounded-full px-8 py-6 text-lg md:px-12 md:py-8 md:text-xl shadow-xl hover-lift bg-white text-primary hover:bg-white/90">
                                             <a href={`https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I'm%20interested%20in%20${service.title}%20for%20my%20child.`} target="_blank" rel="noopener noreferrer">
                                                 Book Consultation
                                                 <ChevronRight className="ml-2 h-6 w-6" />
@@ -214,7 +214,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* 6. Expert Insight Grid */}
-                <section className="py-24 md:py-32 bg-secondary/5 relative overflow-hidden">
+                <section className="py-24 md:py-32 bg-muted/10 relative overflow-hidden border-y border-border/50">
                     <div className="container relative z-10">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
@@ -234,9 +234,9 @@ const ServiceDetail = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.15 }}
-                                    className="relative group p-12 rounded-[3rem] bg-white shadow-[0_20px_40px_-20px_rgba(0,0,0,0.1)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
+                                    className="relative group p-8 md:p-12 rounded-[3rem] bg-card border border-border/50 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.1)] hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                                 >
-                                    <div className={`mb-8 h-16 w-16 flex items-center justify-center rounded-2xl bg-secondary/20 transition-colors duration-300 group-hover:bg-primary group-hover:text-white ${service.iconColor}`}>
+                                    <div className={`mb-8 h-16 w-16 flex items-center justify-center rounded-2xl bg-muted transition-colors duration-300 group-hover:bg-primary group-hover:text-white ${service.iconColor}`}>
                                         {idx === 0 ? <ShieldCheck className="h-8 w-8" /> : idx === 1 ? <Users className="h-8 w-8" /> : <Award className="h-8 w-8" />}
                                     </div>
                                     <p className="text-xl font-medium text-foreground/80 leading-relaxed">
