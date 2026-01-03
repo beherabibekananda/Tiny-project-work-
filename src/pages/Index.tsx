@@ -78,15 +78,13 @@ const Index = () => {
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden py-24 md:py-32">
         {/* Background Image with Parallax & Overlay */}
+        {/* Cinematic Video Background */}
         <motion.div
-          style={{ y: y1, scale, opacity }}
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          style={{ opacity, y: y1 }}
+          className="absolute inset-0 z-0 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/hero/specialist-3.webp')" }} />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/hero/reception.webp')" }} />
+          <div className="absolute inset-0 bg-black/60" />
         </motion.div>
 
         <div className="container relative z-10">
@@ -111,7 +109,7 @@ const Index = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
             >
-              <button className="rounded-full bg-primary px-6 py-5 text-lg md:px-10 md:py-7 md:text-xl font-medium text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary/90 flex items-center group">
+              <button className="rounded-full bg-[#5ec2b4] px-8 py-5 text-lg md:px-12 md:py-6 md:text-xl font-medium text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#4ea89c] flex items-center group">
                 <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
                   Book Appointment
                   <ChevronRight className="ml-2 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
@@ -119,7 +117,7 @@ const Index = () => {
               </button>
               <Link
                 to="/services"
-                className="rounded-full border-2 border-white/50 bg-white/10 px-6 py-5 text-lg md:px-10 md:py-7 md:text-xl font-medium text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20 hover:border-white drop-shadow-xl text-center"
+                className="rounded-full border-2 border-white/40 bg-white/5 backdrop-blur-md px-8 py-5 text-lg md:px-12 md:py-6 md:text-xl font-medium text-white transition-all duration-300 hover:bg-white/10 hover:border-white shadow-xl text-center"
               >
                 Our Specialities
               </Link>
@@ -166,9 +164,9 @@ const Index = () => {
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-80 overflow-hidden rounded-[2.5rem] border border-border/50 bg-card shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+                  className="group relative block h-80 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-2 group"
                 >
-                  <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   {/* Black Shade Sweep Effect */}
                   <motion.div
                     className="absolute inset-0 z-0 pointer-events-none bg-[#1d2f38]/10"
@@ -185,7 +183,7 @@ const Index = () => {
                   <div className="relative z-20 flex h-full flex-col items-center justify-center p-8 text-center">
                     {/* Icon Container with Backwash */}
                     <div className="relative mb-6">
-                      <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-primary/10 transition-all duration-500 cubic-bezier(0.62, 0.21, 0.45, 1.52) group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30`}>
+                      <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-white/10 backdrop-blur-lg border border-white/10 transition-all duration-500 cubic-bezier(0.62, 0.21, 0.45, 1.52) group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 shadow-xl`}>
                         <motion.div
                           whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
                           transition={{ duration: 0.5 }}
@@ -194,12 +192,15 @@ const Index = () => {
                           <service.icon className="h-12 w-12" />
                         </motion.div>
                       </div>
+
+                      {/* Inner Glow */}
+                      <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold transition-colors duration-300 group-hover:text-primary mb-4">
+                    <h3 className="font-display text-2xl font-bold transition-colors duration-300 group-hover:text-primary mb-4 text-gray-900 dark:text-white">
                       {service.title}
                     </h3>
-                    <p className="text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
+                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed font-semibold">
                       {service.description}
                     </p>
 
@@ -312,7 +313,62 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Why Choose Us Section - already exists */}
+
+      {/* Clinic in Action - Video Showcase */}
+      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-display text-4xl font-bold text-foreground md:text-5xl"
+            >
+              See Us in <span className="text-primary italic">Action</span>
+            </motion.h2>
+            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium leading-relaxed">
+              Witness the dedicated care and specialized techniques our therapists use to empower every child.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {[
+              { id: 1, video: "/assets/videos/showcase-1.mp4", title: "Sensory Mastery" },
+              { id: 2, video: "/assets/videos/showcase-2.mp4", title: "Precision Motor Skills" },
+              { id: 3, video: "/assets/videos/showcase-3.mp4", title: "Social Interaction" },
+            ].map((item, idx) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative h-96 overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
+              >
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                >
+                  <source src={item.video} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-10 left-10">
+                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">{item.title}</h3>
+                  <div className="mt-2 h-1 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Background Polish */}
+        <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-x-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] translate-x-1/3" />
+      </section>
       <section className="py-24 md:py-32 bg-background relative">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center mb-16">

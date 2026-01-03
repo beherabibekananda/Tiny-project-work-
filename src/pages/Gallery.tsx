@@ -9,7 +9,9 @@ const Gallery = () => {
         { title: "Therapy Sessions", image: "/assets/gallery/clinic-1.webp" },
         { title: "Sensory Play Area", image: "/assets/gallery/clinic-2.webp" },
         { title: "Learning Zone", image: "/assets/gallery/clinic-3.webp" },
-        { title: "Modern Facilities", image: "/assets/gallery/clinic-4.webp" },
+        { title: "Pediatric Excellence", image: "/assets/gallery/clinic-21.webp" },
+        { title: "Developmental Care", image: "/assets/gallery/clinic-22.webp" },
+        { title: "World-Class Infrastructure", image: "/assets/gallery/clinic-23.webp" },
     ];
 
     return (
@@ -44,7 +46,7 @@ const Gallery = () => {
                     >
                         <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
                             <img
-                                src="/gallery-hero.webp"
+                                src="/assets/hero/specialist-3.webp"
                                 alt="Tiny Triumph Multi-Sensory Play Area"
                                 className="w-full h-full object-cover"
                             />
