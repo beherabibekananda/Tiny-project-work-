@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Sparkles, ChevronRight, CheckCircle2 } from "lucide-react";
+import { assets } from "@/lib/assets";
 
 const Gallery = () => {
     const galleryItems = [
-        { title: "Our Specialists", image: "/assets/hero/specialist-1.webp" },
-        { title: "Expert Consultations", image: "/assets/hero/specialist-2.webp" },
-        { title: "Therapy Sessions", image: "/assets/gallery/clinic-1.webp" },
-        { title: "Sensory Play Area", image: "/assets/gallery/clinic-2.webp" },
-        { title: "Learning Zone", image: "/assets/gallery/clinic-3.webp" },
-        { title: "Pediatric Excellence", image: "/assets/gallery/clinic-21.webp" },
-        { title: "Developmental Care", image: "/assets/gallery/clinic-22.webp" },
-        { title: "World-Class Infrastructure", image: "/assets/gallery/clinic-23.webp" },
+        { title: "Our Specialists", image: assets.hero.specialist1 },
+        { title: "Expert Consultations", image: assets.hero.specialist2 },
+        { title: "Therapy Sessions", image: assets.gallery[0] },
+        { title: "Sensory Play Area", image: assets.gallery[1] },
+        { title: "Learning Zone", image: assets.gallery[2] },
+        { title: "Pediatric Excellence", image: assets.gallery[20] },
+        { title: "Developmental Care", image: assets.gallery[21] },
+        { title: "World-Class Infrastructure", image: assets.gallery[22] },
     ];
 
     return (
@@ -46,9 +47,10 @@ const Gallery = () => {
                     >
                         <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
                             <img
-                                src="/assets/hero/specialist-3.webp"
+                                src={assets.hero.specialist3}
                                 alt="Tiny Triumph Multi-Sensory Play Area"
                                 className="w-full h-full object-cover"
+                                loading="eager"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24] via-transparent to-transparent opacity-60" />
                         </div>
@@ -71,6 +73,7 @@ const Gallery = () => {
                                     src={item.image}
                                     alt={item.title}
                                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    loading="lazy"
                                 />
                                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 p-6 text-center">
                                     <h3 className="font-display text-2xl font-bold text-primary-foreground transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">

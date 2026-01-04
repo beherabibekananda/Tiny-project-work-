@@ -4,6 +4,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Target, Eye, Users, ChevronRight, CheckCircle2, Sparkles } from "lucide-react";
+import { assets } from "@/lib/assets";
 
 const About = () => {
   const values = [
@@ -71,27 +72,27 @@ const About = () => {
   return (
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-20">
-        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-16 md:pt-24 lg:pt-32">
+        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-white space-y-8"
+            className="text-white space-y-6 md:space-y-8 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-teal-100 text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-teal-100 text-xs md:text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
               <Sparkles className="h-4 w-4" />
               <span>Pioneering Pediatric Excellence</span>
             </div>
-            <h1 className="font-display text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
-              Crafting Brighter <br />
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight">
+              Crafting Brighter <br className="hidden sm:block" />
               <span className="text-hero-gradient italic">Futures Today.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/70 dark:text-gray-300 leading-relaxed font-light max-w-2xl">
+            <p className="text-lg md:text-2xl text-white/70 dark:text-gray-300 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
               Tiny Triumph is more than a clinic; it's a sanctuary where clinical precision meets heart-centered care, nurturing every child's unique path to success.
             </p>
-            <div className="flex flex-wrap gap-6 pt-4">
-              <Button asChild size="lg" className="rounded-full px-8 py-7 text-lg bg-primary hover:bg-primary/90 shadow-2xl hover-lift">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 pt-4">
+              <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 py-6 md:py-7 text-lg bg-primary hover:bg-primary/90 shadow-2xl hover-lift">
                 <a href="https://wa.me/919114222044" target="_blank" rel="noopener noreferrer">
                   Begin the Journey
                   <ChevronRight className="ml-2 h-5 w-5" />
@@ -104,13 +105,14 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative lg:h-[80vh] flex items-end justify-center"
+            className="relative lg:h-[80vh] flex items-center justify-center lg:items-end"
           >
-            <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
+            <div className="relative z-10 w-full max-w-md lg:max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
               <img
-                src="/assets/hero/specialist-3.webp"
+                src={assets.hero.specialist2}
                 alt="Our Lead Pediatric Specialist"
                 className="w-full h-full object-cover"
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24] via-transparent to-transparent opacity-60" />
             </div>
@@ -131,13 +133,14 @@ const About = () => {
               transition={{ duration: 0.8 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-secondary/20">
+              <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-secondary/20 bg-muted flex items-center justify-center">
                 <img
-                  src="/assets/gallery/clinic-7.webp"
+                  src={assets.gallery[6]}
                   alt="Professional Pediatric Consultation"
-                  className="w-full h-full object-cover"
+                  className="absolute w-full h-full object-cover -rotate-90 scale-[1.35]"
+                  loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-accent/20 blur-2xl -z-10" />
@@ -293,6 +296,7 @@ const About = () => {
                     src={member.image}
                     alt={member.name}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
                   />
                 </div>
                 <CardContent className="p-6">

@@ -22,6 +22,7 @@ import {
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { services } from "@/data/services";
 import { useRef } from "react";
+import { assets } from "@/lib/assets";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -76,28 +77,28 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden py-24 md:py-32">
+      <section ref={heroRef} className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden py-16 md:py-32">
         {/* Background Image with Parallax & Overlay */}
         {/* Cinematic Video Background */}
         <motion.div
           style={{ opacity, y: y1 }}
           className="absolute inset-0 z-0 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/assets/hero/reception.webp')" }} />
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${assets.hero.reception})` }} />
           <div className="absolute inset-0 bg-black/60" />
         </motion.div>
 
-        <div className="container relative z-10">
+        <div className="container relative z-10 px-4 md:px-6">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="font-display text-5xl font-bold tracking-tight text-white md:text-7xl lg:text-8xl drop-shadow-2xl">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-2xl">
                 <span className="text-hero-gradient">Nurturing Little Triumphs</span>
               </h1>
-              <p className="mt-8 text-xl text-white md:text-2xl leading-relaxed max-w-3xl mx-auto font-light drop-shadow-lg">
+              <p className="mt-6 md:mt-8 text-lg sm:text-xl md:text-2xl text-white leading-relaxed max-w-3xl mx-auto font-light drop-shadow-lg">
                 A premier child development centre in Balasore dedicated to unlocking your child's full potential through
                 <span className="text-white font-medium"> compassionate care</span> and <span className="text-white font-medium">expert therapy</span>.
               </p>
@@ -107,9 +108,9 @@ const Index = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
+              className="mt-10 md:mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
             >
-              <button className="rounded-full bg-[#5ec2b4] px-8 py-5 text-lg md:px-12 md:py-6 md:text-xl font-medium text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#4ea89c] flex items-center group">
+              <button className="w-full sm:w-auto rounded-full bg-[#5ec2b4] px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#4ea89c] flex items-center justify-center group">
                 <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
                   Book Appointment
                   <ChevronRight className="ml-2 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
@@ -117,7 +118,7 @@ const Index = () => {
               </button>
               <Link
                 to="/services"
-                className="rounded-full border-2 border-white/40 bg-white/5 backdrop-blur-md px-8 py-5 text-lg md:px-12 md:py-6 md:text-xl font-medium text-white transition-all duration-300 hover:bg-white/10 hover:border-white shadow-xl text-center"
+                className="w-full sm:w-auto rounded-full border-2 border-white/40 bg-white/5 backdrop-blur-md px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white transition-all duration-300 hover:bg-white/10 hover:border-white shadow-xl text-center"
               >
                 Our Specialities
               </Link>
@@ -136,13 +137,13 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 md:py-28 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
-        <div className="container">
+      <section className="py-16 md:py-28 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
+        <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
               Specialized Child Development Services
             </h2>
-            <p className="mt-4 text-lg text-gray-900 dark:text-gray-100">
+            <p className="mt-4 text-base sm:text-lg text-gray-900 dark:text-gray-100">
               We offer a full range of therapeutic interventions tailored to your child's unique needs.
             </p>
           </div>
@@ -280,11 +281,12 @@ const Index = () => {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
-              <div className="aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl">
+              <div className="aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl relative">
                 <img
-                  src="/assets/services/occupational-therapy.webp"
+                  src={assets.services.occupationalTherapy}
                   alt="Therapy session at Tiny Triumph"
-                  className="h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover -rotate-90 scale-[1.25]"
+                  loading="lazy"
                 />
               </div>
               <motion.div
@@ -334,9 +336,9 @@ const Index = () => {
 
           <div className="grid gap-8 md:grid-cols-3">
             {[
-              { id: 1, video: "/assets/videos/showcase-1.mp4", title: "Sensory Mastery" },
-              { id: 2, video: "/assets/videos/showcase-2.mp4", title: "Precision Motor Skills" },
-              { id: 3, video: "/assets/videos/showcase-3.mp4", title: "Social Interaction" },
+              { id: 1, ...assets.videos.showcase1, title: "Sensory Mastery" },
+              { id: 2, ...assets.videos.showcase2, title: "Precision Motor Skills" },
+              { id: 3, ...assets.videos.showcase3, title: "Social Interaction" },
             ].map((item, idx) => (
               <motion.div
                 key={item.id}
@@ -351,9 +353,11 @@ const Index = () => {
                   muted
                   loop
                   playsInline
+                  poster={item.poster}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 >
-                  <source src={item.video} type="video/mp4" />
+                  <source src={item.webm} type="video/webm" />
+                  <source src={item.mp4} type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-10 left-10">
@@ -460,35 +464,35 @@ const Index = () => {
                 content: "Our young champion making great progress in physical therapy today! Every step counts.",
                 type: "Achievement",
                 date: "2 days ago",
-                image: "/assets/gallery/clinic-7.webp"
+                image: assets.gallery[6]
               },
               {
                 id: 2,
                 content: "New sensory play tools have arrived! Helping children explore and learn through touch and feel.",
                 type: "Update",
                 date: "1 week ago",
-                image: "/assets/services/sensory-integration.webp"
+                image: assets.services.sensoryIntegration
               },
               {
                 id: 3,
                 content: "Speech therapy success stories! We're celebrating our little hero's first words this month.",
                 type: "Success Story",
                 date: "3 days ago",
-                image: "/assets/services/speech-therapy.webp"
+                image: assets.services.speechTherapy
               },
               {
                 id: 4,
                 content: "Join us for our next parent-teacher workshop on understanding child behavioral patterns.",
                 type: "Event",
                 date: "Today",
-                image: "/assets/gallery/clinic-8.webp"
+                image: assets.gallery[7]
               },
               {
                 id: 5,
                 content: "A beautiful morning at Tiny Triumph! Creating a nurturing environment for every child.",
                 type: "Clinic Life",
                 date: "4 days ago",
-                image: "/assets/gallery/clinic-9.webp"
+                image: assets.gallery[8]
               }
             ].map((post) => (
               <motion.div

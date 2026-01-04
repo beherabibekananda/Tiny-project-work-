@@ -4,14 +4,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Booking from "./pages/Booking";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
-import ServiceDetail from "./pages/ServiceDetail";
+// Lazy load page components
+const Index = React.lazy(() => import("./pages/Index"));
+const About = React.lazy(() => import("./pages/About"));
+const Services = React.lazy(() => import("./pages/Services"));
+const Booking = React.lazy(() => import("./pages/Booking"));
+const Gallery = React.lazy(() => import("./pages/Gallery"));
+const Contact = React.lazy(() => import("./pages/Contact"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
 
 
 import { ModeToggle } from "@/components/mode-toggle";
@@ -62,18 +63,24 @@ const AppContent = () => {
           <WhatsAppButton />
         </div>
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/services/:id" element={<ServiceDetail />} />
+          <React.Suspense fallback={
+            <div className="flex h-screen w-screen items-center justify-center bg-background">
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+            </div>
+          }>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/services/:id" element={<ServiceDetail />} />
 
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </React.Suspense>
         </AnimatePresence>
       </TooltipProvider>
     </ThemeProvider>

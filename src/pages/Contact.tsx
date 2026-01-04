@@ -95,37 +95,37 @@ const Contact = () => {
   return (
     <Layout>
       {/* 1. Split-Screen Theatrical Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-20">
-        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-16 md:pt-24 lg:pt-32">
+        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-white space-y-8"
+            className="text-white space-y-6 md:space-y-8 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary-foreground text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary-foreground text-xs md:text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
               <Sparkles className="h-4 w-4" />
               <span>Get in Touch</span>
             </div>
-            <h1 className="font-display text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
-              Let's Start Your <br />
+            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight">
+              Let's Start Your <br className="hidden sm:block" />
               <span className="text-hero-gradient italic">Child's Journey.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl">
+            <p className="text-lg md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
               Have questions about our specialized programs? Our clinical experts are ready to listen, guide, and support your family at every step.
             </p>
-            <div className="flex flex-wrap gap-6 pt-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 pt-4">
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
+                <div className="h-10 w-10 md:h-12 md:w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-primary transition-colors">
+                  <CheckCircle2 className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                 </div>
-                <span className="text-white/90 font-medium">Expert Consultation</span>
+                <span className="text-white/90 text-sm md:text-base font-medium">Expert Consultation</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
-                  <CheckCircle2 className="h-6 w-6 text-primary" />
+                <div className="h-10 w-10 md:h-12 md:w-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10">
+                  <CheckCircle2 className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                 </div>
-                <span className="text-white/90 font-medium">Boutique Setting</span>
+                <span className="text-white/90 text-sm md:text-base font-medium">Boutique Setting</span>
               </div>
             </div>
           </motion.div>
@@ -134,13 +134,14 @@ const Contact = () => {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative lg:h-[80vh] flex items-end justify-center"
+            className="relative lg:h-[80vh] flex items-center justify-center lg:items-end"
           >
-            <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-2xl border border-white/10">
+            <div className="relative z-10 w-full max-w-md lg:max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-2xl border border-white/10">
               <img
                 src="/pediatric-specialist.webp"
                 alt="Our Pediatric Specialist"
                 className="w-full h-full object-cover"
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a1a1f] via-transparent to-transparent opacity-40" />
             </div>

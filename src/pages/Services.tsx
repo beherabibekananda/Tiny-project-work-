@@ -12,38 +12,39 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "@/data/services";
+import { assets } from "@/lib/assets";
 
 const Services = () => {
 
   return (
     <Layout>
       {/* 1. Theatrical Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden py-24 md:py-32">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden py-16 md:py-32">
         {/* Background Image with Overlay */}
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1600&h=900&fit=crop')" }}
+          style={{ backgroundImage: `url(${assets.hero.reception})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40" />
         </motion.div>
 
-        <div className="container relative z-10">
+        <div className="container relative z-10 px-4 md:px-6">
           <div className="mx-auto max-w-5xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-display text-xl font-bold tracking-[0.4em] text-white/90 uppercase mb-8 drop-shadow-lg">
+              <h2 className="font-display text-sm md:text-xl font-bold tracking-[0.2em] md:tracking-[0.4em] text-white/90 uppercase mb-6 md:mb-8 drop-shadow-lg">
                 Clinical Excellence
               </h2>
-              <h1 className="font-display text-6xl md:text-9xl font-bold tracking-tight text-white leading-[1] mb-10 drop-shadow-2xl">
+              <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-[1.1] md:leading-[1] mb-8 md:mb-10 drop-shadow-2xl">
                 Crafting <span className="italic text-hero-gradient">Brighter</span> Futures.
               </h1>
-              <p className="mx-auto max-w-3xl text-2xl text-white leading-relaxed font-light drop-shadow-md">
+              <p className="mx-auto max-w-3xl text-lg md:text-2xl text-white leading-relaxed font-light drop-shadow-md">
                 Tailored therapy programs designed to unlock the unique potential within every child. Experience world-class care in a boutique clinical setting.
               </p>
             </motion.div>
@@ -91,6 +92,7 @@ const Services = () => {
                       src={service.image}
                       alt={service.title}
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
                   </div>
