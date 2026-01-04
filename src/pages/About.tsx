@@ -137,7 +137,7 @@ const About = () => {
                 <img
                   src={assets.gallery[6]}
                   alt="Professional Pediatric Consultation"
-                  className="absolute w-full h-full object-cover -rotate-90 scale-[1.35]"
+                  className="absolute w-full h-full object-cover rotate-90 scale-[1.35]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none" />
