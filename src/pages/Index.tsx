@@ -285,7 +285,7 @@ const Index = () => {
                 <img
                   src={assets.services.occupationalTherapy}
                   alt="Therapy session at Tiny Triumph"
-                  className="absolute inset-0 h-full w-full object-cover rotate-90 scale-[1.25]"
+                  className="absolute inset-0 h-full w-full object-cover -rotate-90 scale-[1.25]"
                   loading="lazy"
                 />
               </div>
