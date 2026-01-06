@@ -27,15 +27,23 @@ export const assets = {
     videos: {
         hero: {
             mp4: getAssetPath("assets/videos/hero-bg.mp4"),
+            webm: getAssetPath("assets/videos/hero-bg.webm"),
+            poster: getAssetPath("assets/videos/posters/hero-bg.webp"),
         },
         showcase1: {
             mp4: getAssetPath("assets/videos/showcase-1.mp4"),
+            webm: getAssetPath("assets/videos/showcase-1.webm"),
+            poster: getAssetPath("assets/videos/posters/showcase-1.webp"),
         },
         showcase2: {
             mp4: getAssetPath("assets/videos/showcase-2.mp4"),
+            webm: getAssetPath("assets/videos/showcase-2.webm"),
+            poster: getAssetPath("assets/videos/posters/showcase-2.webp"),
         },
         showcase3: {
             mp4: getAssetPath("assets/videos/showcase-3.mp4"),
+            webm: getAssetPath("assets/videos/showcase-3.webm"),
+            poster: getAssetPath("assets/videos/posters/showcase-3.webp"),
         },
     },
     services: {

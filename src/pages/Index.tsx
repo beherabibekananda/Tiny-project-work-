@@ -84,15 +84,7 @@ const Index = () => {
           style={{ opacity, y: y1 }}
           className="absolute inset-0 z-0 overflow-hidden"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover"
-          >
-            <source src={assets.videos.hero.mp4} type="video/mp4" />
-          </video>
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${assets.hero.reception})` }} />
           <div className="absolute inset-0 bg-black/60" />
         </motion.div>
 
@@ -169,7 +161,7 @@ const Index = () => {
                   stiffness: 100,
                   damping: 15
                 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: "-100px" }}
               >
                 <Link
                   to={`/services/${service.slug}`}
@@ -258,7 +250,7 @@ const Index = () => {
                     key={feature.title}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-20px" }}
+                    viewport={{ once: true }}
                     transition={{ delay: idx * 0.1 }}
                     className="flex gap-6 group"
                   >
@@ -293,7 +285,7 @@ const Index = () => {
                 <img
                   src={assets.services.occupationalTherapy}
                   alt="Therapy session at Tiny Triumph"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover rotate-90 scale-[1.25]"
                   loading="lazy"
                 />
               </div>
@@ -357,19 +349,14 @@ const Index = () => {
                 className="group relative h-96 overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
               >
                 <video
-                  preload="metadata"
+                  autoPlay
                   muted
                   loop
                   playsInline
+                  poster={item.poster}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onMouseOver={(e) => {
-                    e.currentTarget.play().catch(err => console.error("Video play failed:", err));
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.pause();
-                    e.currentTarget.currentTime = 0;
-                  }}
                 >
+                  <source src={item.webm} type="video/webm" />
                   <source src={item.mp4} type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
