@@ -1,9 +1,17 @@
+import React, { useState, useEffect, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/mode-toggle";
+import { WhatsAppButton } from "./components/WhatsAppButton";
+import ScrollToTop from "./components/ScrollToTop";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import EntranceGate from "./components/ui/EntranceGate";
+
 // Lazy load page components
 const Index = React.lazy(() => import("./pages/Index"));
 const About = React.lazy(() => import("./pages/About"));
@@ -14,45 +22,36 @@ const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
 
-
-import { ModeToggle } from "@/components/mode-toggle";
-import { WhatsAppButton } from "./components/WhatsAppButton";
-import ScrollToTop from "./components/ScrollToTop";
-import { AnimatePresence, motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
-import EntranceGate from "./components/ui/EntranceGate";
-import React, { useState, useEffect } from "react";
-
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
-  const [showEntrance, setShowEntrance] = useState(false);
-  const [showTransition, setShowTransition] = useState(false);
+  const [gateMode, setGateMode] = useState<"full" | "minimal" | null>(null);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    // Show entrance on every mount (refresh/initial load)
-    setShowEntrance(true);
+    // Initial load: show full entrance gate
+    setGateMode("full");
     setIsInitialLoad(false);
   }, []);
 
   useEffect(() => {
-    // Show transition pulse on every route change (except initial load)
+    // Route changes: show minimal pulse (except initial)
     if (!isInitialLoad) {
-      setShowTransition(true);
+      setGateMode("minimal");
     }
   }, [location.pathname]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <TooltipProvider>
-        <AnimatePresence>
-          {showEntrance && (
-            <EntranceGate mode="full" onComplete={() => setShowEntrance(false)} />
-          )}
-          {showTransition && (
-            <EntranceGate mode="minimal" onComplete={() => setShowTransition(false)} />
+        <AnimatePresence mode="wait">
+          {gateMode && (
+            <EntranceGate
+              key={gateMode === "full" ? "full" : location.pathname}
+              mode={gateMode}
+              onComplete={() => setGateMode(null)}
+            />
           )}
         </AnimatePresence>
         <Toaster />
