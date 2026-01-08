@@ -95,10 +95,10 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white drop-shadow-2xl">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white drop-shadow-2xl leading-[1.1]">
                 <span className="text-hero-gradient">Nurturing Little Triumphs</span>
               </h1>
-              <p className="mt-6 md:mt-8 text-lg sm:text-xl md:text-2xl text-white leading-relaxed max-w-3xl mx-auto font-light drop-shadow-lg">
+              <p className="mt-4 md:mt-6 text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto font-light drop-shadow-lg">
                 A premier child development centre in Balasore dedicated to unlocking your child's full potential through
                 <span className="text-white font-medium"> compassionate care</span> and <span className="text-white font-medium">expert therapy</span>.
               </p>
@@ -140,15 +140,15 @@ const Index = () => {
       <section className="py-16 md:py-28 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient">
               Specialized Child Development Services
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-gray-900 dark:text-gray-100">
+            <p className="mt-3 text-sm sm:text-base text-gray-900 dark:text-gray-100">
               We offer a full range of therapeutic interventions tailored to your child's unique needs.
             </p>
           </div>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -165,7 +165,7 @@ const Index = () => {
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-80 overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-2 group"
+                  className="group relative block h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-2 group"
                 >
                   <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   {/* Black Shade Sweep Effect */}
@@ -236,11 +236,11 @@ const Index = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h2 className="font-display text-4xl font-bold text-light-gradient dark:text-dark-gradient md:text-5xl leading-tight">
+              <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl leading-tight">
                 Why Parents Trust <br />
                 <span className="text-primary">Tiny Triumph</span>
               </h2>
-              <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 leading-relaxed">
+              <p className="mt-4 text-base text-gray-900 dark:text-gray-100 leading-relaxed">
                 We provide a personalized sanctuary for development, combining clinical excellence with a nurturing heart.
               </p>
 
@@ -265,7 +265,7 @@ const Index = () => {
                       <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white">
                         {feature.title}
                       </h3>
-                      <p className="mt-2 text-gray-900 dark:text-gray-100 text-lg leading-relaxed">
+                      <p className="mt-2 text-gray-900 dark:text-gray-100 text-sm leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -285,7 +285,7 @@ const Index = () => {
                 <img
                   src={assets.services.occupationalTherapy}
                   alt="Therapy session at Tiny Triumph"
-                  className="absolute inset-0 h-full w-full object-cover -rotate-90 scale-[1.25]"
+                  className="absolute w-[200%] h-[200%] left-[-50%] top-[-50%] object-cover -rotate-90 scale-[1.2]"
                   loading="lazy"
                 />
               </div>
@@ -325,16 +325,16 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-4xl font-bold text-foreground md:text-5xl"
+              className="font-display text-3xl font-bold text-foreground md:text-4xl"
             >
               See Us in <span className="text-primary italic">Action</span>
             </motion.h2>
-            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium leading-relaxed">
+            <p className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium leading-relaxed">
               Witness the dedicated care and specialized techniques our therapists use to empower every child.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {[
               { id: 1, ...assets.videos.showcase1, title: "Sensory Mastery" },
               { id: 2, ...assets.videos.showcase2, title: "Precision Motor Skills" },
@@ -381,7 +381,7 @@ const Index = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-display text-4xl font-bold text-foreground md:text-5xl"
+              className="font-display text-3xl font-bold text-foreground md:text-4xl"
             >
               Voices of Trust
             </motion.h2>
@@ -390,13 +390,13 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium"
+              className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium"
             >
               Real stories from families who have experienced the magic of Tiny Triumph.
             </motion.p>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
@@ -440,11 +440,11 @@ const Index = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-4xl font-bold text-foreground dark:text-white md:text-5xl"
+              className="font-display text-3xl font-bold text-foreground dark:text-white md:text-4xl"
             >
               Our Social Footprints
             </motion.h2>
-            <p className="mt-6 text-xl text-gray-900 dark:text-gray-100 font-medium">
+            <p className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium">
               Join our vibrant community and witness the daily triumphs of our little champions.
             </p>
           </div>
@@ -590,11 +590,11 @@ const Index = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h2 className="font-display text-5xl font-bold text-primary-foreground md:text-7xl leading-tight">
+              <h2 className="font-display text-4xl font-bold text-primary-foreground md:text-5xl leading-tight">
                 Ready to Help Your <br />
                 <span className="text-white/80">Child Thrive?</span>
               </h2>
-              <p className="mt-8 text-2xl text-primary-foreground/90 font-light max-w-2xl mx-auto">
+              <p className="mt-6 text-lg text-primary-foreground/90 font-light max-w-2xl mx-auto">
                 Schedule your comprehensive evaluation today and start the journey towards
                 <span className="font-bold text-white"> lasting success</span>.
               </p>

@@ -19,7 +19,7 @@ const Gallery = () => {
         <Layout>
             {/* 1. Splendid Split-Screen Hero */}
             <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-20">
-                <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center">
+                <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -30,11 +30,11 @@ const Gallery = () => {
                             <Sparkles className="h-4 w-4" />
                             <span>A World of Discovery</span>
                         </div>
-                        <h1 className="font-display text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
+                        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
                             Our <br />
                             <span className="text-hero-gradient italic">Inspiring Spaces.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl">
+                        <p className="text-base md:text-lg text-white/70 leading-relaxed font-light max-w-2xl">
                             Step inside our specialized facilities, where every corner is designed to inspire joy, foster creativity, and support your child's developmental journey.
                         </p>
                     </motion.div>
@@ -43,9 +43,9 @@ const Gallery = () => {
                         initial={{ opacity: 0, scale: 0.9, x: 50 }}
                         animate={{ opacity: 1, scale: 1, x: 0 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="relative lg:h-[80vh] flex items-end justify-center"
+                        className="relative lg:h-[80vh] flex items-center justify-center lg:items-center"
                     >
-                        <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10">
+                        <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[85%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mb-12 lg:mb-0">
                             <img
                                 src={assets.hero.specialist3}
                                 alt="Tiny Triumph Multi-Sensory Play Area"
@@ -63,7 +63,7 @@ const Gallery = () => {
             {/* Gallery Grid */}
             <section className="py-12 md:py-20 bg-background">
                 <div className="container">
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {galleryItems.map((item, index) => (
                             <div
                                 key={index}

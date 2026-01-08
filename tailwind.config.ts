@@ -8,11 +8,11 @@ export default {
     container: {
       center: true,
       padding: {
-        DEFAULT: "1rem",
-        sm: "2rem",
+        DEFAULT: "20px",
+        md: "24px",
       },
       screens: {
-        "2xl": "1400px",
+        "2xl": "1228px",
       },
     },
     extend: {
@@ -104,6 +104,10 @@ export default {
           "0%": { transform: "translateX(100%)" },
           "100%": { transform: "translateX(0%)" },
         },
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -112,6 +116,7 @@ export default {
         "fade-in": "fade-in 0.5s ease-out forwards",
         marquee: "marquee 40s linear infinite",
         marquee2: "marquee2 40s linear infinite",
+        "pulse-slow": "pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },

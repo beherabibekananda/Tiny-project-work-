@@ -38,13 +38,11 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="font-display text-sm md:text-xl font-bold tracking-[0.2em] md:tracking-[0.4em] text-white/90 uppercase mb-6 md:mb-8 drop-shadow-lg">
-                Clinical Excellence
-              </h2>
-              <h1 className="font-display text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-[1.1] md:leading-[1] mb-8 md:mb-10 drop-shadow-2xl">
+
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1] md:leading-[1] mb-8 md:mb-10 drop-shadow-2xl">
                 Crafting <span className="italic text-hero-gradient">Brighter</span> Futures.
               </h1>
-              <p className="mx-auto max-w-3xl text-lg md:text-2xl text-white leading-relaxed font-light drop-shadow-md">
+              <p className="mx-auto max-w-2xl text-base md:text-lg text-white leading-relaxed font-light drop-shadow-md">
                 Tailored therapy programs designed to unlock the unique potential within every child. Experience world-class care in a boutique clinical setting.
               </p>
             </motion.div>
@@ -61,7 +59,7 @@ const Services = () => {
       {/* 2. Boutique Services Showcase */}
       <section className="py-24 md:py-32 bg-background dark:bg-background">
         <div className="container">
-          <div className="grid gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
@@ -72,7 +70,7 @@ const Services = () => {
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-[520px] overflow-hidden rounded-[3.5rem] bg-card border border-border/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] hover:-translate-y-2"
+                  className="group relative block h-full overflow-hidden rounded-[3.5rem] bg-card border border-border/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] hover:-translate-y-2"
                 >
                   {/* Black Shade Sweep Effect */}
                   <motion.div
@@ -91,7 +89,10 @@ const Services = () => {
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className={`absolute object-cover transition-transform duration-700 ${service.id === 'occupational-therapy'
+                        ? 'w-[180%] h-[180%] left-[-40%] top-[-40%] -rotate-90 scale-[1.1] group-hover:scale-[1.2]'
+                        : 'h-full w-full inset-0 group-hover:scale-110'
+                        }`}
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
@@ -114,7 +115,7 @@ const Services = () => {
                     <h3 className="font-display text-2xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-gray-900 dark:text-gray-100 text-lg leading-relaxed mb-6 font-medium line-clamp-2">
+                    <p className="text-gray-900 dark:text-gray-100 text-sm leading-relaxed mb-6 font-medium line-clamp-2">
                       {service.headline}
                     </p>
 
@@ -133,17 +134,17 @@ const Services = () => {
       {/* 3. Narrative "Our Philosophy" Section */}
       <section className="py-24 md:py-40 bg-secondary/5 dark:bg-background/40 relative overflow-hidden">
         <div className="container relative z-10">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-5xl md:text-7xl font-bold text-light-gradient dark:text-dark-gradient leading-tight mb-10">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-light-gradient dark:text-dark-gradient leading-tight mb-8">
                 Clinical Mastery. <br />
                 <span className="text-primary italic">Compassionate</span> Results.
               </h2>
-              <div className="space-y-8 text-2xl text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
+              <div className="space-y-6 text-sm md:text-base text-gray-900 dark:text-gray-100 leading-relaxed font-medium">
                 <p>
                   At Tiny Triumph, we don't believe in one-size-fits-all. Every child's developmental path is a unique tapestry of strengths and opportunities.
                 </p>
@@ -159,12 +160,16 @@ const Services = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-square rounded-[4rem] bg-card shadow-2xl p-12 flex flex-col justify-center text-center">
-                <Quote className="h-20 w-20 text-primary/20 mx-auto mb-10" />
-                <h3 className="font-display text-4xl italic font-medium text-light-gradient dark:text-dark-gradient mb-10">
+              <div className="aspect-square rounded-[4rem] bg-card shadow-2xl p-12 flex flex-col justify-center text-center relative overflow-hidden">
+                {/* Faded Background Logo */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.05]">
+                  <img src="/logo.webp" alt="" className="w-2/3 h-2/3 object-contain" />
+                </div>
+                <Quote className="h-20 w-20 text-primary/20 mx-auto mb-10 relative z-10" />
+                <h3 className="font-display text-2xl italic font-medium text-light-gradient dark:text-dark-gradient mb-8 relative z-10">
                   "Our mission is to bridge the gap between clinical excellence and the joyful play of childhood."
                 </h3>
-                <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center justify-center gap-4 relative z-10">
                   <div className="h-px w-12 bg-primary/30" />
                   <span className="text-xl font-bold tracking-widest uppercase text-primary">Tiny Triumph Team</span>
                   <div className="h-px w-12 bg-primary/30" />
@@ -183,10 +188,10 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-5xl md:text-7xl font-bold text-primary-foreground mb-8">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
               Ready to Experience the Difference?
             </h2>
-            <p className="mx-auto max-w-2xl text-2xl text-white/90 dark:text-gray-100 mb-12 font-medium">
+            <p className="mx-auto max-w-xl text-lg text-white/90 dark:text-gray-100 mb-10 font-medium">
               Book a premium assessment today and start your child's journey toward clinical success.
             </p>
             <Button

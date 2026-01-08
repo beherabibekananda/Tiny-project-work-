@@ -96,7 +96,7 @@ const Contact = () => {
     <Layout>
       {/* 1. Split-Screen Theatrical Hero */}
       <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-16 md:pt-24 lg:pt-32">
-        <div className="container relative z-10 grid gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
+        <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -107,11 +107,11 @@ const Contact = () => {
               <Sparkles className="h-4 w-4" />
               <span>Get in Touch</span>
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tight">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
               Let's Start Your <br className="hidden sm:block" />
               <span className="text-hero-gradient italic">Child's Journey.</span>
             </h1>
-            <p className="text-lg md:text-2xl text-white/70 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
+            <p className="text-base md:text-lg text-white/70 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
               Have questions about our specialized programs? Our clinical experts are ready to listen, guide, and support your family at every step.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 pt-4">
@@ -178,14 +178,14 @@ const Contact = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-0" />
 
         <div className="container relative z-10">
-          <div className="grid gap-12 lg:gap-20 lg:grid-cols-12">
+          <div className="grid grid-cols-1 gap-12 lg:gap-20 lg:grid-cols-12">
             {/* Left side: Info Cards */}
             <div className="lg:col-span-5 space-y-10">
               <div className="space-y-6">
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
                   Connect With <span className="text-primary italic">Excellence.</span>
                 </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed font-light">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed font-light">
                   We're committed to building lasting relationships based on trust, respect, and excellent therapeutic care.
                 </p>
               </div>

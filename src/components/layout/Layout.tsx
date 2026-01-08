@@ -93,6 +93,16 @@ const Layout = ({ children }: LayoutProps) => {
           ))}
         </div>
 
+        {/* Large Faded Background Logo */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02] dark:opacity-[0.04] overflow-hidden">
+          <img
+            src="/logo.webp"
+            alt=""
+            className="w-[80%] h-[80%] object-contain animate-pulse-slow"
+            style={{ filter: 'grayscale(100%)' }}
+          />
+        </div>
+
         {/* Grid Overlay */}
         <div
           className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"

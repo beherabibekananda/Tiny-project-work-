@@ -42,10 +42,19 @@ const ServiceDetail = () => {
                 <section className={`relative min-h-[85vh] flex items-center pt-24 overflow-hidden`}>
                     {/* Background Image with Overlay */}
                     <motion.div
-                        initial={{ scale: 1.1 }}
-                        animate={{ scale: 1 }}
+                        initial={{
+                            scale: 1.1,
+                            rotate: service.id === 'occupational-therapy' ? -90 : 0,
+                        }}
+                        animate={{
+                            scale: 1,
+                            rotate: service.id === 'occupational-therapy' ? -90 : 0,
+                        }}
                         transition={{ duration: 1.5 }}
-                        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                        className={`absolute z-0 bg-cover bg-center bg-no-repeat ${service.id === 'occupational-therapy'
+                                ? 'w-[200vw] h-[200vh] -left-[50vw] -top-[50vh]'
+                                : 'inset-0'
+                            }`}
                         style={{ backgroundImage: `url('${service.image}')` }}
                     >
                         <div className={`absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-background/20 backdrop-blur-[1px]`} />
@@ -60,7 +69,7 @@ const ServiceDetail = () => {
                             >
                                 <Link to="/services" className="group inline-flex items-center text-white font-bold mb-12 hover:translate-x-[-4px] transition-transform drop-shadow-md">
                                     <ArrowLeft className="mr-2 h-5 w-5 transition-transform group-hover:-translate-x-1" />
-                                    Back to Clinical Excellence
+                                    Back to Services
                                 </Link>
 
                                 <div className="flex flex-col md:flex-row md:items-center gap-6 mb-10">
@@ -76,11 +85,11 @@ const ServiceDetail = () => {
                                     </h2>
                                 </div>
 
-                                <h1 className="font-display text-5xl md:text-8xl font-bold tracking-tight text-white leading-[1.1] mb-10 drop-shadow-xl">
+                                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1] mb-8 drop-shadow-xl">
                                     {service.headline}
                                 </h1>
 
-                                <p className="text-2xl md:text-3xl text-white/90 leading-relaxed max-w-3xl font-light drop-shadow-lg">
+                                <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl font-light drop-shadow-lg">
                                     {service.description}
                                 </p>
                             </motion.div>
@@ -106,7 +115,7 @@ const ServiceDetail = () => {
                             className="max-w-4xl mx-auto text-center"
                         >
                             <Quote className={`h-16 w-16 mx-auto mb-10 opacity-20 ${service.iconColor}`} />
-                            <h3 className="font-display text-3xl md:text-5xl italic font-medium text-foreground leading-tight">
+                            <h3 className="font-display text-2xl md:text-3xl italic font-medium text-foreground leading-tight">
                                 "{service.quote}"
                             </h3>
                         </motion.div>
@@ -116,7 +125,7 @@ const ServiceDetail = () => {
                 {/* 3. Narrative Content Section */}
                 <section className="py-24 md:py-32">
                     <div className="container">
-                        <div className="grid gap-20 lg:grid-cols-12 items-start">
+                        <div className="grid grid-cols-1 gap-20 lg:grid-cols-12 items-start">
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -126,10 +135,10 @@ const ServiceDetail = () => {
                             >
                                 <div className="space-y-10">
                                     <div>
-                                        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8">
+                                        <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                                             The <span className="text-primary italic">Tiny Triumph</span> Approach
                                         </h2>
-                                        <div className="prose prose-2xl text-muted-foreground leading-relaxed">
+                                        <div className="prose prose-lg text-muted-foreground leading-relaxed">
                                             <p>{service.longDescription}</p>
                                         </div>
                                     </div>
@@ -137,7 +146,7 @@ const ServiceDetail = () => {
                                     {/* Interactive Core Areas */}
                                     <div className="pt-10">
                                         <h3 className="font-display text-2xl font-bold tracking-wider uppercase text-foreground mb-10">Core Expertise</h3>
-                                        <div className="grid gap-4 sm:grid-cols-2">
+                                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                             {service.features.map((feature, idx) => (
                                                 <motion.div
                                                     key={idx}
@@ -145,7 +154,7 @@ const ServiceDetail = () => {
                                                     className="flex items-center gap-4 p-6 rounded-3xl bg-muted/20 border border-border/40 hover:border-primary/30 transition-all group"
                                                 >
                                                     <div className={`h-3 w-3 rounded-full ${service.bgColor.replace('50/90', '500')} opacity-40 group-hover:opacity-100 transition-opacity`} />
-                                                    <span className="text-lg font-medium text-foreground/80 group-hover:text-primary transition-colors">{feature}</span>
+                                                    <span className="text-base font-medium text-foreground/80 group-hover:text-primary transition-colors">{feature}</span>
                                                 </motion.div>
                                             ))}
                                         </div>
@@ -180,7 +189,7 @@ const ServiceDetail = () => {
                                             {service.benefits.map((benefit, idx) => (
                                                 <li key={idx} className="flex gap-5">
                                                     <div className={`mt-2 h-2.5 w-2.5 rounded-full flex-shrink-0 ${service.iconColor.replace('text-', 'bg-')}`} />
-                                                    <p className="text-xl text-muted-foreground leading-snug">{benefit}</p>
+                                                    <p className="text-base text-muted-foreground leading-snug">{benefit}</p>
                                                 </li>
                                             ))}
                                         </ul>
@@ -196,7 +205,7 @@ const ServiceDetail = () => {
                                 >
                                     <div className="relative z-10">
                                         <h3 className="font-display text-2xl md:text-3xl font-bold mb-6">Begin the Journey</h3>
-                                        <p className="text-xl text-primary-foreground/80 mb-10 leading-relaxed">
+                                        <p className="text-lg text-primary-foreground/80 mb-8 leading-relaxed">
                                             Schedule a personalized assessment with our {service.title} specialists.
                                         </p>
                                         <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto rounded-full px-8 py-6 text-lg md:px-12 md:py-8 md:text-xl shadow-xl hover-lift bg-white text-primary hover:bg-white/90">
