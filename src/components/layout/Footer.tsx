@@ -9,8 +9,8 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white">
-                <img src="/logo.webp" alt="Tiny Triumph Logo" className="h-full w-full object-cover" />
+              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white border border-primary/10">
+                <img src="/logo.webp" alt="Tiny Triumph Logo" className="h-full w-full object-cover scale-[1.2] rounded-full" />
               </div>
               <span className="font-display text-xl font-semibold text-foreground">
                 Tiny Triumph
