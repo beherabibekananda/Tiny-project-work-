@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
-import { Sparkles, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Sparkles, ChevronRight, CheckCircle2, Play } from "lucide-react";
 import { assets } from "@/lib/assets";
 
 const Gallery = () => {
+    const videoItems = [
+        { title: "Sensory Mastery", ...assets.videos.showcase1 },
+        { title: "Precision Motor Skills", ...assets.videos.showcase2 },
+        { title: "Social Interaction", ...assets.videos.showcase3 },
+    ];
     const galleryItems = [
         { title: "Our Specialists", image: assets.hero.specialist1 },
         { title: "Expert Consultations", image: assets.hero.specialist2 },
@@ -19,55 +24,101 @@ const Gallery = () => {
         <Layout>
             {/* 1. Splendid Split-Screen Hero */}
             <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-20">
-                <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
+                {/* Faded Background Image */}
+                <div
+                    className="absolute inset-0 z-0 opacity-20"
+                    style={{
+                        backgroundImage: `url('${assets.hero.galleryHero}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                />
+                <div className="absolute inset-0 bg-[#0a2a24]/40 z-0" />
+
+                <div className="container relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-white space-y-8"
+                        className="text-white space-y-8 flex flex-col items-center text-center max-w-4xl mx-auto"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-teal-100 text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
-                            <Sparkles className="h-4 w-4" />
-                            <span>A World of Discovery</span>
-                        </div>
-                        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
+                        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
                             Our <br />
                             <span className="text-hero-gradient italic">Inspiring Spaces.</span>
                         </h1>
-                        <p className="text-base md:text-lg text-white/70 leading-relaxed font-light max-w-2xl">
+                        <p className="text-base md:text-xl text-white/70 leading-relaxed font-light max-w-2xl">
                             Step inside our specialized facilities, where every corner is designed to inspire joy, foster creativity, and support your child's developmental journey.
                         </p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, x: 50 }}
-                        animate={{ opacity: 1, scale: 1, x: 0 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="relative lg:h-[80vh] flex items-center justify-center lg:items-center"
-                    >
-                        <div className="relative z-10 w-full max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[85%] overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mb-12 lg:mb-0">
-                            <img
-                                src={assets.hero.specialist3}
-                                alt="Tiny Triumph Multi-Sensory Play Area"
-                                className="w-full h-full object-cover"
-                                loading="eager"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24] via-transparent to-transparent opacity-60" />
-                        </div>
-                        {/* Background Decorations */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-primary/20 rounded-full blur-[120px] -z-10" />
                     </motion.div>
                 </div>
             </section>
 
-            {/* Gallery Grid */}
-            <section className="py-12 md:py-20 bg-background">
+            {/* 2. Video Showcase Section */}
+            <section className="py-20 bg-secondary/10">
                 <div className="container">
-                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="mx-auto max-w-2xl text-center mb-16">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="font-display text-3xl font-bold text-foreground md:text-5xl"
+                        >
+                            Clinic in <span className="text-primary italic">Motion</span>
+                        </motion.h2>
+                        <p className="mt-4 text-muted-foreground text-lg">
+                            Witness the specialized therapeutic techniques and joyous moments within our centre.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+                        {videoItems.map((video, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="group relative aspect-square overflow-hidden rounded-xl bg-card shadow-sm border border-border/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                            >
+                                <video
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    poster={video.poster}
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                >
+                                    <source src={video.webm} type="video/webm" />
+                                    <source src={video.mp4} type="video/mp4" />
+                                </video>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div className="h-16 w-16 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                                        <Play className="h-8 w-8 text-white fill-white" />
+                                    </div>
+                                </div>
+                                <div className="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
+                                    <h3 className="text-xl font-bold text-white drop-shadow-lg">{video.title}</h3>
+                                    <div className="mt-2 h-0.5 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. Image Gallery Grid */}
+            <section className="py-12 md:py-24 bg-secondary/5">
+                <div className="container">
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {galleryItems.map((item, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border/50 bg-muted transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.05 }}
+                                className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-border/40 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                             >
                                 <img
                                     src={item.image}
@@ -75,13 +126,12 @@ const Gallery = () => {
                                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     loading="lazy"
                                 />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center bg-primary/80 opacity-0 transition-opacity duration-500 group-hover:opacity-100 p-6 text-center">
-                                    <h3 className="font-display text-2xl font-bold text-primary-foreground transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-8">
+                                    <h3 className="font-display text-xl font-bold text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
                                         {item.title}
                                     </h3>
-                                    <div className="mt-2 h-1 w-12 bg-white rounded-full transform scale-x-0 transition-transform duration-500 delay-100 group-hover:scale-x-100" />
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

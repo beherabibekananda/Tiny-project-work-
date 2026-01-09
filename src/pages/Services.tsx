@@ -57,7 +57,7 @@ const Services = () => {
       </section>
 
       {/* 2. Boutique Services Showcase */}
-      <section className="py-24 md:py-32 bg-background dark:bg-background">
+      <section className="py-24 md:py-32 bg-secondary/5 dark:bg-background">
         <div className="container">
           <div className="grid grid-cols-1 gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -70,57 +70,30 @@ const Services = () => {
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-full overflow-hidden rounded-[3.5rem] bg-card border border-border/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] hover:-translate-y-2"
+                  className="group relative block h-full overflow-hidden rounded-[2.5rem] bg-white dark:bg-card border border-border/80 p-10 md:p-12 transition-all duration-500 shadow-sm hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] hover:-translate-y-2"
                 >
-                  {/* Black Shade Sweep Effect */}
-                  <motion.div
-                    className="absolute inset-0 z-0 pointer-events-none bg-[#1d2f38]/5"
-                    initial={{ y: "-210%", rotate: 90, scaleX: 0.5, scaleY: 1.5 }}
-                    whileHover={{ y: "210%" }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  />
-
-                  {/* Light Sweep Effect */}
-                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-                    <div className="absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 group-hover:translate-x-[300%]" />
+                  {/* Large Faded Index Number at Bottom Left */}
+                  <div className="absolute -bottom-8 -left-2 font-display text-[11rem] font-black text-foreground/5 transition-colors group-hover:text-primary/5 select-none leading-none">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
 
-                  <div className="h-48 w-full overflow-hidden relative z-20">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className={`absolute object-cover transition-transform duration-700 ${service.id === 'occupational-therapy'
-                        ? 'w-[180%] h-[180%] left-[-40%] top-[-40%] -rotate-90 scale-[1.1] group-hover:scale-[1.2]'
-                        : 'h-full w-full inset-0 group-hover:scale-110'
-                        }`}
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-                  </div>
-
-                  <div className="relative z-30 flex h-full flex-col p-10 transition-all duration-300">
-                    <div className="mb-6 relative">
-                      {/* Icon Backwash Effect */}
-                      <div className={`flex h-20 w-20 items-center justify-center rounded-[1.5rem] bg-background/80 backdrop-blur-sm shadow-xl transition-all duration-500 cubic-bezier(0.62, 0.21, 0.45, 1.52) group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 -mt-20 relative z-40 ${service.iconColor}`}>
-                        <motion.div
-                          whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
-                          transition={{ duration: 0.5 }}
-                          className="transition-colors duration-300 delay-75 group-hover:text-white"
-                        >
-                          <service.icon className="h-10 w-10" />
-                        </motion.div>
+                  <div className="relative z-10 space-y-10">
+                    <div className="space-y-6">
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-background shadow-md border border-border/20 transition-all duration-500 group-hover:bg-primary group-hover:border-primary ${service.iconColor}`}>
+                        <service.icon className="h-6 w-6 transition-colors duration-300 group-hover:text-white" />
                       </div>
+
+                      <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                        {service.title}
+                      </h3>
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold tracking-tight mb-4 group-hover:text-primary transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-900 dark:text-gray-100 text-sm leading-relaxed mb-6 font-medium line-clamp-2">
+                    <p className="text-muted-foreground leading-relaxed text-sm md:text-base font-medium max-w-[90%]">
                       {service.headline}
                     </p>
 
-                    <div className="mt-auto flex items-center gap-3 text-primary font-bold group-hover:translate-x-2 transition-transform duration-300">
-                      <span className="text-xs uppercase tracking-[0.2em]">Explore Program</span>
+                    <div className="pt-6 flex items-center gap-3 text-primary font-bold transition-all duration-300 group-hover:gap-4">
+                      <span className="text-xs uppercase tracking-[0.2em]">Learn More</span>
                       <ArrowRight className="h-5 w-5" />
                     </div>
                   </div>
@@ -163,7 +136,7 @@ const Services = () => {
               <div className="aspect-square rounded-[4rem] bg-card shadow-2xl p-12 flex flex-col justify-center text-center relative overflow-hidden">
                 {/* Faded Background Logo */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] dark:opacity-[0.05]">
-                  <img src="/logo.webp" alt="" className="w-2/3 h-2/3 object-contain" />
+                  <img src={assets.logos.main} alt="" className="w-2/3 h-2/3 object-contain" />
                 </div>
                 <Quote className="h-20 w-20 text-primary/20 mx-auto mb-10 relative z-10" />
                 <h3 className="font-display text-2xl italic font-medium text-light-gradient dark:text-dark-gradient mb-8 relative z-10">

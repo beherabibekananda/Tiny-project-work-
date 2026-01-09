@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { assets } from "@/lib/assets";
 
 interface EntranceGateProps {
     onComplete: () => void;
@@ -139,28 +140,30 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                 {/* Logo with Pulse Glow */}
                                 <div className="relative mb-10">
                                     <motion.div
+                                        initial={{ opacity: 0, scale: 0.5, borderRadius: "9999px" }}
                                         animate={{
-                                            scale: [1, 1.4, 1],
-                                            opacity: [0.3, 0.6, 0.3]
+                                            opacity: isRevealActive ? 0 : 1,
+                                            scale: isRevealActive ? 1.2 : 1,
+                                            borderRadius: "9999px",
+                                            width: (window.innerWidth < 768 ? "18rem" : "24rem"),
+                                            height: (window.innerWidth < 768 ? "18rem" : "24rem"),
+                                            backgroundColor: "white",
+                                            boxShadow: !isRevealActive ? "0 0 80px rgba(94, 194, 180, 0.6)" : "none",
+                                            y: isRevealActive ? -500 : 0,
+                                            filter: isRevealActive ? "blur(20px)" : "blur(0px)"
                                         }}
-                                        transition={{ duration: 2.5, repeat: Infinity }}
-                                        className="absolute inset-0 bg-primary/40 blur-[80px] opacity-40 mix-blend-screen"
-                                    />
-                                    <div className="p-12 md:p-14 rounded-full border border-white/10 bg-white backdrop-blur-2xl relative overflow-hidden flex items-center justify-center h-48 w-48 md:h-64 md:w-64">
-                                        <img src="/logo.webp" alt="Tiny Triumph" className="h-full w-full object-cover scale-[1.3] rounded-full" />
-                                    </div>
-                                </div>
-
-                                <h2 className="text-white text-2xl sm:text-4xl md:text-7xl font-display font-bold tracking-[0.2em] sm:tracking-[0.45em] mb-4 sm:mb-6 drop-shadow-2xl text-center px-4">
-                                    TINY <span className="text-primary italic">TRIUMPH</span>
-                                </h2>
-
-                                <div className="flex items-center gap-4 sm:gap-8 px-4">
-                                    <div className="h-px w-8 sm:w-14 bg-primary/30" />
-                                    <p className="text-white/40 text-[8px] sm:text-[10px] md:text-[12px] font-bold uppercase tracking-[0.4em] sm:tracking-[1em] text-center">
-                                        Nurturing Growth, Building Trust
-                                    </p>
-                                    <div className="h-px w-8 sm:w-14 bg-primary/30" />
+                                        transition={{
+                                            duration: isRevealActive ? 1.2 : 1.5,
+                                            ease: [0.34, 1.56, 0.64, 1]
+                                        }}
+                                        className="relative overflow-hidden flex items-center justify-center p-6 shadow-2xl z-[60]"
+                                    >
+                                        <img
+                                            src={assets.logos.square}
+                                            alt="Tiny Triumph Icon"
+                                            className="h-full w-full object-contain"
+                                        />
+                                    </motion.div>
                                 </div>
                             </motion.div>
                         )}

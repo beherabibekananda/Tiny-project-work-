@@ -63,7 +63,7 @@ export const services: Service[] = [
             "Enhanced handwriting and classroom endurance",
             "Improved emotional regulation and sensory comfort"
         ],
-        image: "/assets/services/occupational-therapy.webp"
+        image: "/assets/gallery/clinic-3.webp"
     },
     {
         id: "speech-therapy",

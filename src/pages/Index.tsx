@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { services } from "@/data/services";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { assets } from "@/lib/assets";
 
 const Index = () => {
@@ -30,6 +30,43 @@ const Index = () => {
     target: heroRef,
     offset: ["start start", "end start"]
   });
+
+  const [currentBanner, setCurrentBanner] = useState(0);
+  const banners = [
+    assets.hero.banner,
+    assets.hero.banner2,
+    assets.hero.banner3,
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentBanner((prev) => (prev + 1) % banners.length);
+    }, 5000); // Change banner every 5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
+  const socialFeedRef = useRef<HTMLDivElement>(null);
+  const testimonialRef = useRef<HTMLDivElement>(null);
+
+  const scrollFeed = (direction: 'left' | 'right') => {
+    if (socialFeedRef.current) {
+      const scrollAmount = 344; // Card width (320px) + gap (24px)
+      socialFeedRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollTestimonials = (direction: 'left' | 'right') => {
+    if (testimonialRef.current) {
+      const scrollAmount = testimonialRef.current.offsetWidth / 3;
+      testimonialRef.current.scrollBy({
+        left: direction === 'left' ? -testimonialRef.current.offsetWidth : testimonialRef.current.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const y1 = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -57,19 +94,55 @@ const Index = () => {
     {
       name: "Sandeep Rao",
       role: "Parent",
-      content: "The care our son receives at Tiny Triumph is exceptional. The therapists always take the time to listen and explain the progress thoroughly.",
+      content: "The care our son receives at Tiny Triumph is exceptional. The therapists always take the time to listen and explain the progress thoroughly. We've seen remarkable improvement in his motor skills.",
       rating: 5,
     },
     {
       name: "Meera Nair",
       role: "Parent",
-      content: "I was worried about finding the right support for my daughter, but the team here made us feel welcome and hopeful from day one.",
+      content: "I was worried about finding the right support for my daughter, but the team here made us feel welcome and hopeful from day one. Their sensory integration program is truly world-class.",
       rating: 5,
     },
     {
       name: "Prakash Mohanty",
       role: "Parent",
-      content: "As parents, we appreciate how wonderful they are with children. The therapeutic team at Tiny Triumph is truly amazing.",
+      content: "As parents, we appreciate how wonderful they are with children. The therapeutic team at Tiny Triumph is truly amazing. They don't just treat the child; they support the whole family.",
+      rating: 5,
+    },
+    {
+      name: "Ananya Das",
+      role: "Parent",
+      content: "The speech therapy sessions have been a game-changer for our daughter. She has gained so much confidence in her communication. We are forever grateful to the dedicated staff.",
+      rating: 5,
+    },
+    {
+      name: "Rajesh Kumar",
+      role: "Parent",
+      content: "Finding Tiny Triumph was a blessing. The behavioral therapy approach here is so positive and encouraging. Our son looks forward to his sessions every single week!",
+      rating: 5,
+    },
+    {
+      name: "Sunita Misra",
+      role: "Parent",
+      content: "A truly professional yet warm environment. The attention to detail in the personalized therapy plans shows how much they care about each child's individual journey.",
+      rating: 5,
+    },
+    {
+      name: "Amitav Pattnaik",
+      role: "Parent",
+      content: "The holistic approach at Tiny Triumph is what sets them apart. They focus on both physical and emotional development, making every session fun and effective.",
+      rating: 5,
+    },
+    {
+      name: "Sujata Sethi",
+      role: "Parent",
+      content: "We've tried many centers, but the level of expertise and personal touch at Tiny Triumph is unmatched. Our child has made more progress here in months than years elsewhere.",
+      rating: 5,
+    },
+    {
+      name: "Bikash Jena",
+      role: "Parent",
+      content: "The support system for parents is incredible. They provide us with tools and activities to continue the therapy at home, which has been so helpful for our son's growth.",
       rating: 5,
     },
   ];
@@ -78,15 +151,28 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden py-16 md:py-32">
-        {/* Background Image with Parallax & Overlay */}
-        {/* Cinematic Video Background */}
-        <motion.div
-          style={{ opacity, y: y1 }}
-          className="absolute inset-0 z-0 overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${assets.hero.reception})` }} />
-          <div className="absolute inset-0 bg-black/60" />
-        </motion.div>
+        <div className="absolute inset-0 z-0 overflow-hidden bg-black">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={currentBanner}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                opacity: { duration: 2, ease: "easeInOut" },
+                scale: { duration: 10, ease: "linear" }
+              }}
+              style={{ y: y1 }}
+              className="absolute inset-0"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url('${banners[currentBanner]}')` }}
+              />
+              <div className="absolute inset-0 bg-black/40" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
 
         <div className="container relative z-10 px-4 md:px-6">
           <div className="mx-auto max-w-4xl text-center">
@@ -281,11 +367,11 @@ const Index = () => {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
-              <div className="aspect-[4/5] overflow-hidden rounded-[3rem] shadow-2xl relative">
+              <div className="aspect-square overflow-hidden rounded-[3rem] shadow-2xl relative">
                 <img
                   src={assets.services.occupationalTherapy}
                   alt="Therapy session at Tiny Triumph"
-                  className="absolute w-[200%] h-[200%] left-[-50%] top-[-50%] object-cover -rotate-90 scale-[1.2]"
+                  className="absolute inset-0 w-full h-full object-cover -rotate-90 scale-[1.1]"
                   loading="lazy"
                 />
               </div>
@@ -373,15 +459,19 @@ const Index = () => {
         <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-x-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] translate-x-1/3" />
       </section>
-      <section className="py-24 md:py-32 bg-background relative">
-        <div className="container">
+      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 opacity-60" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#f48120]/5 rounded-full blur-[140px] translate-x-1/3 translate-y-1/3 opacity-60" />
+
+        <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="font-display text-3xl font-bold text-foreground md:text-4xl"
+              className="font-display text-3xl font-bold text-foreground md:text-5xl"
             >
               Voices of Trust
             </motion.h2>
@@ -390,38 +480,42 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium"
+              className="mt-4 text-lg text-muted-foreground font-medium"
             >
               Real stories from families who have experienced the magic of Tiny Triumph.
             </motion.p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div
+            ref={testimonialRef}
+            className="mt-12 flex gap-8 overflow-x-auto pb-12 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+          >
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                className="flex-shrink-0 w-full md:w-[calc(33.333%-1.5rem)] snap-center"
               >
-                <Card className="h-full border-none shadow-xl hover:shadow-2xl transition-all duration-500 rounded-[2.5rem] overflow-hidden bg-secondary/10 group">
+                <Card className="h-full border border-border/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgb(0,0,0,0.08)] transition-all duration-500 rounded-[2.5rem] overflow-hidden bg-white dark:bg-card group hover:-translate-y-2">
                   <CardContent className="p-10 flex flex-col h-full">
                     <div className="mb-6 flex gap-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-primary text-primary" />
+                        <Star key={i} className="h-5 w-5 fill-[#f48120] text-[#f48120]" />
                       ))}
                     </div>
-                    <p className="text-gray-900 dark:text-gray-100 italic text-lg leading-relaxed mb-10 flex-grow font-medium">
+                    <p className="text-foreground/80 italic text-lg leading-relaxed mb-10 flex-grow font-medium">
                       "{testimonial.content}"
                     </p>
                     <div className="mt-auto flex items-center gap-4">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white font-bold text-xl shadow-lg">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary font-bold text-xl shadow-inner border border-primary/20">
                         {testimonial.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 dark:text-white text-lg">{testimonial.name}</p>
-                        <p className="text-sm font-medium text-primary uppercase tracking-widest">{testimonial.role}</p>
+                        <p className="font-bold text-foreground text-lg">{testimonial.name}</p>
+                        <p className="text-sm font-semibold text-[#f48120] uppercase tracking-widest">{testimonial.role}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -429,145 +523,242 @@ const Index = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Pagination/Nav Indicator */}
+          <div className="flex justify-center items-center gap-2">
+            <button
+              onClick={() => scrollTestimonials('left')}
+              className="h-12 w-12 rounded-xl border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-95"
+            >
+              <ChevronRight className="h-6 w-6 rotate-180" />
+            </button>
+            <button
+              onClick={() => scrollTestimonials('right')}
+              className="h-12 w-12 rounded-xl border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-95 shadow-sm"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Social Footprints Section */}
-      <section className="bg-secondary/20 dark:bg-background/40 py-24 md:py-32 overflow-hidden relative">
-        <div className="container relative z-10">
-          <div className="mx-auto max-w-3xl text-center mb-16">
-            <motion.h2
+      <section className="bg-background pt-24 md:pt-32 pb-12 relative">
+        <div className="container relative">
+          {/* Section Header Badge */}
+          <div className="absolute -top-6 left-8 z-20">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#f48120] px-6 py-2 shadow-lg transition-transform hover:scale-105">
+              <MessageCircle className="h-5 w-5 text-white fill-white" />
+              <span className="text-sm font-bold uppercase tracking-wider text-white"># Social Footprints</span>
+            </div>
+          </div>
+
+          <div className="rounded-[2.5rem] border-2 border-[#f48120]/10 bg-white dark:bg-card p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+            <div
+              ref={socialFeedRef}
+              className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory scroll-smooth"
+            >
+              {[
+                {
+                  id: 1,
+                  username: "tinytriumph",
+                  content: "Our young champion making great progress in physical therapy today! Every step counts.",
+                  type: "Achievement",
+                  date: "Jan 9, 2026",
+                  image: assets.gallery[6],
+                  rotate: "rotate-90",
+                  scale: "scale-[1.5]",
+                  likes: "4.4K",
+                  comments: "22",
+                  url: "https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                },
+                {
+                  id: 2,
+                  username: "tinytriumph",
+                  content: "New sensory play tools have arrived! Helping children explore and learn through touch and feel.",
+                  type: "Update",
+                  date: "Jan 8, 2026",
+                  image: assets.services.sensoryIntegration,
+                  likes: "6.3K",
+                  comments: "73",
+                  url: "https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                },
+                {
+                  id: 3,
+                  username: "tinytriumph",
+                  content: "Speech therapy success stories! We're celebrating our little hero's first words this month.",
+                  type: "Success Story",
+                  date: "Jan 8, 2026",
+                  image: assets.services.speechTherapy,
+                  likes: "2.4K",
+                  comments: "25",
+                  url: "https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                },
+                {
+                  id: 4,
+                  username: "tinytriumph",
+                  content: "Join us for our next parent-teacher workshop on understanding child behavioral patterns.",
+                  type: "Event",
+                  date: "Jan 7, 2026",
+                  image: assets.gallery[7],
+                  likes: "1.9K",
+                  comments: "23",
+                  url: "https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                },
+                {
+                  id: 5,
+                  username: "tinytriumph",
+                  content: "A beautiful morning at Tiny Triumph! Creating a nurturing environment for every child.",
+                  type: "Clinic Life",
+                  date: "Jan 7, 2026",
+                  image: assets.gallery[8],
+                  likes: "754",
+                  comments: "8",
+                  url: "https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
+                }
+              ].map((post) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: post.id * 0.1 }}
+                  className="flex-shrink-0 w-[280px] sm:w-[320px] snap-center group"
+                >
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block bg-white dark:bg-background border border-border/60 rounded-xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  >
+                    {/* Card Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-border/40">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-foreground leading-tight">{post.username}</span>
+                        <span className="text-[10px] text-muted-foreground uppercase">{post.date}</span>
+                      </div>
+                      <Facebook className="h-5 w-5 text-blue-600 transition-transform group-hover:scale-110" />
+                    </div>
+
+                    {/* Card Image */}
+                    <div className="aspect-square w-full overflow-hidden relative bg-secondary/5">
+                      <img
+                        src={post.image}
+                        alt="Social post"
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 ${post.rotate || ""} ${post.scale || ""}`}
+                      />
+                    </div>
+
+                    {/* Interactions */}
+                    <div className="p-4 bg-background transition-colors group-hover:bg-secondary/5">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex items-center gap-1.5 transition-colors group-hover:text-red-500">
+                          <Heart className="h-5 w-5" />
+                          <span className="text-xs font-semibold">{post.likes}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 transition-colors group-hover:text-blue-500">
+                          <MessageCircle className="h-5 w-5" />
+                          <span className="text-xs font-semibold">{post.comments}</span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <p className="text-xs text-foreground/80 leading-relaxed line-clamp-3 font-medium group-hover:text-foreground transition-colors">
+                        {post.content}
+                      </p>
+                    </div>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Pagination/Nav Indicator */}
+            <div className="mt-8 flex justify-center items-center gap-2">
+              <button
+                onClick={() => scrollFeed('left')}
+                className="h-10 w-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-90"
+              >
+                <ChevronRight className="h-5 w-5 rotate-180" />
+              </button>
+              <button
+                onClick={() => scrollFeed('right')}
+                className="h-10 w-10 rounded-lg border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-90 shadow-sm"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Highlights Section */}
+      <section className="bg-background py-16">
+        <div className="container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { label: "Happy Families", value: "500+", icon: Heart, color: "text-red-500" },
+              { label: "Successful Therapies", value: "10k+", icon: Award, color: "text-yellow-500" },
+              { label: "Experience", value: "15+ Yrs", icon: Clock, color: "text-blue-500" }
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex flex-col items-center p-8 rounded-[2rem] bg-secondary/10 dark:bg-card border border-border/40 text-center hover:scale-105 transition-transform duration-300"
+              >
+                <stat.icon className={`h-8 w-8 ${stat.color} mb-4`} />
+                <span className="text-3xl font-bold text-foreground mb-1">{stat.value}</span>
+                <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background pt-8 pb-16 relative">
+        <div className="container">
+          <div className="mx-auto max-w-3xl text-center mb-12">
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-3xl font-bold text-foreground dark:text-white md:text-4xl"
             >
-              Our Social Footprints
-            </motion.h2>
-            <p className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium">
-              Join our vibrant community and witness the daily triumphs of our little champions.
-            </p>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                Connect with Us
+              </h2>
+              <p className="text-muted-foreground text-lg">
+                Stay updated with our latest activities and reach out for any queries.
+              </p>
+            </motion.div>
           </div>
-        </div>
-
-        <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="flex gap-8 overflow-x-auto pb-12 pt-4 px-8 scrollbar-hide snap-x snap-mandatory"
-          >
-            {[
-              {
-                id: 1,
-                content: "Our young champion making great progress in physical therapy today! Every step counts.",
-                type: "Achievement",
-                date: "2 days ago",
-                image: assets.gallery[6]
-              },
-              {
-                id: 2,
-                content: "New sensory play tools have arrived! Helping children explore and learn through touch and feel.",
-                type: "Update",
-                date: "1 week ago",
-                image: assets.services.sensoryIntegration
-              },
-              {
-                id: 3,
-                content: "Speech therapy success stories! We're celebrating our little hero's first words this month.",
-                type: "Success Story",
-                date: "3 days ago",
-                image: assets.services.speechTherapy
-              },
-              {
-                id: 4,
-                content: "Join us for our next parent-teacher workshop on understanding child behavioral patterns.",
-                type: "Event",
-                date: "Today",
-                image: assets.gallery[7]
-              },
-              {
-                id: 5,
-                content: "A beautiful morning at Tiny Triumph! Creating a nurturing environment for every child.",
-                type: "Clinic Life",
-                date: "4 days ago",
-                image: assets.gallery[8]
-              }
-            ].map((post) => (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                viewport={{ once: true }}
-                transition={{ delay: post.id * 0.1 }}
-                key={post.id}
-                className="flex-shrink-0 w-[320px] sm:w-[400px] overflow-hidden rounded-[2.5rem] bg-card border border-border/50 shadow-xl transition-all duration-500 hover:shadow-2xl hover:border-primary/30 snap-center group"
-              >
-                <div className="h-56 w-full overflow-hidden">
-                  <img
-                    src={post.image}
-                    alt="Post representation"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-8">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="rounded-full bg-primary/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                      {post.type}
-                    </span>
-                    <span className="text-xs font-medium text-muted-foreground">{post.date}</span>
-                  </div>
-                  <p className="text-foreground dark:text-white leading-relaxed line-clamp-3 text-lg font-medium">
-                    {post.content}
-                  </p>
-                  <div className="mt-8 flex items-center justify-between border-t border-border/50 pt-6">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg">
-                        <Facebook className="h-4 w-4" />
-                      </div>
-                      <span className="text-sm font-bold text-foreground dark:text-white">Tiny Triumph</span>
-                    </div>
-                    <a
-                      href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-bold text-primary hover:underline hover:translate-x-1 transition-transform inline-flex items-center"
-                    >
-                      View Post <ChevronRight className="ml-1 h-4 w-4" />
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Gradient overlays for visual depth */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-secondary/20 to-transparent z-10" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-secondary/20 to-transparent z-10" />
-        </div>
-
-        <div className="container mt-16 pb-12">
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
-            <Button asChild variant="outline" className="h-14 w-full max-w-[280px] rounded-full px-8 text-lg border-primary/20 hover:bg-primary/5 transition-all duration-300 hover:scale-105 hover:shadow-xl sm:w-auto">
+            <Button asChild variant="outline" className="h-14 w-full max-w-[280px] rounded-full px-8 text-lg border-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-blue-50 hover:text-blue-600 hover:border-blue-600/30 sm:w-auto overflow-hidden">
               <a
                 href="https://www.facebook.com/p/Tiny-Triumph-child-development-centre-61566975311848/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center font-bold"
               >
-                <Facebook className="mr-3 h-5 w-5 fill-blue-600 text-blue-600" />
+                <Facebook className="mr-3 h-5 w-5 fill-current" />
                 Follow on Facebook
               </a>
             </Button>
-            <Button asChild variant="outline" className="h-14 w-full max-w-[280px] rounded-full px-8 text-lg border-primary/20 hover:bg-primary/5 transition-all duration-300 hover:scale-105 hover:shadow-xl sm:w-auto">
+            <Button asChild variant="outline" className="h-14 w-full max-w-[280px] rounded-full px-8 text-lg border-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-teal-50 hover:text-teal-600 hover:border-teal-600/30 sm:w-auto overflow-hidden">
               <a
                 href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center font-bold"
               >
-                <Smartphone className="mr-3 h-5 w-5 text-teal-600" />
+                <svg
+                  className="mr-3 h-5 w-5 fill-current"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
                 Connect on WhatsApp
               </a>
             </Button>

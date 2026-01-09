@@ -32,10 +32,10 @@ const About = () => {
 
   const team = [
     {
-      name: "Dr. Anjali Sharma",
-      role: "Lead Pediatric Consultant",
+      name: "Dr. Anjalika Gan",
+      role: "Founder & Senior Consultant",
       image: "/assets/hero/specialist-2.webp",
-      bio: "With extensive experience in child development, Dr. Sharma guides our clinical approach with compassion.",
+      bio: "As the visionary founder, Dr. Anjalika Gan leads our clinical approach with unmatched dedication and compassion.",
     },
     {
       name: "Rajesh Kumar",
@@ -73,6 +73,17 @@ const About = () => {
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
       <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-16 md:pt-24 lg:pt-32">
+        {/* Faded Background Image */}
+        <div
+          className="absolute inset-0 z-0 opacity-20"
+          style={{
+            backgroundImage: `url('${assets.hero.aboutHero}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+        <div className="absolute inset-0 bg-[#0a2a24]/40 z-0" />
+
         <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -80,10 +91,6 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-white space-y-6 md:space-y-8 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-teal-100 text-xs md:text-sm font-bold uppercase tracking-widest backdrop-blur-sm">
-              <Sparkles className="h-4 w-4" />
-              <span>Pioneering Pediatric Excellence</span>
-            </div>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
               Crafting Brighter <br className="hidden sm:block" />
               <span className="text-hero-gradient italic">Futures Today.</span>
@@ -133,14 +140,14 @@ const About = () => {
               transition={{ duration: 0.8 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="relative aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-secondary/20 bg-muted flex items-center justify-center">
+              <div className="relative z-10 w-full max-w-[420px] aspect-[3/4] mx-auto lg:mx-0 overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] mb-12 lg:mb-0">
                 <img
-                  src={assets.gallery[6]}
-                  alt="Professional Pediatric Consultation"
-                  className="absolute w-full h-full object-cover rotate-90 scale-[1.35]"
-                  loading="lazy"
+                  src={assets.hero.specialist3}
+                  alt="Tiny Triumph Specialists"
+                  className="w-full h-full object-cover"
+                  loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-accent/20 blur-2xl -z-10" />
@@ -201,7 +208,7 @@ const About = () => {
               className="relative group p-12 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-xl overflow-hidden"
             >
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05]">
-                <img src="/logo.webp" alt="" className="w-1/2 h-1/2 object-contain" />
+                <img src={assets.logos.main} alt="" className="w-1/2 h-1/2 object-contain" />
               </div>
               <div className="absolute top-0 right-0 p-8 text-primary/20 pointer-events-none">
                 <Target className="h-32 w-32" />
@@ -224,7 +231,7 @@ const About = () => {
               className="relative group p-12 rounded-[3rem] bg-white/5 border border-accent/10 backdrop-blur-xl overflow-hidden"
             >
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.05]">
-                <img src="/logo.webp" alt="" className="w-1/2 h-1/2 object-contain" />
+                <img src={assets.logos.main} alt="" className="w-1/2 h-1/2 object-contain" />
               </div>
               <div className="absolute top-0 right-0 p-8 text-accent/20 pointer-events-none">
                 <Eye className="h-32 w-32" />

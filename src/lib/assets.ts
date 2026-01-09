@@ -15,14 +15,20 @@ export const getAssetPath = (path: string) => {
 
 export const assets = {
     logos: {
-        main: getAssetPath("logo.webp"),
+        main: getAssetPath("LOGO HEADER copy.webp"),
+        square: getAssetPath("logo.webp"),
         whatsapp: getAssetPath("whatsapp.webp"),
     },
     hero: {
+        banner: getAssetPath("hp-banner.webp"),
+        banner2: getAssetPath("banner 2.webp"),
+        banner3: getAssetPath("banner 3 copy.webp"),
         reception: getAssetPath("assets/hero/reception.webp"),
         specialist1: getAssetPath("assets/hero/specialist-1.webp"),
         specialist2: getAssetPath("assets/hero/specialist-2.webp"),
         specialist3: getAssetPath("assets/hero/specialist-3.webp"),
+        aboutHero: getAssetPath("about banner 4 copy.webp"),
+        galleryHero: getAssetPath("gallery-hero.webp"),
     },
     videos: {
         hero: {

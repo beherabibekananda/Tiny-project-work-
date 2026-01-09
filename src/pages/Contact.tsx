@@ -74,7 +74,7 @@ const Contact = () => {
       title: "Visit Us",
       content: "UPHC Hospital, Near Sunhat, Balasore",
       detail: "Chandan Bagicha, Mallikashpur, Odisha 756002",
-      link: "https://maps.google.com/?q=Tiny+Triumph+Child+Development+Centre+Balasore",
+      link: "https://www.google.com/maps/place/TINY+TRIUMPH+CHILD+DEVELOPMENT+CENTRE/@21.48219,86.9410483,15z/data=!4m6!3m5!1s0x3a1cf51a70385d63:0xc458a281696f2b7!8m2!3d21.4825192!4d86.9448545",
     },
     {
       icon: Phone,
@@ -352,7 +352,7 @@ const Contact = () => {
           <div className="rounded-[4rem] overflow-hidden border border-border/50 shadow-2xl h-[500px]">
             <iframe
               title="Tiny Triumph CDC Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118559.870003!2d86.852109!3d21.492109!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1961e089c25a23%3A0x49f75d3281df052a!2sBalasore%2C%20Odisha!5e0!3m2!1sen!2sin!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14850.605666321404!2d86.9410483!3d21.48219!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1cf51a70385d63%3A0xc458a281696f2b7!2sTINY%20TRIUMPH%20CHILD%20DEVELOPMENT%20CENTRE!5e0!3m2!1sen!2sin!4v1767989390813!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0, filter: "grayscale(0.2) contrast(1.1)" }}

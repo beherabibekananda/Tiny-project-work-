@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { assets } from "@/lib/assets";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
@@ -24,12 +26,9 @@ const Navbar = () => {
       <div className="container flex h-16 items-center justify-between md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-10 w-10 md:h-12 md:w-12 items-center justify-center overflow-hidden rounded-full bg-white transition-transform duration-500 group-hover:scale-110 border border-primary/10">
-            <img src="/logo.webp" alt="Tiny Triumph Logo" className="h-full w-full object-cover scale-[1.2] rounded-full" />
+          <div className="flex h-10 md:h-12 items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+            <img src={assets.logos.main} alt="Tiny Triumph Logo" className="h-full w-auto object-contain" />
           </div>
-          <span className="font-display text-lg font-semibold text-foreground md:text-2xl">
-            Tiny Triumph
-          </span>
         </Link>
 
         {/* Desktop Navigation */}

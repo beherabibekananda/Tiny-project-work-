@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Heart, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter } from "lucide-react";
 
+import { assets } from "@/lib/assets";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-secondary/50">
@@ -9,12 +11,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white border border-primary/10">
-                <img src="/logo.webp" alt="Tiny Triumph Logo" className="h-full w-full object-cover scale-[1.2] rounded-full" />
+              <div className="flex h-12 items-center justify-center overflow-hidden">
+                <img src={assets.logos.main} alt="Tiny Triumph Logo" className="h-full w-auto object-contain" />
               </div>
-              <span className="font-display text-xl font-semibold text-foreground">
-                Tiny Triumph
-              </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Dedicated to nurturing your child’s growth, development, and confidence through tailored programs and expert therapies.

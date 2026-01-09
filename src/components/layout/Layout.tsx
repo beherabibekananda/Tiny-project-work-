@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { assets } from "@/lib/assets";
 
 import { motion } from "framer-motion";
 
@@ -96,7 +97,7 @@ const Layout = ({ children }: LayoutProps) => {
         {/* Large Faded Background Logo */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.02] dark:opacity-[0.04] overflow-hidden">
           <img
-            src="/logo.webp"
+            src={assets.logos.main}
             alt=""
             className="w-[80%] h-[80%] object-contain animate-pulse-slow"
             style={{ filter: 'grayscale(100%)' }}
