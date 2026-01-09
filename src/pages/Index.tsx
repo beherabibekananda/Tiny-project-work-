@@ -635,7 +635,6 @@ const Index = () => {
                     <div className="flex items-center justify-between p-4 border-b border-border/40">
                       <div className="flex flex-col">
                         <span className="text-sm font-bold text-foreground leading-tight">{post.username}</span>
-                        <span className="text-[10px] text-muted-foreground uppercase">{post.date}</span>
                       </div>
                       <Facebook className="h-5 w-5 text-blue-600 transition-transform group-hover:scale-110" />
                     </div>

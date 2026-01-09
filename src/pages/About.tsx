@@ -140,14 +140,14 @@ const About = () => {
               transition={{ duration: 0.8 }}
               className="relative order-2 lg:order-1"
             >
-              <div className="relative z-10 w-full max-w-[420px] aspect-[3/4] mx-auto lg:mx-0 overflow-hidden rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] mb-12 lg:mb-0">
+              <div className="relative z-10 w-full max-w-[420px] aspect-[3/4] mx-auto lg:mx-0 overflow-hidden rounded-[2rem] shadow-2xl border border-white/10 mb-12 lg:mb-0">
                 <img
                   src={assets.hero.specialist3}
                   alt="Tiny Triumph Specialists"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-60 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24]/40 via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
               {/* Decorative elements */}
               <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-accent/20 blur-2xl -z-10" />
