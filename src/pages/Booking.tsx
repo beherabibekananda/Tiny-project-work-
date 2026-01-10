@@ -141,7 +141,7 @@ const Booking = () => {
   if (isSuccess) {
     return (
       <Layout>
-        <section className="py-20 md:py-32">
+        <section className="py-16 md:py-32">
           <div className="container">
             <Card className="mx-auto max-w-lg border-primary/20 text-center">
               <CardContent className="p-8">
@@ -175,7 +175,7 @@ const Booking = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-teal-light/30 to-background py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-b from-teal-light/30 to-background py-16 md:py-16">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center">
             <h1 className="animate-fade-up font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
@@ -190,7 +190,7 @@ const Booking = () => {
       </section>
 
       {/* Booking Form */}
-      <section className="py-12 md:py-20">
+      <section className="py-12 md:py-16">
         <div className="container">
           <div className="mx-auto max-w-2xl">
             <Card className="border-border/50">

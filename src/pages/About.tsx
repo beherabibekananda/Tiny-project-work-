@@ -72,7 +72,7 @@ const About = () => {
   return (
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-16 md:pt-24 lg:pt-32">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-[160px] pb-[80px]">
         {/* Faded Background Image */}
         <div
           className="absolute inset-0 z-0 opacity-20"
@@ -130,7 +130,7 @@ const About = () => {
       </section>
 
       {/* 2. Our Story - High Contrast Section */}
-      <section className="relative py-24 md:py-36 bg-background overflow-hidden">
+      <section className="relative py-16 bg-background overflow-hidden">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
             <motion.div
@@ -198,7 +198,7 @@ const About = () => {
       </section>
 
       {/* 3. Mission & Vision - Sleek Floating Cards */}
-      <section className="py-24 md:py-32 bg-[#0a2a24] dark:bg-background/60 text-white overflow-hidden">
+      <section className="py-16 bg-[#0a2a24] dark:bg-background/60 text-white overflow-hidden">
         <div className="container">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
             <motion.div
@@ -250,7 +250,7 @@ const About = () => {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 md:py-28">
+      <section className="py-16">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
@@ -286,7 +286,7 @@ const About = () => {
       </section>
 
       {/* Meet Our Team */}
-      <section className="bg-secondary/30 dark:bg-background/40 py-20 md:py-28">
+      <section className="bg-secondary/30 dark:bg-background/40 py-16">
         <div className="container">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl">
@@ -326,7 +326,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-16">
         <div className="container">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-display text-2xl font-bold text-foreground md:text-3xl">

@@ -39,7 +39,7 @@ const ServiceDetail = () => {
         <Layout>
             <div ref={containerRef} className="relative min-h-screen bg-background">
                 {/* 1. Boutique Hero Section */}
-                <section className={`relative min-h-[85vh] flex items-center pt-24 overflow-hidden`}>
+                <section className={`relative min-h-[85vh] flex items-center pt-[160px] pb-[80px] overflow-hidden`}>
                     {/* Background Image with Overlay */}
                     <motion.div
                         initial={{
@@ -52,8 +52,8 @@ const ServiceDetail = () => {
                         }}
                         transition={{ duration: 1.5 }}
                         className={`absolute z-0 bg-cover bg-center bg-no-repeat ${service.id === 'occupational-therapy'
-                                ? 'w-[200vw] h-[200vh] -left-[50vw] -top-[50vh]'
-                                : 'inset-0'
+                            ? 'w-[200vw] h-[200vh] -left-[50vw] -top-[50vh]'
+                            : 'inset-0'
                             }`}
                         style={{ backgroundImage: `url('${service.image}')` }}
                     >
@@ -106,7 +106,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* 2. Pull Quote Section */}
-                <section className="py-24 bg-background relative overflow-hidden">
+                <section className="py-16 bg-background relative overflow-hidden">
                     <div className="container relative z-10">
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -123,7 +123,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* 3. Narrative Content Section */}
-                <section className="py-24 md:py-32">
+                <section className="py-16">
                     <div className="container">
                         <div className="grid grid-cols-1 gap-20 lg:grid-cols-12 items-start">
                             <motion.div
@@ -223,7 +223,7 @@ const ServiceDetail = () => {
                 </section>
 
                 {/* 6. Expert Insight Grid */}
-                <section className="py-24 md:py-32 bg-muted/10 relative overflow-hidden border-y border-border/50">
+                <section className="py-16 bg-muted/10 relative overflow-hidden border-y border-border/50">
                     <div className="container relative z-10">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}

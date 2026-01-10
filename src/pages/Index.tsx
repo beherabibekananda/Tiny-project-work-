@@ -23,6 +23,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { services } from "@/data/services";
 import { useRef, useState, useEffect } from "react";
 import { assets } from "@/lib/assets";
+import Magnetic from "@/components/ui/Magnetic";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -32,10 +33,23 @@ const Index = () => {
   });
 
   const [currentBanner, setCurrentBanner] = useState(0);
+  const [visibleVideos, setVisibleVideos] = useState(3);
   const banners = [
     assets.hero.banner,
     assets.hero.banner2,
     assets.hero.banner3,
+  ];
+
+  const allVideos = [
+    { id: 1, ...assets.videos.showcase1, title: "Sensory Mastery" },
+    { id: 2, ...assets.videos.showcase2, title: "Precision Motor Skills" },
+    { id: 3, ...assets.videos.showcase3, title: "Social Interaction" },
+    { id: 4, ...assets.videos.showcase4, title: "Therapeutic Play" },
+    { id: 5, ...assets.videos.showcase5, title: "Developmental Milestones" },
+    { id: 6, ...assets.videos.showcase6, title: "Behavioral Progress" },
+    { id: 7, ...assets.videos.showcase7, title: "Motor Function" },
+    { id: 8, ...assets.videos.showcase8, title: "Sensory Integration" },
+    { id: 9, ...assets.videos.showcase9, title: "Success Stories" },
   ];
 
   useEffect(() => {
@@ -150,7 +164,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden py-16 md:py-32">
+      <section ref={heroRef} className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden pt-[160px] pb-[80px]">
         <div className="absolute inset-0 z-0 overflow-hidden bg-black">
           <AnimatePresence initial={false}>
             <motion.div
@@ -196,18 +210,22 @@ const Index = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="mt-10 md:mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
             >
-              <button className="w-full sm:w-auto rounded-full bg-[#5ec2b4] px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#4ea89c] flex items-center justify-center group">
-                <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
-                  Book Appointment
-                  <ChevronRight className="ml-2 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
-                </a>
-              </button>
-              <Link
-                to="/services"
-                className="w-full sm:w-auto rounded-full border-2 border-white/40 bg-white/5 backdrop-blur-md px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white transition-all duration-300 hover:bg-white/10 hover:border-white shadow-xl text-center"
-              >
-                Our Specialities
-              </Link>
+              <Magnetic>
+                <button className="w-full sm:w-auto rounded-full bg-[#5ec2b4] px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#4ea89c] flex items-center justify-center group">
+                  <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer" className="flex items-center">
+                    Book Appointment
+                    <ChevronRight className="ml-2 h-5 w-5 md:h-6 md:w-6 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  to="/services"
+                  className="w-full sm:w-auto rounded-full border-2 border-white/40 bg-white/5 backdrop-blur-md px-8 py-4 text-base md:px-12 md:py-6 md:text-xl font-medium text-white transition-all duration-300 hover:bg-white/10 hover:border-white shadow-xl text-center block"
+                >
+                  Our Specialities
+                </Link>
+              </Magnetic>
             </motion.div>
           </div>
         </div>
@@ -223,7 +241,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 md:py-28 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
+      <section className="py-16 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
         <div className="container px-4 md:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient">
@@ -251,7 +269,7 @@ const Index = () => {
               >
                 <Link
                   to={`/services/${service.slug}`}
-                  className="group relative block h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-2 group"
+                  className="group relative block h-full overflow-hidden rounded-[2.5rem] border border-border/50 bg-white dark:bg-card shadow-xl transition-all duration-500 hover:shadow-primary/20 hover:-translate-y-2 group"
                 >
                   <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   {/* Black Shade Sweep Effect */}
@@ -270,7 +288,7 @@ const Index = () => {
                   <div className="relative z-20 flex h-full flex-col items-center justify-center p-8 text-center">
                     {/* Icon Container with Backwash */}
                     <div className="relative mb-6">
-                      <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-white/10 backdrop-blur-lg border border-white/10 transition-all duration-500 cubic-bezier(0.62, 0.21, 0.45, 1.52) group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 shadow-xl`}>
+                      <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-secondary/20 border border-border/20 transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 shadow-xl`}>
                         <motion.div
                           whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
                           transition={{ duration: 0.5 }}
@@ -313,7 +331,7 @@ const Index = () => {
 
 
       {/* Why Choose Us Section */}
-      <section className="bg-secondary/20 dark:bg-background/40 py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-secondary/20 dark:bg-background/40 py-16 relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <motion.div
@@ -401,65 +419,75 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section - already exists */}
-
       {/* Clinic in Action - Video Showcase */}
-      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <section className="py-16 bg-background relative overflow-hidden">
         <div className="container relative z-10">
           <div className="mx-auto max-w-3xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-3xl font-bold text-foreground md:text-4xl"
+              className="font-display text-3xl font-bold text-foreground md:text-5xl"
             >
               See Us in <span className="text-primary italic">Action</span>
             </motion.h2>
-            <p className="mt-4 text-base text-gray-900 dark:text-gray-100 font-medium leading-relaxed">
+            <p className="mt-4 text-lg text-muted-foreground font-medium leading-relaxed">
               Witness the dedicated care and specialized techniques our therapists use to empower every child.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              { id: 1, ...assets.videos.showcase1, title: "Sensory Mastery" },
-              { id: 2, ...assets.videos.showcase2, title: "Precision Motor Skills" },
-              { id: 3, ...assets.videos.showcase3, title: "Social Interaction" },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="group relative h-96 overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
-              >
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={item.poster}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            <AnimatePresence mode="popLayout">
+              {allVideos.slice(0, visibleVideos).map((item, idx) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.5, delay: idx % 3 * 0.1 }}
+                  className="group relative h-[400px] overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
                 >
-                  <source src={item.webm} type="video/webm" />
-                  <source src={item.mp4} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-10 left-10">
-                  <h3 className="text-2xl font-bold text-white drop-shadow-lg">{item.title}</h3>
-                  <div className="mt-2 h-1 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
-                </div>
-              </motion.div>
-            ))}
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={item.poster}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                  >
+                    <source src={item.webm} type="video/webm" />
+                    <source src={item.mp4} type="video/mp4" />
+                  </video>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                  <div className="absolute bottom-10 left-10 transition-transform duration-500 group-hover:-translate-y-2">
+                    <h3 className="text-2xl font-bold text-white drop-shadow-lg">{item.title}</h3>
+                    <div className="mt-2 h-1 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
+
+          {visibleVideos < allVideos.length && (
+            <div className="mt-16 text-center">
+              <Button
+                onClick={() => setVisibleVideos(prev => Math.min(prev + 3, allVideos.length))}
+                variant="outline"
+                className="rounded-full px-12 py-7 text-lg hover:scale-105 transition-all duration-300 border-primary/20 text-primary hover:bg-primary hover:text-white group"
+              >
+                Load More Action
+                <Sparkles className="ml-2 h-5 w-5 group-hover:animate-pulse" />
+              </Button>
+            </div>
+          )}
         </div>
+
 
         {/* Background Polish */}
         <div className="absolute top-1/2 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -translate-x-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/5 rounded-full blur-[120px] translate-x-1/3" />
       </section>
-      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
+      <section className="py-16 bg-background relative overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 opacity-60" />
         <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#f48120]/5 rounded-full blur-[140px] translate-x-1/3 translate-y-1/3 opacity-60" />
@@ -543,7 +571,7 @@ const Index = () => {
       </section>
 
       {/* Social Footprints Section */}
-      <section className="bg-background pt-24 md:pt-32 pb-12 relative">
+      <section className="bg-background pt-16 pb-12 relative">
         <div className="container relative">
           {/* Section Header Badge */}
           <div className="absolute -top-6 left-8 z-20">
@@ -644,7 +672,8 @@ const Index = () => {
                       <img
                         src={post.image}
                         alt="Social post"
-                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 ${post.rotate || ""} ${post.scale || ""}`}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                        loading="lazy"
                       />
                     </div>
 
@@ -766,7 +795,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary py-24 md:py-32 relative overflow-hidden">
+      <section className="bg-primary py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-[150px] translate-x-1/3 translate-y-1/3" />

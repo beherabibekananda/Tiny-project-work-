@@ -26,7 +26,7 @@ export const assets = {
         reception: getAssetPath("assets/hero/reception.webp"),
         specialist1: getAssetPath("assets/hero/specialist-1.webp"),
         specialist2: getAssetPath("assets/hero/specialist-2.webp"),
-        specialist3: getAssetPath("assets/hero/specialist-3.webp"),
+        specialist3: getAssetPath("assets/hero/nurturing-growth.webp"),
         aboutHero: getAssetPath("about banner 4 copy.webp"),
         galleryHero: getAssetPath("gallery-hero.webp"),
     },
@@ -50,6 +50,41 @@ export const assets = {
             mp4: getAssetPath("assets/videos/showcase-3.mp4"),
             webm: getAssetPath("assets/videos/showcase-3.webm"),
             poster: getAssetPath("assets/videos/posters/showcase-3.webp"),
+        },
+        showcase4: {
+            mp4: getAssetPath("assets/videos/showcase-4.mp4"),
+            webm: getAssetPath("assets/videos/showcase-4.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-4.webp"),
+        },
+        showcase5: {
+            mp4: getAssetPath("assets/videos/showcase-5.mp4"),
+            webm: getAssetPath("assets/videos/showcase-5.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-5.webp"),
+        },
+        showcase6: {
+            mp4: getAssetPath("assets/videos/showcase-6.mp4"),
+            webm: getAssetPath("assets/videos/showcase-6.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-6.webp"),
+        },
+        showcase7: {
+            mp4: getAssetPath("assets/videos/showcase-7.mp4"),
+            webm: getAssetPath("assets/videos/showcase-7.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-7.webp"),
+        },
+        showcase8: {
+            mp4: getAssetPath("assets/videos/showcase-8.mp4"),
+            webm: getAssetPath("assets/videos/showcase-8.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-8.webp"),
+        },
+        showcase9: {
+            mp4: getAssetPath("assets/videos/showcase-9.mp4"),
+            webm: getAssetPath("assets/videos/showcase-9.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-9.webp"),
+        },
+        showcase10: {
+            mp4: getAssetPath("assets/videos/showcase-10.mp4"),
+            webm: getAssetPath("assets/videos/showcase-10.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-10.webp"),
         },
     },
     services: {

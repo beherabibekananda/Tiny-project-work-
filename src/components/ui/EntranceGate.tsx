@@ -11,19 +11,19 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
     const [animationStage, setAnimationStage] = useState<"ecg" | "peak" | "logo" | "thread" | "reveal" | "complete">("ecg");
 
     useEffect(() => {
-        // Timeline adjustments based on mode
-        let peakDelay = 1200;
-        let logoDelay = 1800;
-        let threadDelay = 2200;
-        let revealDelay = 2800;
-        let completeDelay = 5200;
+        // Timeline adjustments based on mode - optimized for speed
+        let peakDelay = 800;
+        let logoDelay = 1200;
+        let threadDelay = 1400;
+        let revealDelay = 1800;
+        let completeDelay = 3400;
 
         if (mode === "minimal") {
-            peakDelay = 400;
-            logoDelay = 401;
-            threadDelay = 402;
-            revealDelay = 800;
-            completeDelay = 1800;
+            peakDelay = 300;
+            logoDelay = 301;
+            threadDelay = 302;
+            revealDelay = 600;
+            completeDelay = 1400;
         }
 
         const peakTimer = setTimeout(() => setAnimationStage("peak"), peakDelay);
@@ -131,7 +131,6 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                     opacity: isRevealActive ? 0 : 1,
                                     scale: isRevealActive ? 1.2 : 1,
                                     y: isRevealActive ? -450 : 0, // Pull it up fast with the blanket
-                                    filter: isRevealActive ? "blur(20px)" : "blur(0px)"
                                 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
@@ -150,7 +149,6 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                             backgroundColor: "white",
                                             boxShadow: !isRevealActive ? "0 0 80px rgba(94, 194, 180, 0.6)" : "none",
                                             y: isRevealActive ? -500 : 0,
-                                            filter: isRevealActive ? "blur(20px)" : "blur(0px)"
                                         }}
                                         transition={{
                                             duration: isRevealActive ? 1.2 : 1.5,

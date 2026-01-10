@@ -11,6 +11,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import EntranceGate from "./components/ui/EntranceGate";
+import Navbar from "./components/layout/Navbar";
 
 // Lazy load page components
 const Index = React.lazy(() => import("./pages/Index"));
@@ -24,6 +25,8 @@ const ServiceDetail = React.lazy(() => import("./pages/ServiceDetail"));
 
 const queryClient = new QueryClient();
 
+import SmoothScroll from "./components/SmoothScroll";
+
 const AppContent = () => {
   const location = useLocation();
   const [gateMode, setGateMode] = useState<"full" | "minimal" | null>(null);
@@ -36,51 +39,63 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
-    // Route changes: show minimal pulse (except initial)
-    if (!isInitialLoad) {
-      setGateMode("minimal");
-    }
+    // Route changes: show minimal pulse ONLY on major navigation
+    // if (!isInitialLoad) {
+    //   setGateMode("minimal");
+    // }
+    // Removing minimal gate for every route change as it can feel clunky
+    // Instead we use Framer Motion page transitions below
   }, [location.pathname]);
 
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <TooltipProvider>
-        <AnimatePresence mode="wait">
-          {gateMode && (
-            <EntranceGate
-              key={gateMode === "full" ? "full" : location.pathname}
-              mode={gateMode}
-              onComplete={() => setGateMode(null)}
-            />
-          )}
-        </AnimatePresence>
-        <Toaster />
-        <Sonner />
-        <ScrollToTop />
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
-          <ModeToggle />
-          <WhatsAppButton />
-        </div>
-        <AnimatePresence mode="wait">
-          <React.Suspense fallback={
-            <div className="flex h-screen w-screen items-center justify-center bg-background">
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
-            </div>
-          }>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/booking" element={<Booking />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/services/:id" element={<ServiceDetail />} />
-
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </React.Suspense>
-        </AnimatePresence>
+        <SmoothScroll>
+          <AnimatePresence mode="wait">
+            {gateMode && (
+              <EntranceGate
+                key={gateMode === "full" ? "full" : location.pathname}
+                mode={gateMode}
+                onComplete={() => setGateMode(null)}
+              />
+            )}
+          </AnimatePresence>
+          <Navbar />
+          <Toaster />
+          <Sonner />
+          <ScrollToTop />
+          <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
+            <ModeToggle />
+            <WhatsAppButton />
+          </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="transform-gpu"
+            >
+              <React.Suspense fallback={
+                <div className="flex h-screen w-screen items-center justify-center bg-background">
+                  <div className="h-12 w-12 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+                </div>
+              }>
+                <Routes location={location}>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/booking" element={<Booking />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/services/:id" element={<ServiceDetail />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </React.Suspense>
+            </motion.div>
+          </AnimatePresence>
+        </SmoothScroll>
       </TooltipProvider>
     </ThemeProvider>
   );

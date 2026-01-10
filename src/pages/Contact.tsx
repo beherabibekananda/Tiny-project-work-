@@ -95,7 +95,7 @@ const Contact = () => {
   return (
     <Layout>
       {/* 1. Split-Screen Theatrical Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-16 md:pt-24 lg:pt-32">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a1a1f] overflow-hidden pt-[160px] pb-[80px]">
         <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -169,7 +169,7 @@ const Contact = () => {
       </section>
 
       {/* 3. Contact Methods & Form */}
-      <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+      <section className="relative py-16 bg-background overflow-hidden">
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-10 grayscale-[0.5]"
@@ -347,7 +347,7 @@ const Contact = () => {
       </section>
 
       {/* 4. Boutique Map Section */}
-      <section className="py-24 bg-secondary/10">
+      <section className="py-16 bg-secondary/10">
         <div className="container">
           <div className="rounded-[4rem] overflow-hidden border border-border/50 shadow-2xl h-[500px]">
             <iframe

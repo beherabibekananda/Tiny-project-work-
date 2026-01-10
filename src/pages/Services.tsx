@@ -19,7 +19,7 @@ const Services = () => {
   return (
     <Layout>
       {/* 1. Theatrical Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden py-16 md:py-32">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden pt-[160px] pb-[80px]">
         {/* Background Image with Overlay */}
         <motion.div
           initial={{ scale: 1.1 }}
@@ -57,7 +57,7 @@ const Services = () => {
       </section>
 
       {/* 2. Boutique Services Showcase */}
-      <section className="py-24 md:py-32 bg-secondary/5 dark:bg-background">
+      <section className="py-16 bg-secondary/5 dark:bg-background">
         <div className="container">
           <div className="grid grid-cols-1 gap-12 lg:gap-16 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -105,7 +105,7 @@ const Services = () => {
       </section>
 
       {/* 3. Narrative "Our Philosophy" Section */}
-      <section className="py-24 md:py-40 bg-secondary/5 dark:bg-background/40 relative overflow-hidden">
+      <section className="py-16 bg-secondary/5 dark:bg-background/40 relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div
@@ -154,7 +154,7 @@ const Services = () => {
       </section>
 
       {/* 4. Contact/CTA Section */}
-      <section className="bg-primary py-24 md:py-32 relative overflow-hidden group">
+      <section className="bg-primary py-16 relative overflow-hidden group">
         <div className="container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

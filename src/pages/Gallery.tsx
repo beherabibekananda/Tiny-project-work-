@@ -1,13 +1,24 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Sparkles, ChevronRight, CheckCircle2, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { assets } from "@/lib/assets";
 
 const Gallery = () => {
-    const videoItems = [
-        { title: "Sensory Mastery", ...assets.videos.showcase1 },
-        { title: "Precision Motor Skills", ...assets.videos.showcase2 },
-        { title: "Social Interaction", ...assets.videos.showcase3 },
+    const [visibleVideos, setVisibleVideos] = useState(3);
+    const [visibleImages, setVisibleImages] = useState(6);
+    const allVideos = [
+        { id: 1, title: "Sensory Mastery", ...assets.videos.showcase1 },
+        { id: 2, title: "Precision Motor Skills", ...assets.videos.showcase2 },
+        { id: 3, title: "Social Interaction", ...assets.videos.showcase3 },
+        { id: 4, title: "Therapeutic Play", ...assets.videos.showcase4 },
+        { id: 5, title: "Developmental Milestones", ...assets.videos.showcase5 },
+        { id: 6, title: "Behavioral Progress", ...assets.videos.showcase6 },
+        { id: 7, title: "Motor Function", ...assets.videos.showcase7 },
+        { id: 8, title: "Sensory Integration", ...assets.videos.showcase8 },
+        { id: 9, title: "Success Stories", ...assets.videos.showcase9 },
+        { id: 10, title: "Clinical Excellence", ...assets.videos.showcase10 },
     ];
     const galleryItems = [
         { title: "Our Specialists", image: assets.hero.specialist1 },
@@ -18,12 +29,16 @@ const Gallery = () => {
         { title: "Pediatric Excellence", image: assets.gallery[20] },
         { title: "Developmental Care", image: assets.gallery[21] },
         { title: "World-Class Infrastructure", image: assets.gallery[22] },
+        { title: "Personalized Support", image: assets.gallery[3] },
+        { title: "Progressive Therapy", image: assets.gallery[4] },
+        { title: "Expert Guidance", image: assets.gallery[5] },
+        { title: "Holistic Growth", image: assets.gallery[6] },
     ];
 
     return (
         <Layout>
             {/* 1. Splendid Split-Screen Hero */}
-            <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-20">
+            <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] overflow-hidden pt-[160px] pb-[80px]">
                 {/* Faded Background Image */}
                 <div
                     className="absolute inset-0 z-0 opacity-20"
@@ -54,7 +69,7 @@ const Gallery = () => {
             </section>
 
             {/* 2. Video Showcase Section */}
-            <section className="py-20 bg-secondary/10">
+            <section className="py-16 bg-secondary/10">
                 <div className="container">
                     <div className="mx-auto max-w-2xl text-center mb-16">
                         <motion.h2
@@ -71,69 +86,98 @@ const Gallery = () => {
                     </div>
 
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                        {videoItems.map((video, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="group relative aspect-square overflow-hidden rounded-xl bg-card shadow-sm border border-border/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                            >
-                                <video
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    poster={video.poster}
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        <AnimatePresence mode="popLayout">
+                            {allVideos.slice(0, visibleVideos).map((video, idx) => (
+                                <motion.div
+                                    key={video.id}
+                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    transition={{ duration: 0.5, delay: idx % 3 * 0.1 }}
+                                    className="group relative aspect-square overflow-hidden rounded-xl bg-card shadow-sm border border-border/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
-                                    <source src={video.webm} type="video/webm" />
-                                    <source src={video.mp4} type="video/mp4" />
-                                </video>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                    <div className="h-16 w-16 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                                        <Play className="h-8 w-8 text-white fill-white" />
+                                    <video
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        poster={video.poster}
+                                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                    >
+                                        <source src={video.webm} type="video/webm" />
+                                        <source src={video.mp4} type="video/mp4" />
+                                    </video>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100" />
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                        <div className="h-16 w-16 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center border border-white/30">
+                                            <Play className="h-8 w-8 text-white fill-white" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
-                                    <h3 className="text-xl font-bold text-white drop-shadow-lg">{video.title}</h3>
-                                    <div className="mt-2 h-0.5 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
-                                </div>
-                            </motion.div>
-                        ))}
+                                    <div className="absolute bottom-8 left-8 transition-transform duration-500 group-hover:-translate-y-2">
+                                        <h3 className="text-xl font-bold text-white drop-shadow-lg">{video.title}</h3>
+                                        <div className="mt-2 h-0.5 w-12 bg-primary rounded-full group-hover:w-full transition-all duration-500" />
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+
+                        {visibleVideos < allVideos.length && (
+                            <div className="col-span-full mt-16 text-center">
+                                <Button
+                                    onClick={() => setVisibleVideos(prev => Math.min(prev + 3, allVideos.length))}
+                                    variant="outline"
+                                    className="rounded-full px-12 py-7 text-lg hover:scale-105 transition-all duration-300 border-primary/20 text-primary hover:bg-primary hover:text-white group"
+                                >
+                                    Load More Action
+                                    <Sparkles className="ml-2 h-5 w-5 group-hover:animate-pulse" />
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
 
-            {/* 3. Image Gallery Grid */}
-            <section className="py-12 md:py-24 bg-secondary/5">
+            <section className="py-16 bg-secondary/5">
                 <div className="container">
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                        {galleryItems.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
-                                className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-border/40 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-                            >
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                    loading="lazy"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-8">
-                                    <h3 className="font-display text-xl font-bold text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-                                        {item.title}
-                                    </h3>
-                                </div>
-                            </motion.div>
-                        ))}
+                        <AnimatePresence mode="popLayout">
+                            {galleryItems.slice(0, visibleImages).map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+                                    className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-border/40 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
+                                >
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                        loading="lazy"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-8">
+                                        <h3 className="font-display text-xl font-bold text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
                     </div>
+
+                    {visibleImages < galleryItems.length && (
+                        <div className="mt-16 text-center">
+                            <Button
+                                onClick={() => setVisibleImages(prev => Math.min(prev + 6, galleryItems.length))}
+                                variant="outline"
+                                className="rounded-full px-12 py-7 text-lg hover:scale-105 transition-all duration-300 border-primary/20 text-primary hover:bg-primary hover:text-white group"
+                            >
+                                Load More Images
+                                <Sparkles className="ml-2 h-5 w-5 group-hover:animate-pulse" />
+                            </Button>
+                        </div>
+                    )}
                 </div>
             </section>
         </Layout>
