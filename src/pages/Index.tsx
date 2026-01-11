@@ -467,6 +467,7 @@ const Index = () => {
                   className="group relative h-[400px] overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
                 >
                   <video
+                    autoPlay
                     muted
                     loop
                     playsInline
@@ -481,7 +482,10 @@ const Index = () => {
                       }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.pause();
+                      // We keep it playing even when mouse leaves if it's autoplay
+                      // but if the user wants it to pause on leave, we can keep the pause.
+                      // Actually, for autoplay videos, usually they keep playing.
+                      // Let's remove the pause on leave to keep the section "living".
                     }}
                   >
                     <source src={item.webm} type="video/webm" />

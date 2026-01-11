@@ -99,6 +99,7 @@ const Gallery = () => {
                                     className="group relative aspect-square overflow-hidden rounded-xl bg-card shadow-sm border border-border/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
                                     <video
+                                        autoPlay
                                         muted
                                         loop
                                         playsInline
@@ -113,7 +114,7 @@ const Gallery = () => {
                                             }
                                         }}
                                         onMouseLeave={(e) => {
-                                            e.currentTarget.pause();
+                                            // Keep playing for a living gallery
                                         }}
                                     >
                                         <source src={video.webm} type="video/webm" />
