@@ -58,6 +58,13 @@ const ServiceDetail = () => {
                         style={{ backgroundImage: `url('${service.image}')` }}
                     >
                         <div className={`absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-background/20 backdrop-blur-[1px]`} />
+                        <img
+                            src={service.image}
+                            alt=""
+                            className="hidden"
+                            loading="eager"
+                            decoding="async"
+                        />
                     </motion.div>
 
                     <div className="container relative z-20">

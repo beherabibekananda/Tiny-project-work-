@@ -51,7 +51,21 @@ const Index = () => {
     { id: 7, ...assets.videos.showcase7, title: "Motor Function" },
     { id: 8, ...assets.videos.showcase8, title: "Sensory Integration" },
     { id: 9, ...assets.videos.showcase9, title: "Success Stories" },
+    { id: 10, ...assets.videos.showcase10, title: "Clinical Excellence" },
+    { id: 11, ...assets.videos.showcase11, title: "Comprehensive Support" },
+    { id: 12, ...assets.videos.showcase12, title: "Empowering Journeys" },
   ];
+
+  const [testimonialProgress, setTestimonialProgress] = useState(0);
+  const [socialProgress, setSocialProgress] = useState(0);
+
+  const handleScrollIndicator = (e: React.UIEvent<HTMLDivElement>, setProgress: (val: number) => void) => {
+    const el = e.currentTarget;
+    const totalScroll = el.scrollWidth - el.clientWidth;
+    if (totalScroll <= 0) return;
+    const progress = (el.scrollLeft / totalScroll) * 100;
+    setProgress(progress);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -453,12 +467,22 @@ const Index = () => {
                   className="group relative h-[400px] overflow-hidden rounded-[2.5rem] bg-card shadow-2xl border border-white/10"
                 >
                   <video
-                    autoPlay
                     muted
                     loop
                     playsInline
                     poster={item.poster}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                    onMouseEnter={(e) => {
+                      const playPromise = e.currentTarget.play();
+                      if (playPromise !== undefined) {
+                        playPromise.catch(() => {
+                          // Auto-play was prevented
+                        });
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                    }}
                   >
                     <source src={item.webm} type="video/webm" />
                     <source src={item.mp4} type="video/mp4" />
@@ -521,6 +545,7 @@ const Index = () => {
 
           <div
             ref={testimonialRef}
+            onScroll={(e) => handleScrollIndicator(e, setTestimonialProgress)}
             className="mt-12 flex gap-8 overflow-x-auto pb-12 scrollbar-hide snap-x snap-mandatory scroll-smooth"
           >
             {testimonials.map((testimonial, index) => (
@@ -558,19 +583,29 @@ const Index = () => {
           </div>
 
           {/* Pagination/Nav Indicator */}
-          <div className="flex justify-center items-center gap-2">
-            <button
-              onClick={() => scrollTestimonials('left')}
-              className="h-12 w-12 rounded-xl border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-95"
-            >
-              <ChevronRight className="h-6 w-6 rotate-180" />
-            </button>
-            <button
-              onClick={() => scrollTestimonials('right')}
-              className="h-12 w-12 rounded-xl border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-95 shadow-sm"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
+          <div className="mt-12 flex flex-col items-center gap-8">
+            <div className="w-full max-w-[300px] h-1 bg-primary/10 rounded-full overflow-hidden relative">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-primary"
+                initial={{ width: "0%" }}
+                animate={{ width: `${testimonialProgress}%` }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              />
+            </div>
+            <div className="flex justify-center items-center gap-4">
+              <button
+                onClick={() => scrollTestimonials('left')}
+                className="h-12 w-12 rounded-xl border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-95 shrink-0"
+              >
+                <ChevronRight className="h-6 w-6 rotate-180" />
+              </button>
+              <button
+                onClick={() => scrollTestimonials('right')}
+                className="h-12 w-12 rounded-xl border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-95 shadow-sm shrink-0"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -589,6 +624,7 @@ const Index = () => {
           <div className="rounded-[2.5rem] border-2 border-[#f48120]/10 bg-white dark:bg-card p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
             <div
               ref={socialFeedRef}
+              onScroll={(e) => handleScrollIndicator(e, setSocialProgress)}
               className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory scroll-smooth"
             >
               {[
@@ -679,6 +715,7 @@ const Index = () => {
                         alt="Social post"
                         className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu ${"rotate" in post ? post.rotate : ""} ${"scale" in post ? post.scale : ""}`}
                         loading="lazy"
+                        decoding="async"
                       />
                     </div>
 
@@ -706,19 +743,29 @@ const Index = () => {
             </div>
 
             {/* Pagination/Nav Indicator */}
-            <div className="mt-8 flex justify-center items-center gap-2">
-              <button
-                onClick={() => scrollFeed('left')}
-                className="h-10 w-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-90"
-              >
-                <ChevronRight className="h-5 w-5 rotate-180" />
-              </button>
-              <button
-                onClick={() => scrollFeed('right')}
-                className="h-10 w-10 rounded-lg border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-90 shadow-sm"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
+            <div className="mt-12 flex flex-col items-center gap-6">
+              <div className="w-full max-w-[240px] h-1 bg-[#f48120]/10 rounded-full overflow-hidden relative">
+                <motion.div
+                  className="absolute top-0 left-0 h-full bg-[#f48120]"
+                  initial={{ width: "0%" }}
+                  animate={{ width: `${socialProgress}%` }}
+                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                />
+              </div>
+              <div className="flex justify-center items-center gap-4">
+                <button
+                  onClick={() => scrollFeed('left')}
+                  className="h-10 w-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:bg-secondary/20 hover:text-primary transition-all duration-300 active:scale-90 shrink-0"
+                >
+                  <ChevronRight className="h-5 w-5 rotate-180" />
+                </button>
+                <button
+                  onClick={() => scrollFeed('right')}
+                  className="h-10 w-10 rounded-lg border border-[#f48120] bg-[#f48120]/5 flex items-center justify-center text-[#f48120] hover:bg-[#f48120] hover:text-white transition-all duration-300 active:scale-90 shadow-sm shrink-0"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

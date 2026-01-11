@@ -86,6 +86,16 @@ export const assets = {
             webm: getAssetPath("assets/videos/showcase-10.mp4"),
             poster: getAssetPath("assets/videos/posters/showcase-10.webp"),
         },
+        showcase11: {
+            mp4: getAssetPath("assets/videos/showcase-11.mp4"),
+            webm: getAssetPath("assets/videos/showcase-11.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-10.webp"), // Fallback to existing poster
+        },
+        showcase12: {
+            mp4: getAssetPath("assets/videos/showcase-12.mp4"),
+            webm: getAssetPath("assets/videos/showcase-12.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-9.webp"), // Fallback to existing poster
+        },
     },
     services: {
         occupationalTherapy: getAssetPath("assets/services/occupational-therapy.webp"),

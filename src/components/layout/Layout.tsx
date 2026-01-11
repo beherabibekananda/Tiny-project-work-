@@ -63,7 +63,8 @@ const Layout = ({ children }: LayoutProps) => {
                 ease: "linear",
                 delay: -Math.random() * 20
               }}
-              className="absolute w-1 h-1 bg-primary/20 rounded-full will-change-transform"
+              className="absolute w-1 h-1 bg-primary/20 rounded-full"
+              style={{ willChange: "transform" }}
             />
           ))}
         </div>

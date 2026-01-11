@@ -84,10 +84,10 @@ const AppContent = () => {
               exit={{ opacity: 0, scale: 1.02, x: -10 }}
               transition={{
                 type: "spring",
-                stiffness: 100,
-                damping: 20,
-                mass: 1,
-                opacity: { duration: 0.3 }
+                stiffness: 150, // Faster spring
+                damping: 25,
+                mass: 0.8,
+                opacity: { duration: 0.2 }
               }}
               className="transform-gpu will-change-[transform,opacity]"
             >

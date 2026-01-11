@@ -19,6 +19,8 @@ const Gallery = () => {
         { id: 8, title: "Sensory Integration", ...assets.videos.showcase8 },
         { id: 9, title: "Success Stories", ...assets.videos.showcase9 },
         { id: 10, title: "Clinical Excellence", ...assets.videos.showcase10 },
+        { id: 11, title: "Comprehensive Support", ...assets.videos.showcase11 },
+        { id: 12, title: "Empowering Journeys", ...assets.videos.showcase12 },
     ];
     const galleryItems = [
         { title: "Our Specialists", image: assets.hero.specialist1 },
@@ -97,12 +99,22 @@ const Gallery = () => {
                                     className="group relative aspect-square overflow-hidden rounded-xl bg-card shadow-sm border border-border/40 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
                                     <video
-                                        autoPlay
                                         muted
                                         loop
                                         playsInline
                                         poster={video.poster}
                                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                        onMouseEnter={(e) => {
+                                            const playPromise = e.currentTarget.play();
+                                            if (playPromise !== undefined) {
+                                                playPromise.catch(() => {
+                                                    // Auto-play was prevented
+                                                });
+                                            }
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.pause();
+                                        }}
                                     >
                                         <source src={video.webm} type="video/webm" />
                                         <source src={video.mp4} type="video/mp4" />
@@ -155,6 +167,7 @@ const Gallery = () => {
                                         alt={item.title}
                                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
                                         loading="lazy"
+                                        decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-8">
                                         <h3 className="font-display text-xl font-bold text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">

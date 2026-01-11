@@ -9,14 +9,15 @@ interface RevealSectionProps {
 export const RevealSection = ({ children, delay = 0 }: RevealSectionProps) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{
-                duration: 0.8,
+                duration: 0.6,
                 delay: delay,
-                ease: [0.21, 0.47, 0.32, 0.98], // Custom 'Super Smooth' Cubic Bezier
+                ease: [0.21, 0.47, 0.32, 0.98],
             }}
+            className="transform-gpu will-change-[transform,opacity,filter]"
         >
             {children}
         </motion.div>
