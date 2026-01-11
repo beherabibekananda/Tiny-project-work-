@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, memo } from "react";
 
 interface RevealSectionProps {
     children: ReactNode;
     delay?: number;
 }
 
-export const RevealSection = ({ children, delay = 0 }: RevealSectionProps) => {
+export const RevealSection = memo(({ children, delay = 0 }: RevealSectionProps) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
@@ -22,4 +22,6 @@ export const RevealSection = ({ children, delay = 0 }: RevealSectionProps) => {
             {children}
         </motion.div>
     );
-};
+});
+
+RevealSection.displayName = "RevealSection";
