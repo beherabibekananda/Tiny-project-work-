@@ -19,11 +19,11 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
         let completeDelay = 3400;
 
         if (mode === "minimal") {
-            peakDelay = 300;
-            logoDelay = 301;
-            threadDelay = 302;
-            revealDelay = 600;
-            completeDelay = 1400;
+            peakDelay = 200;
+            logoDelay = 201;
+            threadDelay = 202;
+            revealDelay = 400;
+            completeDelay = 1000;
         }
 
         const peakTimer = setTimeout(() => setAnimationStage("peak"), peakDelay);
@@ -51,8 +51,9 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
     const isThreadActive = animationStage === "thread" || animationStage === "reveal";
 
     // Complex 15-point polygon for the "Wrinkled Blanket" effect
-    const initialPath = "polygon(0% 0%, 100% 0%, 100% 100%, 90% 100%, 80% 100%, 70% 100%, 60% 100%, 55% 100%, 50% 100%, 45% 100%, 40% 100%, 30% 100%, 20% 100%, 10% 100%, 0% 100%)";
-    const wrinkledPath = "polygon(0% 0%, 100% 0%, 100% -20%, 92% -10%, 80% -30%, 72% -15%, 60% -45%, 55% -70%, 50% -110%, 45% -70%, 40% -45%, 28% -15%, 20% -30%, 8% -10%, 0% -20%)";
+    // Simplified 9-point polygon for the "Wrinkled Blanket" effect - much faster for CPU/GPU
+    const initialPath = "polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 50% 100%, 25% 100%, 0% 100%)";
+    const wrinkledPath = "polygon(0% 0%, 100% 0%, 100% -10%, 75% -25%, 50% -100%, 25% -25%, 0% -10%)";
 
     return (
         <motion.div
@@ -60,7 +61,7 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none"
+            className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none transform-gpu will-change-transform"
         >
             {/* The Wrinkled Blanket Banner */}
             <motion.div
@@ -113,7 +114,7 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                     stiffness: 60
                                 }
                             }}
-                            className="absolute top-0 left-1/2 w-[2px] bg-primary shadow-[0_0_15px_rgba(72,160,147,0.8)] z-50 origin-top -translate-x-1/2"
+                            className="absolute top-0 left-1/2 w-[2px] bg-primary shadow-[0_0_15px_rgba(72,160,147,0.8)] z-50 origin-top -translate-x-1/2 transform-gpu will-change-[height,opacity,transform]"
                         >
                             {/* Hook Point */}
                             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-3 w-3 bg-primary rounded-full shadow-[0_0_10px_rgba(72,160,147,0.5)]" />
@@ -139,22 +140,17 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
                                 {/* Logo with Pulse Glow */}
                                 <div className="relative mb-10">
                                     <motion.div
-                                        initial={{ opacity: 0, scale: 0.5, borderRadius: "9999px" }}
+                                        initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{
                                             opacity: isRevealActive ? 0 : 1,
-                                            scale: isRevealActive ? 1.2 : 1,
-                                            borderRadius: "9999px",
-                                            width: (window.innerWidth < 768 ? "18rem" : "24rem"),
-                                            height: (window.innerWidth < 768 ? "18rem" : "24rem"),
-                                            backgroundColor: "white",
-                                            boxShadow: !isRevealActive ? "0 0 80px rgba(94, 194, 180, 0.6)" : "none",
+                                            scale: isRevealActive ? 1.4 : 1,
                                             y: isRevealActive ? -500 : 0,
                                         }}
                                         transition={{
                                             duration: isRevealActive ? 1.2 : 1.5,
                                             ease: [0.34, 1.56, 0.64, 1]
                                         }}
-                                        className="relative overflow-hidden flex items-center justify-center p-6 shadow-2xl z-[60]"
+                                        className="relative overflow-hidden flex items-center justify-center p-6 bg-white rounded-full shadow-[0_0_80px_rgba(94,194,180,0.3)] z-[60] w-72 h-72 md:w-96 md:h-96 transform-gpu will-change-transform"
                                     >
                                         <img
                                             src={assets.logos.square}
