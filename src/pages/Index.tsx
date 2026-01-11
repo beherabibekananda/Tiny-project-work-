@@ -677,7 +677,7 @@ const Index = () => {
                       <img
                         src={post.image}
                         alt="Social post"
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu ${"rotate" in post ? post.rotate : ""} ${"scale" in post ? post.scale : ""}`}
                         loading="lazy"
                       />
                     </div>
