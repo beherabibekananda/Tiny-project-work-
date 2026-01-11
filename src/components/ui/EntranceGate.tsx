@@ -19,11 +19,11 @@ const EntranceGate = ({ onComplete, mode = "full" }: EntranceGateProps) => {
         let completeDelay = 3400;
 
         if (mode === "minimal") {
-            peakDelay = 200;
-            logoDelay = 201;
-            threadDelay = 202;
-            revealDelay = 400;
-            completeDelay = 1000;
+            peakDelay = 50;
+            logoDelay = 51;
+            threadDelay = 52;
+            revealDelay = 150;
+            completeDelay = 400; // Jet Flow Speed
         }
 
         const peakTimer = setTimeout(() => setAnimationStage("peak"), peakDelay);

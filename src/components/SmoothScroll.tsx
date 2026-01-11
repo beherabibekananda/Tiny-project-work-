@@ -5,14 +5,15 @@ import "lenis/dist/lenis.css";
 const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 1.2, // Reduced from 1.5 for faster response
+            duration: 1.8, // Slightly longer for more 'weight'
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: "vertical",
             gestureOrientation: "vertical",
             smoothWheel: true,
-            wheelMultiplier: 1.0, // Standard multiplier
-            touchMultiplier: 1.2, // Standard touch response
+            wheelMultiplier: 1.0,
+            touchMultiplier: 2.0, // More responsive for mobile
             infinite: false,
+            lerp: 0.1, // Added linear interpolation for even smoother motion
         });
 
         function raf(time: number) {

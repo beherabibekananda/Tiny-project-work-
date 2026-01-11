@@ -12,6 +12,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import EntranceGate from "./components/ui/EntranceGate";
 import Navbar from "./components/layout/Navbar";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
 
 // Lazy load page components
 const Index = React.lazy(() => import("./pages/Index"));
@@ -39,12 +41,18 @@ const AppContent = () => {
   }, []);
 
   useEffect(() => {
-    // Route changes: show minimal pulse ONLY on major navigation
-    // if (!isInitialLoad) {
-    //   setGateMode("minimal");
-    // }
-    // Removing minimal gate for every route change as it can feel clunky
-    // Instead we use Framer Motion page transitions below
+    // Start progress bar on route change
+    NProgress.start();
+
+    // Stop progress bar after a short delay or when component mounts
+    const timer = setTimeout(() => {
+      NProgress.done();
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      NProgress.done();
+    };
   }, [location.pathname]);
 
   return (
@@ -71,11 +79,17 @@ const AppContent = () => {
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={location.pathname}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: "linear" }}
-              className="transform-gpu"
+              initial={{ opacity: 0, scale: 0.98, x: 10 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 1.02, x: -10 }}
+              transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                mass: 1,
+                opacity: { duration: 0.3 }
+              }}
+              className="transform-gpu will-change-[transform,opacity]"
             >
               <React.Suspense fallback={
                 <div className="flex h-screen w-screen items-center justify-center bg-background">

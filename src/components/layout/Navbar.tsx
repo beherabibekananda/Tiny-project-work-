@@ -5,6 +5,15 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import Magnetic from "@/components/ui/Magnetic";
 
+// Jet Flow: Pre-fetch page components
+const prefetchMap: Record<string, () => Promise<any>> = {
+  "/": () => import("@/pages/Index"),
+  "/about": () => import("@/pages/About"),
+  "/services": () => import("@/pages/Services"),
+  "/gallery": () => import("@/pages/Gallery"),
+  "/contact": () => import("@/pages/Contact"),
+};
+
 import { assets } from "@/lib/assets";
 
 const Navbar = () => {
@@ -59,30 +68,35 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:gap-4 lg:gap-8">
           {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onMouseEnter={() => setHoveredPath(link.path)}
-              onMouseLeave={() => setHoveredPath(null)}
-              className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${isActive(link.path) ? "text-primary" : "text-muted-foreground hover:text-primary"
-                }`}
-            >
-              {isActive(link.path) && (
-                <motion.div
-                  layoutId="active-nav"
-                  className="absolute inset-0 z-0 rounded-full bg-primary/10"
-                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                />
-              )}
-              {hoveredPath === link.path && !isActive(link.path) && (
-                <motion.div
-                  layoutId="hover-nav"
-                  className="absolute inset-0 z-0 rounded-full bg-secondary/50"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className="relative z-10">{link.name}</span>
-            </Link>
+            <Magnetic key={link.path}>
+              <Link
+                to={link.path}
+                onMouseEnter={() => {
+                  setHoveredPath(link.path);
+                  // Predictive Prefetch: Load the page before they click
+                  if (prefetchMap[link.path]) prefetchMap[link.path]();
+                }}
+                onMouseLeave={() => setHoveredPath(null)}
+                className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 ${isActive(link.path) ? "text-primary" : "text-muted-foreground hover:text-primary"
+                  }`}
+              >
+                {isActive(link.path) && (
+                  <motion.div
+                    layoutId="active-nav"
+                    className="absolute inset-0 z-0 rounded-full bg-primary/10"
+                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  />
+                )}
+                {hoveredPath === link.path && !isActive(link.path) && (
+                  <motion.div
+                    layoutId="hover-nav"
+                    className="absolute inset-0 z-0 rounded-full bg-secondary/50"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </Link>
+            </Magnetic>
           ))}
         </div>
 

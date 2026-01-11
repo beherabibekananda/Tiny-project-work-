@@ -24,6 +24,7 @@ import { services } from "@/data/services";
 import { useRef, useState, useEffect } from "react";
 import { assets } from "@/lib/assets";
 import Magnetic from "@/components/ui/Magnetic";
+import { RevealSection } from "@/components/ui/RevealSection";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -243,14 +244,16 @@ const Index = () => {
       {/* Services Section */}
       <section className="py-16 bg-secondary/30 dark:bg-background/60 relative overflow-hidden">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient">
-              Specialized Child Development Services
-            </h2>
-            <p className="mt-3 text-sm sm:text-base text-gray-900 dark:text-gray-100">
-              We offer a full range of therapeutic interventions tailored to your child's unique needs.
-            </p>
-          </div>
+          <RevealSection>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-light-gradient dark:text-dark-gradient">
+                Specialized Child Development Services
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-gray-900 dark:text-gray-100">
+                We offer a full range of therapeutic interventions tailored to your child's unique needs.
+              </p>
+            </div>
+          </RevealSection>
 
           <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
@@ -334,49 +337,51 @@ const Index = () => {
       <section className="bg-secondary/20 dark:bg-background/40 py-16 relative overflow-hidden">
         <div className="container relative z-10">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-            >
-              <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl leading-tight">
-                Why Parents Trust <br />
-                <span className="text-primary">Tiny Triumph</span>
-              </h2>
-              <p className="mt-4 text-base text-gray-900 dark:text-gray-100 leading-relaxed">
-                We provide a personalized sanctuary for development, combining clinical excellence with a nurturing heart.
-              </p>
+            <RevealSection>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl leading-tight">
+                  Why Parents Trust <br />
+                  <span className="text-primary">Tiny Triumph</span>
+                </h2>
+                <p className="mt-4 text-base text-gray-900 dark:text-gray-100 leading-relaxed">
+                  We provide a personalized sanctuary for development, combining clinical excellence with a nurturing heart.
+                </p>
 
-              <div className="mt-12 space-y-8">
-                {features.map((feature, idx) => (
-                  <motion.div
-                    key={feature.title}
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex gap-6 group"
-                  >
+                <div className="mt-12 space-y-8">
+                  {features.map((feature, idx) => (
                     <motion.div
-                      className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-card shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white"
-                      animate={{ y: [0, -5, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                      key={feature.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex gap-6 group"
                     >
-                      <feature.icon className="h-7 w-7" />
+                      <motion.div
+                        className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-card shadow-lg text-primary transition-colors group-hover:bg-primary group-hover:text-white"
+                        animate={{ y: [0, -5, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                      >
+                        <feature.icon className="h-7 w-7" />
+                      </motion.div>
+                      <div>
+                        <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white">
+                          {feature.title}
+                        </h3>
+                        <p className="mt-2 text-gray-900 dark:text-gray-100 text-sm leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
                     </motion.div>
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-gray-900 dark:text-white">
-                        {feature.title}
-                      </h3>
-                      <p className="mt-2 text-gray-900 dark:text-gray-100 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </RevealSection>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8, x: 50 }}
