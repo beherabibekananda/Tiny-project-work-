@@ -54,6 +54,11 @@ const Index = () => {
     { id: 10, ...assets.videos.showcase10, title: "Clinical Excellence" },
     { id: 11, ...assets.videos.showcase11, title: "Comprehensive Support" },
     { id: 12, ...assets.videos.showcase12, title: "Empowering Journeys" },
+    { id: 13, ...assets.videos.showcase13, title: "Developmental Play" },
+    { id: 14, ...assets.videos.showcase14, title: "Precision Training" },
+    { id: 15, ...assets.videos.showcase15, title: "Movement Therapy" },
+    { id: 16, ...assets.videos.showcase16, title: "Social Interaction" },
+    { id: 17, ...assets.videos.showcase17, title: "Clinic Highlights" },
   ];
 
   const [testimonialProgress, setTestimonialProgress] = useState(0);

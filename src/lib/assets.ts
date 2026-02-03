@@ -96,6 +96,31 @@ export const assets = {
             webm: getAssetPath("assets/videos/showcase-12.mp4"),
             poster: getAssetPath("assets/videos/posters/showcase-9.webp"), // Fallback to existing poster
         },
+        showcase13: {
+            mp4: getAssetPath("assets/videos/showcase-13.mp4"),
+            webm: getAssetPath("assets/videos/showcase-13.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-13.webp"),
+        },
+        showcase14: {
+            mp4: getAssetPath("assets/videos/showcase-14.mp4"),
+            webm: getAssetPath("assets/videos/showcase-14.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-14.webp"),
+        },
+        showcase15: {
+            mp4: getAssetPath("assets/videos/showcase-15.mp4"),
+            webm: getAssetPath("assets/videos/showcase-15.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-15.webp"),
+        },
+        showcase16: {
+            mp4: getAssetPath("assets/videos/showcase-16.mp4"),
+            webm: getAssetPath("assets/videos/showcase-16.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-16.webp"),
+        },
+        showcase17: {
+            mp4: getAssetPath("assets/videos/showcase-17.mp4"),
+            webm: getAssetPath("assets/videos/showcase-17.mp4"),
+            poster: getAssetPath("assets/videos/posters/showcase-17.webp"),
+        },
     },
     services: {
         occupationalTherapy: getAssetPath("assets/services/occupational-therapy.webp"),
@@ -105,5 +130,10 @@ export const assets = {
         specialEducation: getAssetPath("assets/services/special-education.webp"),
         sensoryIntegration: getAssetPath("assets/services/sensory-integration.webp"),
     },
-    gallery: Array.from({ length: 23 }, (_, i) => getAssetPath(`assets/gallery/clinic-${i + 1}.webp`)),
+    gallery: [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        11, 12, 13, 14, 15, 16, 17,
+        21, 22, 23, 24, 25, 26, 27,
+        29, 30, 31, 34, 35, 37, 39, 40, 41, 43
+    ].map((i) => getAssetPath(`assets/gallery/clinic-${i}.webp`)),
 };

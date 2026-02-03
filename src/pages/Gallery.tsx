@@ -21,20 +21,32 @@ const Gallery = () => {
         { id: 10, title: "Clinical Excellence", ...assets.videos.showcase10 },
         { id: 11, title: "Comprehensive Support", ...assets.videos.showcase11 },
         { id: 12, title: "Empowering Journeys", ...assets.videos.showcase12 },
+        { id: 13, title: "Developmental Play", ...assets.videos.showcase13 },
+        { id: 14, title: "Precision Training", ...assets.videos.showcase14 },
+        { id: 15, title: "Movement Therapy", ...assets.videos.showcase15 },
+        { id: 16, title: "Social Interaction", ...assets.videos.showcase16 },
+        { id: 17, title: "Clinic Highlights", ...assets.videos.showcase17 },
     ];
     const galleryItems = [
         { title: "Our Specialists", image: assets.hero.specialist1 },
         { title: "Expert Consultations", image: assets.hero.specialist2 },
-        { title: "Therapy Sessions", image: assets.gallery[0] },
-        { title: "Sensory Play Area", image: assets.gallery[1] },
-        { title: "Learning Zone", image: assets.gallery[2] },
-        { title: "Pediatric Excellence", image: assets.gallery[20] },
-        { title: "Developmental Care", image: assets.gallery[21] },
-        { title: "World-Class Infrastructure", image: assets.gallery[22] },
-        { title: "Personalized Support", image: assets.gallery[3] },
-        { title: "Progressive Therapy", image: assets.gallery[4] },
-        { title: "Expert Guidance", image: assets.gallery[5] },
-        { title: "Holistic Growth", image: assets.gallery[6] },
+        ...assets.gallery.map((img, idx) => ({
+            title: [
+                "Therapy Sessions", "Sensory Play Area", "Learning Zone", "Pediatric Excellence",
+                "Developmental Care", "World-Class Infrastructure", "Personalized Support",
+                "Progressive Therapy", "Expert Guidance", "Holistic Growth",
+                "Advanced Prosthetics", "Orthotic Excellence", "Assistive Technologies",
+                "Precision Fitment", "Innovative Support", "Specialist Care",
+                "Active Recovery", "Progressive Care",
+                "Sensory Mastery", "Developmental Play", "Motor Skill Fun",
+                "Learning Excellence", "Nurturing Growth", "Precision Therapy",
+                "Holistic Care", "Patient Success", "Expert Support",
+                "Clinic Atmosphere", "Therapeutic Space", "Joyful Progress",
+                "Clinical Environment", "Dedicated Care", "Professional Support",
+                "Child Development"
+            ][idx] || "Clinic Gallery",
+            image: img
+        }))
     ];
 
     return (
