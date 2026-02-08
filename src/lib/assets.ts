@@ -133,7 +133,10 @@ export const assets = {
     gallery: [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         11, 12, 13, 14, 15, 16, 17,
-        21, 22, 23, 24, 25, 26, 27,
-        29, 30, 31, 34, 35, 37, 39, 40, 41, 43
+        21, 22, 23, 24, 25, 27,
+        29, 30, 34, 37, 39, 40, 41, 43
     ].map((i) => getAssetPath(`assets/gallery/clinic-${i}.webp`)),
+    // Portrait images (no rotation needed): clinic-1, clinic-24
+    // All other images are landscape and need 90° rotation
+    portraitImages: [1, 24],
 };

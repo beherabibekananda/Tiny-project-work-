@@ -8,6 +8,11 @@ import { assets } from "@/lib/assets";
 const Gallery = () => {
     const [visibleVideos, setVisibleVideos] = useState(3);
     const [visibleImages, setVisibleImages] = useState(6);
+
+    // Portrait images that DON'T need rotation (indices in galleryItems array):
+    // 0 = specialist photo, 1 = clinic-1, 21 = clinic-24
+    const portraitIndices = new Set([0, 1, 21]);
+
     const allVideos = [
         { id: 1, title: "Sensory Mastery", ...assets.videos.showcase1 },
         { id: 2, title: "Precision Motor Skills", ...assets.videos.showcase2 },
@@ -28,7 +33,6 @@ const Gallery = () => {
         { id: 17, title: "Clinic Highlights", ...assets.videos.showcase17 },
     ];
     const galleryItems = [
-        { title: "Our Specialists", image: assets.hero.specialist1 },
         { title: "Expert Consultations", image: assets.hero.specialist2 },
         ...assets.gallery.map((img, idx) => ({
             title: [
@@ -179,6 +183,10 @@ const Gallery = () => {
                                         src={item.image}
                                         alt={item.title}
                                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                                        style={!portraitIndices.has(index) ? {
+                                            transform: 'rotate(90deg) scale(1.5)',
+                                            transformOrigin: 'center center'
+                                        } : undefined}
                                         loading="lazy"
                                         decoding="async"
                                     />
