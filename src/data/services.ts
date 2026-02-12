@@ -11,6 +11,7 @@ import {
     Star,
     Award
 } from "lucide-react";
+import { assets } from "@/lib/assets";
 
 export interface Service {
     id: string;
@@ -29,6 +30,7 @@ export interface Service {
     clinicalInsights: string[];
     benefits: string[];
     image: string;
+    needsRotation?: boolean;
 }
 
 export const services: Service[] = [
@@ -63,7 +65,7 @@ export const services: Service[] = [
             "Enhanced handwriting and classroom endurance",
             "Improved emotional regulation and sensory comfort"
         ],
-        image: "/assets/gallery/clinic-3.webp"
+        image: assets.services.occupationalTherapy
     },
     {
         id: "speech-therapy",
@@ -96,7 +98,7 @@ export const services: Service[] = [
             "Deepened social bonds and peer interaction",
             "Total communication success across settings"
         ],
-        image: "/assets/services/speech-therapy.webp"
+        image: assets.services.speechTherapy
     },
     {
         id: "behaviour-therapy",
@@ -129,7 +131,7 @@ export const services: Service[] = [
             "Acquisition of vital functional life skills",
             "Improved social grace and emotional resilience"
         ],
-        image: "/assets/services/behaviour-therapy.webp"
+        image: assets.services.behaviourTherapy
     },
     {
         id: "physiotherapy",
@@ -162,7 +164,7 @@ export const services: Service[] = [
             "Increased physical stamina for school and play",
             "Enhanced physical confidence and coordination"
         ],
-        image: "/assets/services/physiotherapy.webp"
+        image: assets.services.physiotherapy
     },
     {
         id: "special-education",
@@ -195,7 +197,7 @@ export const services: Service[] = [
             "Mastery of personalized learning strategies",
             "Successful school transitions and integration"
         ],
-        image: "/assets/services/special-education.webp"
+        image: assets.services.specialEducation
     },
     {
         id: "sensory-integration",
@@ -228,6 +230,6 @@ export const services: Service[] = [
             "Improved focus in loud or busy settings",
             "Greater comfort and joy in physical play"
         ],
-        image: "/assets/services/sensory-integration.webp"
+        image: assets.services.sensoryIntegration
     }
 ];

@@ -307,32 +307,46 @@ const Index = () => {
                     <div className="absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-all duration-1000 group-hover:translate-x-[300%]" />
                   </div>
 
-                  <div className="relative z-20 flex h-full flex-col items-center justify-center p-8 text-center">
-                    {/* Icon Container with Backwash */}
-                    <div className="relative mb-6">
-                      <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-secondary/20 border border-border/20 transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 shadow-xl`}>
-                        <motion.div
-                          whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
-                          transition={{ duration: 0.5 }}
-                          className={`transition-colors duration-300 delay-75 group-hover:text-white ${service.textColor}`}
-                        >
-                          <service.icon className="h-12 w-12" />
-                        </motion.div>
-                      </div>
-
-                      {/* Inner Glow */}
-                      <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                  <div className="relative z-20 flex h-full flex-col">
+                    {/* Banner Image */}
+                    <div className="h-48 w-full overflow-hidden relative">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        decoding="async"
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 transform-gpu ${service.needsRotation ? '-rotate-90 scale-[1.3]' : ''}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold transition-colors duration-300 group-hover:text-primary mb-4 text-gray-900 dark:text-white">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-800 dark:text-gray-200 leading-relaxed font-semibold">
-                      {service.description}
-                    </p>
+                    <div className="relative flex flex-col items-center justify-center p-8 pt-0 text-center -mt-12">
+                      {/* Icon Container with Backwash */}
+                      <div className="relative mb-6 z-30">
+                        <div className={`flex h-24 w-24 items-center justify-center rounded-[1.5rem] bg-white dark:bg-card border border-border/20 transition-all duration-500 group-hover:bg-primary group-hover:shadow-lg group-hover:shadow-primary/30 shadow-xl`}>
+                          <motion.div
+                            whileHover={{ scale: 1.2, rotate: [0, -10, 10, -10, 0] }}
+                            transition={{ duration: 0.5 }}
+                            className={`transition-colors duration-300 delay-75 group-hover:text-white ${service.textColor}`}
+                          >
+                            <service.icon className="h-12 w-12" />
+                          </motion.div>
+                        </div>
 
-                    <div className="mt-6 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                      View Details <ChevronRight className="h-4 w-4" />
+                        {/* Inner Glow */}
+                        <div className="absolute inset-0 bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+                      </div>
+
+                      <h3 className="font-display text-2xl font-bold transition-colors duration-300 group-hover:text-primary mb-4 text-gray-900 dark:text-white">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-800 dark:text-gray-200 leading-relaxed font-semibold">
+                        {service.description}
+                      </p>
+
+                      <div className="mt-6 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                        View Details <ChevronRight className="h-4 w-4" />
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -362,6 +376,7 @@ const Index = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, ease: "easeOut" }}
+                className="transform-gpu will-change-transform"
               >
                 <h2 className="font-display text-3xl font-bold text-light-gradient dark:text-dark-gradient md:text-4xl leading-tight">
                   Why Parents Trust <br />
@@ -411,10 +426,11 @@ const Index = () => {
             >
               <div className="aspect-square overflow-hidden rounded-[3rem] shadow-2xl relative">
                 <img
-                  src={assets.services.occupationalTherapy}
-                  alt="Therapy session at Tiny Triumph"
-                  className="absolute inset-0 w-full h-full object-cover -rotate-90 scale-[1.1]"
+                  src={assets.hero.specialist1}
+                  alt="Clinical Specialist at Tiny Triumph"
+                  className="absolute inset-0 w-full h-full object-cover transform-gpu"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <motion.div

@@ -77,7 +77,17 @@ const Services = () => {
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
-                  <div className="relative z-10 space-y-10">
+                  <div className="relative z-10 space-y-8">
+                    {/* Service Banner Image */}
+                    <div className="aspect-[16/10] w-full overflow-hidden rounded-3xl relative group-hover:shadow-2xl transition-all duration-500 mb-8">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 ${service.needsRotation ? '-rotate-90 scale-[1.3]' : ''}`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
+
                     <div className="space-y-6">
                       <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-white dark:bg-background shadow-md border border-border/20 transition-all duration-500 group-hover:bg-primary group-hover:border-primary ${service.iconColor}`}>
                         <service.icon className="h-6 w-6 transition-colors duration-300 group-hover:text-white" />

@@ -2,13 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
-import compression from 'vite-plugin-compression';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
+    host: "0.0.0.0",
     port: 8080,
+    strictPort: true,
   },
   plugins: [
     react(),
@@ -19,26 +19,10 @@ export default defineConfig(({ mode }) => ({
       jpeg: {
         quality: 75,
       },
-      jpg: {
-        quality: 75,
-      },
-      png: {
-        quality: 75,
-      },
-      avif: {
-        quality: 70,
-      },
-      svg: {
-        multipass: true,
-      },
-    }),
-    compression({
-      algorithm: 'brotliCompress',
-      ext: '.br',
-    }),
-    compression({
-      algorithm: 'gzip',
-      ext: '.gz',
+      jpg: { quality: 75 },
+      png: { quality: 75 },
+      avif: { quality: 70 },
+      svg: { multipass: true },
     }),
   ],
   resolve: {
@@ -47,17 +31,17 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           'vendor-framer': ['framer-motion'],
           'vendor-lucide': ['lucide-react'],
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
         },
       },
     },
     chunkSizeWarningLimit: 1000,
-    reportCompressedSize: false, // Speed up build
   },
 }));
 

@@ -43,15 +43,15 @@ const ServiceDetail = () => {
                     {/* Background Image with Overlay */}
                     <motion.div
                         initial={{
-                            scale: 1.1,
-                            rotate: service.id === 'occupational-therapy' ? -90 : 0,
+                            scale: service.needsRotation ? 1.4 : 1.1,
+                            rotate: service.needsRotation ? -90 : 0,
                         }}
                         animate={{
-                            scale: 1,
-                            rotate: service.id === 'occupational-therapy' ? -90 : 0,
+                            scale: service.needsRotation ? 1.3 : 1,
+                            rotate: service.needsRotation ? -90 : 0,
                         }}
                         transition={{ duration: 1.5 }}
-                        className={`absolute z-0 bg-cover bg-center bg-no-repeat ${service.id === 'occupational-therapy'
+                        className={`absolute z-0 bg-cover bg-center bg-no-repeat ${service.needsRotation
                             ? 'w-[200vw] h-[200vh] -left-[50vw] -top-[50vh]'
                             : 'inset-0'
                             }`}

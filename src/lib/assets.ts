@@ -123,11 +123,11 @@ export const assets = {
         },
     },
     services: {
-        occupationalTherapy: getAssetPath("assets/services/occupational-therapy.webp"),
-        speechTherapy: getAssetPath("assets/services/speech-therapy.webp"),
+        occupationalTherapy: getAssetPath("assets/gallery/Occupational Therapy banner copy.webp"),
+        speechTherapy: getAssetPath("assets/gallery/Speech Therapy banner copy.webp"),
         behaviourTherapy: getAssetPath("assets/services/behaviour-therapy.webp"),
-        physiotherapy: getAssetPath("assets/services/physiotherapy.webp"),
-        specialEducation: getAssetPath("assets/services/special-education.webp"),
+        physiotherapy: getAssetPath("assets/gallery/Physiotherapy banner copy.webp"),
+        specialEducation: getAssetPath("assets/gallery/Special Education  banner copy.webp"),
         sensoryIntegration: getAssetPath("assets/services/sensory-integration.webp"),
     },
     gallery: [

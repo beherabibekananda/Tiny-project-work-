@@ -72,7 +72,7 @@ const About = () => {
   return (
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-[160px] pb-[80px]">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-[120px] md:pt-[160px] pb-[60px] md:pb-[80px]">
         {/* Faded Background Image */}
         <div
           className="absolute inset-0 z-0 opacity-20"
@@ -98,7 +98,7 @@ const About = () => {
             <p className="text-base md:text-lg text-white/70 dark:text-gray-300 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
               Tiny Triumph is more than a clinic; it's a sanctuary where clinical precision meets heart-centered care, nurturing every child's unique path to success.
             </p>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 pt-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-6 pt-2 md:pt-4">
               <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 py-6 md:py-7 text-lg bg-primary hover:bg-primary/90 shadow-2xl hover-lift">
                 <a href="https://wa.me/919114222044" target="_blank" rel="noopener noreferrer">
                   Begin the Journey
@@ -112,13 +112,13 @@ const About = () => {
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative lg:h-[80vh] flex items-center justify-center lg:items-center"
+            className="relative lg:h-[80vh] flex items-center justify-center"
           >
-            <div className="relative z-10 w-full max-w-md lg:max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[85%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mb-12 lg:mb-0">
+            <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[85%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mt-8 lg:mt-0">
               <img
-                src={assets.hero.specialist2}
+                src={assets.hero.specialist1}
                 alt="Our Lead Pediatric Specialist"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
                 loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a2a24] via-transparent to-transparent opacity-60" />
