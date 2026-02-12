@@ -231,5 +231,38 @@ export const services: Service[] = [
             "Greater comfort and joy in physical play"
         ],
         image: assets.services.sensoryIntegration
+    },
+    {
+        id: "prosthetics-orthotics",
+        slug: "prosthetics-orthotics",
+        icon: Stethoscope,
+        title: "Prosthetics & Orthotics",
+        headline: "Restoring Mobility, Enhancing Life",
+        description: "Specialized design and fitting of custom prosthetic and orthotic devices.",
+        longDescription: "Our Prosthetics & Orthotics program is dedicated to restoring movement and independence for children with limb differences or orthopedic challenges. We combine cutting-edge technology with personalized care to design, fabricate, and fit custom devices that feel like a natural extension of the body. Our goal is to empower every child to pursue their dreams without physical limitations.",
+        quote: "Designing the future of mobility, one step at a time.",
+        bgColor: "bg-slate-50/90",
+        borderColor: "border-slate-200",
+        textColor: "text-slate-700",
+        iconColor: "text-slate-600",
+        features: [
+            "Custom Digitally-Designed Prosthetics",
+            "Precision Orthotic Bracing",
+            "Gait & Alignment Optimization",
+            "Pediatric Limb-Loss Support",
+            "High-Performance Sports Devices",
+            "Continuous Growth Adjustments"
+        ],
+        clinicalInsights: [
+            "Advanced Biomechanical Assessment",
+            "Computer-Aided Design (CAD) Modeling",
+            "Material Science Specialized for Children"
+        ],
+        benefits: [
+            "Return to active play and sports",
+            "Improved postural alignment and comfort",
+            "Lifelong support for growth and development"
+        ],
+        image: assets.services.prostheticsOrthotics
     }
 ];

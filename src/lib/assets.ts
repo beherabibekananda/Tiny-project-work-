@@ -128,15 +128,16 @@ export const assets = {
         behaviourTherapy: getAssetPath("assets/services/behaviour-therapy.webp"),
         physiotherapy: getAssetPath("assets/gallery/Physiotherapy banner copy.webp"),
         specialEducation: getAssetPath("assets/gallery/Special Education  banner copy.webp"),
-        sensoryIntegration: getAssetPath("assets/services/sensory-integration.webp"),
+        sensoryIntegration: getAssetPath("assets/gallery/Sensory Integration  banner copy.webp"),
+        prostheticsOrthotics: getAssetPath("assets/gallery/Prosthetics and Orthotics  banner copy (1).webp"),
     },
     gallery: [
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+        1, 2, 3, 4, 5, 6, 7, 8, 9,
         11, 12, 13, 14, 15, 16, 17,
-        21, 22, 23, 24, 25, 27,
+        21, 23, 24, 27,
         29, 30, 34, 37, 39, 40, 41, 43
     ].map((i) => getAssetPath(`assets/gallery/clinic-${i}.webp`)),
-    // Portrait images (no rotation needed): clinic-1, clinic-24
+    // Portrait images (no rotation needed): clinic-1, clinic-9, clinic-21, clinic-24, clinic-34, clinic-37, clinic-39, clinic-40, clinic-41, clinic-43
     // All other images are landscape and need 90° rotation
-    portraitImages: [1, 24],
+    portraitImages: [1, 9, 21, 24, 34, 37, 39, 40, 41, 43],
 };

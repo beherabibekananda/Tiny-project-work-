@@ -9,9 +9,10 @@ const Gallery = () => {
     const [visibleVideos, setVisibleVideos] = useState(3);
     const [visibleImages, setVisibleImages] = useState(6);
 
-    // Portrait images that DON'T need rotation (indices in galleryItems array):
-    // 0 = specialist photo, 1 = clinic-1, 21 = clinic-24
-    const portraitIndices = new Set([0, 1, 21]);
+    // Portrait images (no rotation needed):
+    // 0 = specialist photo, 1 = clinic-1, 9 = clinic-9, 17 = clinic-21, 19 = clinic-24, 23 = clinic-34, 24 = clinic-37, 25 = clinic-39, 26 = clinic-40, 27 = clinic-41, 28 = clinic-43
+    // All other images are landscape and need 90° rotation
+    const portraitIndices = new Set([0, 1, 9, 17, 19, 23, 24, 25, 26, 27, 28]);
 
     const allVideos = [
         { id: 1, title: "Sensory Mastery", ...assets.videos.showcase1 },
@@ -21,36 +22,15 @@ const Gallery = () => {
         { id: 5, title: "Developmental Milestones", ...assets.videos.showcase5 },
         { id: 6, title: "Behavioral Progress", ...assets.videos.showcase6 },
         { id: 7, title: "Motor Function", ...assets.videos.showcase7 },
-        { id: 8, title: "Sensory Integration", ...assets.videos.showcase8 },
-        { id: 9, title: "Success Stories", ...assets.videos.showcase9 },
-        { id: 10, title: "Clinical Excellence", ...assets.videos.showcase10 },
-        { id: 11, title: "Comprehensive Support", ...assets.videos.showcase11 },
-        { id: 12, title: "Empowering Journeys", ...assets.videos.showcase12 },
-        { id: 13, title: "Developmental Play", ...assets.videos.showcase13 },
-        { id: 14, title: "Precision Training", ...assets.videos.showcase14 },
-        { id: 15, title: "Movement Therapy", ...assets.videos.showcase15 },
-        { id: 16, title: "Social Interaction", ...assets.videos.showcase16 },
-        { id: 17, title: "Clinic Highlights", ...assets.videos.showcase17 },
+        { id: 8, title: "Success Stories", ...assets.videos.showcase9 },
+        { id: 9, title: "Clinical Excellence", ...assets.videos.showcase10 },
+        { id: 10, title: "Comprehensive Support", ...assets.videos.showcase11 },
+        { id: 11, title: "Empowering Journeys", ...assets.videos.showcase12 },
+        { id: 12, title: "Developmental Play", ...assets.videos.showcase13 },
     ];
     const galleryItems = [
-        { title: "Expert Consultations", image: assets.hero.specialist2 },
-        ...assets.gallery.map((img, idx) => ({
-            title: [
-                "Therapy Sessions", "Sensory Play Area", "Learning Zone", "Pediatric Excellence",
-                "Developmental Care", "World-Class Infrastructure", "Personalized Support",
-                "Progressive Therapy", "Expert Guidance", "Holistic Growth",
-                "Advanced Prosthetics", "Orthotic Excellence", "Assistive Technologies",
-                "Precision Fitment", "Innovative Support", "Specialist Care",
-                "Active Recovery", "Progressive Care",
-                "Sensory Mastery", "Developmental Play", "Motor Skill Fun",
-                "Learning Excellence", "Nurturing Growth", "Precision Therapy",
-                "Holistic Care", "Patient Success", "Expert Support",
-                "Clinic Atmosphere", "Therapeutic Space", "Joyful Progress",
-                "Clinical Environment", "Dedicated Care", "Professional Support",
-                "Child Development"
-            ][idx] || "Clinic Gallery",
-            image: img
-        }))
+        assets.hero.specialist2,
+        ...assets.gallery
     ];
 
     return (
@@ -180,8 +160,8 @@ const Gallery = () => {
                                     className="group relative aspect-square overflow-hidden rounded-xl bg-card border border-border/40 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
                                 >
                                     <img
-                                        src={item.image}
-                                        alt={item.title}
+                                        src={item}
+                                        alt="Clinic Gallery"
                                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
                                         style={!portraitIndices.has(index) ? {
                                             transform: 'rotate(90deg) scale(1.5)',
@@ -190,11 +170,7 @@ const Gallery = () => {
                                         loading="lazy"
                                         decoding="async"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex items-end p-8">
-                                        <h3 className="font-display text-xl font-bold text-white transform translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
-                                            {item.title}
-                                        </h3>
-                                    </div>
+                                    {/* Hover text removed */}
                                 </motion.div>
                             ))}
                         </AnimatePresence>

@@ -37,6 +37,7 @@ const About = () => {
       image: "/assets/hero/specialist-2.webp",
       bio: "As the visionary founder, Dr. Anjalika Gan leads our clinical approach with unmatched dedication and compassion.",
     },
+    /*
     {
       name: "Rajesh Kumar",
       role: "Senior Occupational Therapist",
@@ -67,12 +68,13 @@ const About = () => {
       image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&h=400&fit=crop",
       bio: "Vikram works closely with families to implement effective behavior intervention strategies.",
     },
+    */
   ];
 
   return (
     <Layout>
       {/* 1. Splendid Split-Screen Hero */}
-      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-[120px] md:pt-[160px] pb-[60px] md:pb-[80px]">
+      <section className="relative min-h-[85vh] flex items-center bg-[#0a2a24] dark:bg-background overflow-hidden pt-[140px] md:pt-[180px] lg:pt-[160px] pb-[80px]">
         {/* Faded Background Image */}
         <div
           className="absolute inset-0 z-0 opacity-20"
@@ -84,12 +86,12 @@ const About = () => {
         />
         <div className="absolute inset-0 bg-[#0a2a24]/40 z-0" />
 
-        <div className="container relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 items-center px-4 md:px-6">
+        <div className="container relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center px-4 md:px-6">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-white space-y-6 md:space-y-8 text-center lg:text-left"
+            className="text-white space-y-6 md:space-y-8 text-center lg:text-left z-20"
           >
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight">
               Crafting Brighter <br className="hidden sm:block" />
@@ -109,12 +111,12 @@ const About = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative lg:h-[80vh] flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            className="relative lg:h-[70vh] flex items-center justify-center z-10"
           >
-            <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-xl aspect-[4/5] lg:aspect-auto lg:h-[85%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mt-8 lg:mt-0">
+            <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-[4/5] lg:aspect-auto lg:h-[90%] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] border border-white/10 mt-4 lg:mt-0">
               <img
                 src={assets.hero.specialist1}
                 alt="Our Lead Pediatric Specialist"
@@ -297,11 +299,11 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 flex flex-wrap justify-center gap-8">
             {team.map((member, index) => (
               <Card
                 key={member.name}
-                className="group overflow-hidden border-border/50 bg-card"
+                className="group overflow-hidden border-border/50 bg-card w-full max-w-[400px]"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="aspect-square overflow-hidden">

@@ -49,16 +49,11 @@ const Index = () => {
     { id: 5, ...assets.videos.showcase5, title: "Developmental Milestones" },
     { id: 6, ...assets.videos.showcase6, title: "Behavioral Progress" },
     { id: 7, ...assets.videos.showcase7, title: "Motor Function" },
-    { id: 8, ...assets.videos.showcase8, title: "Sensory Integration" },
-    { id: 9, ...assets.videos.showcase9, title: "Success Stories" },
-    { id: 10, ...assets.videos.showcase10, title: "Clinical Excellence" },
-    { id: 11, ...assets.videos.showcase11, title: "Comprehensive Support" },
-    { id: 12, ...assets.videos.showcase12, title: "Empowering Journeys" },
-    { id: 13, ...assets.videos.showcase13, title: "Developmental Play" },
-    { id: 14, ...assets.videos.showcase14, title: "Precision Training" },
-    { id: 15, ...assets.videos.showcase15, title: "Movement Therapy" },
-    { id: 16, ...assets.videos.showcase16, title: "Social Interaction" },
-    { id: 17, ...assets.videos.showcase17, title: "Clinic Highlights" },
+    { id: 8, ...assets.videos.showcase9, title: "Success Stories" },
+    { id: 9, ...assets.videos.showcase10, title: "Clinical Excellence" },
+    { id: 10, ...assets.videos.showcase11, title: "Comprehensive Support" },
+    { id: 11, ...assets.videos.showcase12, title: "Empowering Journeys" },
+    { id: 12, ...assets.videos.showcase13, title: "Developmental Play" },
   ];
 
   const [testimonialProgress, setTestimonialProgress] = useState(0);

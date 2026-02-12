@@ -57,16 +57,16 @@ const Navbar = () => {
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className="fixed top-0 left-0 right-0 z-50 w-full border-b border-border/40 bg-white/95 dark:bg-background/95 backdrop-blur-md shadow-md"
     >
-      <div className="container flex h-16 items-center justify-between md:h-20">
+      <div className="container flex h-16 items-center justify-between lg:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-10 md:h-12 items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+          <div className="flex h-10 lg:h-12 items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
             <img src={assets.logos.main} alt="Tiny Triumph Logo" className="h-full w-auto object-contain" />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex md:items-center md:gap-4 lg:gap-8">
+        <div className="hidden lg:flex lg:items-center lg:gap-4 xl:gap-8">
           {navLinks.map((link) => (
             <Magnetic key={link.path}>
               <Link
@@ -100,7 +100,7 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Magnetic>
             <Button asChild size="lg" className="rounded-full px-6 transition-all duration-300 hover:scale-105 hover:shadow-lg">
               <a href="https://api.whatsapp.com/send?phone=919114222044&text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Tiny%20Triumph%20CDC." target="_blank" rel="noopener noreferrer">Book Appointment</a>
@@ -108,9 +108,8 @@ const Navbar = () => {
           </Magnetic>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden p-2 -mr-2"
+          className="lg:hidden p-2 -mr-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -129,7 +128,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-border bg-background md:hidden overflow-hidden"
+            className="border-t border-border bg-background lg:hidden overflow-hidden"
           >
             <nav className="container flex flex-col gap-2 py-8">
               {navLinks.map((link) => (
